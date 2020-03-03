@@ -6,35 +6,44 @@ require APPPATH. '/libraries/restclient.php';
 class Inicio extends CI_Controller {
 
 	private $api;
+
 	//Constructor
 	function __construct(){
 		parent::__construct();
+		$this->api = new RestClient([
+			'base_url' => "http://127.0.0.1:8005/api_rest/api",
+			'headers' => ['Ephylone'=>'sas-doc']
+		]);
 	}
 
 	public function index(){
-		if(isset($this->session->data_info['token'])){
-			$this->load->library('componentes');
-			$this->principal();
-		}else
-			$this->login();
+		// if(isset($this->session->data_info['token'])){
+		// 	$this->load->library('componentes');
+		// 	$this->principal();
+		// }else
+		// 	$this->login();
+		$this->load->library('componentes');
+		$this->principal();
 	}
 
-	private function desagregado($obj){
-		var_dump($obj);
-		//return json_encode(json_decode($obj->response)->data);
+	private function prepara($obj,$tipo=null){
+		if($tipo == 'array')
+			return json_encode((json_decode($obj->response)->data));
+		else
+			return json_decode($obj->response)->data;
 	}
 
+	private function crea_select($obj){
+		$result = '<option></option>';
+		for ($i=0; $i < count($obj); $i++){
+			$result .= '<option  >'.$obj[$i]->nombre.'</option>';
+		}
+		return $result;
+	}
 
 	private function principal(){
-		//$result = $this->api->get("consulta/catalogo_usuarios/1/20");
-		//$data['datos'] = $this->desagregado($result);
-		$data['titulos'] = '[ {title:"Name", field:"id"},
-		{title:"Progress", field:"nombre", align:"center", sorter:"number"},
-		{title:"Gender", field:"gender"},
-		{title:"Rating", field:"rating", align:"center"},
-		{title:"Favourite Color", field:"col"},
-		{title:"Date Of Birth", field:"dob", align:"center", sorter:"date"},
-		{title:"Acciones", formatter:printIcon,  align:"center"}]';
+		$data['tabla'] = 'dbo.vw_documentos';
+		$data['datos'] = $this->prepara($this->api->post('consulta', $data),'array');
 		$data['menu'] = $this->componentes->menu();
 		$data['apps'] = $this->componentes->apps();
 		$data['noti'] = $this->componentes->notificaciones();
@@ -46,13 +55,17 @@ class Inicio extends CI_Controller {
 	}
 
 	public function nuevo_documento(){
+		$data['tabla'] = 'catalogos.c_tipos_documento';
+		$data['campo_orden'] = 'nombre';
+		$resultado = $this->prepara($this->api->post('consulta', $data));
+		$data['tipos_documento'] = $this->crea_select($resultado);
 		$this->load->library('componentes');
 		$data['menu'] = $this->componentes->menu();
 		$data['apps'] = $this->componentes->apps();
 		$data['noti'] = $this->componentes->notificaciones();
 		$data['card'] = $this->componentes->card();
 		$this->load->view('header',$data);
-		$this->load->view('nuevo/nuevo');
+		$this->load->view('nuevo/nuevo',$data);
 		$this->load->view('footer');
 		$this->load->view('nuevo/nuevo_js',$data);
 	}
@@ -125,6 +138,10 @@ class Inicio extends CI_Controller {
 		$par['password'] = $_GET['password'];
 		$this->api = new RestClient();
 		var_dump($this->api->post('http://127.0.0.1:8005/api_rest/autorizacion/inicio', 'POST', $par));
-	}	
+	}
+
+	private function respuesta($data){
+		var_dump($data->response);
+	}
 
 }

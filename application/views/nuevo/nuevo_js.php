@@ -14,7 +14,6 @@
     let anexos = $("#anexos").val();
     let nota = $("#nota").val();
     let archivo = $("#archivo").val();
-
     let formData = '';
 
     //Funcion para el envio de los datos
@@ -30,7 +29,11 @@
         
         //     }
         // });
+        console.log($('select[name=concopia]').val())
     })
-    
+
+    $('input[name=acronimo]').keyup(function(){
+        $(this).val($(this).val().toUpperCase())
+    })
 
 </script>

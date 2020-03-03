@@ -30,24 +30,70 @@ $(document).ready(function() {
                 console.log("modal cerrado")
             }
         })
-    })  
+    })
+
     //crear tabla
-    //genera iconos de acciones
-    var printIcon = function(cell){
-        return  '<span class="acciones"><i class="ver btn btn-sm btn-secondary fal fa-home"></i><i class="editar btn btn-sm text-white btn-warning fal fa-edit"></i><i class="eliminar btn btn-sm text-white btn-danger fal fa-trash-alt"></i><i class="regresar btn btn-sm text-white btn-success fal fa-home"></i></span>';
+    var icons = function(cell, formatterParams){
+        return "<div class='btn btn-light btn-sm' ide='' title='Ver'><i class='fa fa-eye'></i></div> \
+                <div class='btn btn-primary btn-sm' ide='' title='Editar'><i class='fa fa-pencil'></i></div> \
+                <div class='btn btn-dark btn-sm' ide='' title='Asignar'><i class='fa fa-exchange'></i></div> \
+                <div class='btn btn-secondary btn-sm' ide='' title='Contestar'><i class='fas fa-reply'></i></div> \
+                <div class='btn btn-success btn-sm' ide='' title='Atender'><i class='fal fa-check'></i></div>";
     };
     
-    var table = new Tabulator('#tablas', {
+    var table = new Tabulator('#oficios_tab', {
         layout:"fitDataFill",
-        //autoColumns:true,
-        //columns:<=$titulos?>
+        pagination:"local",
+        paginationSize:20,
+        paginationSizeSelector:[5,10,15,20,25,30,40,50],
+        columnMinWidth:80,
+        columns:[
+            {title:"# Oficio", field:"num_oficio", width:150,align:"center"},
+            {title:"Expediente", field:"num_exp", width:150,align:"center"},
+            {title:"Asunto", field:"asunto",width:250},
+            {title:"Tipo", field:"tipo",width:100},
+            {title:"Remitente", field:"remitente",width:200},
+            {title:"Fecha Emisión", field:"fecha_emision",width:170,align:"center"},
+            {title:"Dias Restantes", field:"dias_restantes",width:150,align:"center"},
+            {title:"Estatus", field:"estatus",width:130,align:"center"},
+            {title:"Acciones", width:300,formatter:icons,align:"center"}
+        ]
+        //autoColumns:true
     });
 
-    //table.setData('<=$datos;?>');
+    //Llenar los tipos de campo con un foreach que proviene de table object
+    let campos = '';
+    for (let index = 0; index < table.options.columns.length-1; index++) {
+        campos +='<option value="'+table.options.columns[index].field+'">'+table.options.columns[index].title+'</option>';
+    }
+       
+    $("#filtro-campo").html(campos);
+    
+    //Llnerar table con datos
+    table.setData('<?=$datos?>');
 
-    let tam_acc = $(".acciones").width()+25;
-    $('.tabulator-col-title:contains("Acciones")').parent().parent().attr('style',"width:"+tam_acc+"px");
-    $('.acciones').parent().attr('style',"width:"+tam_acc+"px");
+    //Limpiar los filtros de consulta
+    $(document.body).on('click','#btn_limpiar_filtro',function(){
+        $("#filtro-campo").prop("selectedIndex", 0);
+        $("#filtro-tipo").prop("selectedIndex", 0);
+        $("#filtro-valor").val("");
+        table.clearFilter();
+    });
+
+    //Funcion para actualizar datos de table
+    function updateFilter(){
+        table.setFilter($("#filtro-campo").val(), $("#filtro-tipo").val(), $("#filtro-valor").val());
+    }
+
+    //Actualizacion de filtro a cada cambio
+    $("#filtro-campo, #filtro-tipo").change(updateFilter);
+    $("#filtro-valor").keyup(updateFilter);
+
+    //Click sobre los botones de filtro rapido
+    $(".btn_filtros_rapidos").click(function(){
+        let val = $(this).attr('rel');
+        table.setFilter('estatus', 'like', val);
+    })
     
 });
 

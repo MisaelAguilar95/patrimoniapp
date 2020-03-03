@@ -29,7 +29,7 @@ class RestClient implements Iterator, ArrayAccess {
             'build_indexed_queries' => FALSE, 
             'user_agent' => "PHP RestClient/0.1.7", 
             'base_url' => NULL, 
-            'format' => NULL, 
+            'format' => 'json', 
             'format_regex' => "/(\w+)\/(\w+)(;[.+])?/",
             'decoders' => [
                 'json' => 'json_decode', 

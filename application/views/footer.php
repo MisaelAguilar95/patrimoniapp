@@ -32,7 +32,6 @@
 </div>
 </div>
 </div>
-<script src="https://kit.fontawesome.com/7898ee300d.js" crossorigin="anonymous"></script>
 <script src="<?=base_url()?>frontend/js/vendors.bundle.js"></script>
 <script src="<?=base_url()?>frontend/js/app.bundle.js"></script>
 <!-- ALERTAS JS -->

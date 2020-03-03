@@ -1387,6 +1387,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 		el.setAttribute("aria-sort", "none");
 
+		el.setAttribute("style", "width:250px;");
 		return el;
 	};
 
@@ -2427,6 +2428,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 		width = Math.max(this.minWidth, width);
 
 		this.width = width;
+
 
 		this.widthStyled = width ? width + "px" : "";
 
@@ -10147,29 +10149,29 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 			"pagination": {
 
-				"page_size": "Page Size",
+				"page_size": "Tamaño de Página",
 
-				"first": "First",
+				"first": "Primer",
 
-				"first_title": "First Page",
+				"first_title": "Primer Página",
 
-				"last": "Last",
+				"last": "Última",
 
-				"last_title": "Last Page",
+				"last_title": "Última Página Page",
 
-				"prev": "Prev",
+				"prev": "Previa",
 
-				"prev_title": "Prev Page",
+				"prev_title": "Página Previa Page",
 
-				"next": "Next",
+				"next": "Siguiente",
 
-				"next_title": "Next Page"
+				"next_title": "Página Siguiente"
 
 			},
 
 			"headerFilters": {
 
-				"default": "filter column...",
+				"default": "Filtro",
 
 				"columns": {}
 

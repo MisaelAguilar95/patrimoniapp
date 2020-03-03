@@ -3,91 +3,79 @@
         <div class="card-header">
                     <a href="#" class="card-title collapsed bg-primary text-white"  data-target="#pest1" aria-expanded="false">
                         <i class="fas fa-file width-2"></i>Nuevo Documento
-
                     </a>
         </div>
         <div id="pest1" class="collapse show" data-parent="#accordion">
             <div class="card-body bg-gray-dark">
                 <div class="row">
-                    <div class="form-group col-md-3">
-                        <label class="form-label" for="documento">N° de oficio / Documento</label>
-                        <input type="text" class="form-control" id="documento" name="num_oficio" placeholder="Ingrese el número de oficio o documento">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label class="form-label" for="expediente">Expediente</label>
-                        <input type="text" class="form-control" id="expediente" placeholder="Ingrese el número de expediente" name="expediente" maxlength="10">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="asunto">Asunto</label>
-                        <input type="text" class="form-control"maxlength="70" type="text" id="asunto" placeholder="Ingrese el asunto del documento" name="asunto" required>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <h3 class="form-label" for="tipodoc">Selecciona el tipo de documento</h3>
+                            <select id="tipodoc" class="form-control" name="tipodoc">
+                                <?=$tipos_documento?>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-md-6">
-                        <label class="form-label" for="tipodoc">Tipo de documento</label>
-                        <select id="tipodoc" class="form-control" name="tipodoc">
-                            <option>Tipo de documento 1</option>
-                            <option>Tipo de documento 2</option>
-                            <option>Tipo de documento 3</option>
-                            <option>Tipo de documento 4</option>
-                            <option>Tipo de documento 5</option>
-                        </select>
-                    </div>
                     <div class="form-group col-md-3">
-                        <label class="form-label" for="fechaemision">Fecha de Documento</label>
-                        <input class="form-control" id="fechaemision" type="date" name="fechaemision"value="<?php echo date("Y-m-d");?>">
+                        <label class="form-label" for="expediente">Expediente</label>
+                        <input type="text" class="form-control" placeholder="Ingrese el número de expediente" name="expediente" maxlength="10">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="asunto">Asunto</label>
+                        <input type="text" class="form-control"maxlength="70" type="text" placeholder="Ingrese el asunto del documento" name="asunto" required>
+                    </div>
+                </div>
+                <div class="row">
+                    
+                    <div class="form-group col-md-3">
+                        <label class="form-label" for="fechaemision">Fecha de Recepción</label>
+                        <input class="form-control" type="date" name="fechaemision"value="<?php echo date("Y-m-d");?>">
                     </div>   
                     <div class="form-group col-md-3">
                         <label class="form-label" for="fechalimite">Fecha Límite</label>
-                        <input class="form-control" id="fechalimite" type="date" name="fechalimite" value="2023-07-23">
+                        <input class="form-control" type="date" name="fechalimite">
                     </div>                   
                 </div> 
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label" for="remitente">Remitente</label>
-                        <input type="text" class="form-control" id="remitente" name="remitente">
+                        <input type="text" class="form-control" name="remitente">
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label" for="destinatario">Destinatario</label>
-                        <select id="destinatario" class="form-control" name="destinatario">
-                            <option>Persona 1</option>
-                            <option>Persona 2</option>
-                            <option>Persona 3</option>
-                            <option>Persona 4</option>
-                            <option>Persona 5</option>
+                        <select class="multiple-select2 bg-dark form-control" name="destinatario" placeholder="Seleccionea destinatarios para copia">
+                            <?=$tipos_documento;?>
                         </select>
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-3">
+                        <label class="form-label">Área/Unidad Responsable</label>
+                        <input type="number" class="form-control" readonly>
+                    </div>
+                    <div class="form-group col-md-3">
                         <label class="form-label" for="anexos">N° de Anexos</label>
-                        <input type="number" class="form-control" id="anexos">
+                        <input type="number" class="form-control">
                     </div>
                 </div>
                 <div class="row m-t-10">
                     <div class="form-group col-md-4">
                         <label class="form-label" for="concopia">CC</label>
-                        <select class="multiple-select2 form-control" id="concopia" name="concopia" multiple="multiple" placeholder="Seleccionea destinatarios para copia">
-                            <option value="AZ">Arizona</option>
-                            <option value="CO">Colorado</option>
-                            <option value="ID">Idaho</option>
-                            <option value="MT">Montana</option>
-                            <option value="NE">Nebraska</option>
-                            <option value="NM">New Mexico</option>
-                            <option value="ND">North Dakota</option>
-                            <option value="UT">Utah</option>
-                            <option value="WY">Wyoming</option>
+                        <select class="multiple-select2 form-control" name="concopia" multiple="multiple" placeholder="Seleccionea destinatarios para copia">
+                            <?=$tipos_documento;?>
                         </select>
                     </div>
                     <div class="form-group col-md-8">
                         <label class="form-label" for="nota">Nota</label>
-                        <textarea class="form-control" id="nota" placeholder="Escriba una nota" name="nota" rows="5" maxlength="60"></textarea>
+                        <textarea class="form-control" placeholder="Escriba una nota" name="nota" rows="5" maxlength="60"></textarea>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <label class="form-label">Archivo</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="archivo">
-                            <label class="custom-file-label" for="customFile">Elegir Archivo</label>
+                            <input type="file" class="custom-file-input" accept="application/pdf">
+                            <label class="custom-file-label" for="customFile">Elegir Archivo PF</label>
                         </div>
                     </div>
                 </div>     

@@ -65,7 +65,8 @@
     <link rel="stylesheet" media="screen, print" href="<?=base_url()?>frontend/css/app.bundle.css">
     <link href="<?=base_url()?>frontend/css/extra.css" rel="stylesheet">
 	<!-- Optional: page related CSS-->
-    
+    <link rel="stylesheet" media="screen, print" href="<?=base_url()?>frontend/css/fa-brands.css">
+    <link rel="stylesheet" media="screen, print" href="<?=base_url()?>frontend/css/fa-solid.css">
     <!-- Alerts -->
     <link rel="stylesheet" media="screen, print" href="<?=base_url()?>frontend/css/toastr.css">
     <!-- TABULATOR -->

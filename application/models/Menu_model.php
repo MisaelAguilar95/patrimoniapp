@@ -7,7 +7,6 @@ class Menu_model extends CI_Model {
         $resultado = array('ban'=>true,'msg'=>'correcto');
         return $resultado;
     }
-
 }
 
 ?>

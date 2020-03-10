@@ -26,13 +26,6 @@ class Inicio extends CI_Controller {
 		$this->principal();
 	}
 
-	private function prepara($obj,$tipo=null){
-		if($tipo == 'array')
-			return json_encode((json_decode($obj->response)->data));
-		else
-			return json_decode($obj->response)->data;
-	}
-
 	private function crea_select($obj){
 		$result = '<option></option>';
 		for ($i=0; $i < count($obj); $i++){
@@ -40,6 +33,14 @@ class Inicio extends CI_Controller {
 		}
 		return $result;
 	}
+	
+	private function prepara($obj,$tipo=null){
+		if($tipo == 'array')
+			return json_encode((json_decode($obj->response)->data));
+		else
+			return json_decode($obj->response)->data;
+	}
+
 
 	private function principal(){
 		$data['tabla'] = 'dbo.vw_documentos';
@@ -120,13 +121,14 @@ class Inicio extends CI_Controller {
 
 	public function form(){
 		$datos = $_POST;
+		
+		$this->load->view('pruebaform');
+		$this->load->view('footer');
 		// $data['menu'] = $this->componentes->menu();
 		// $data['apps'] = $this->componentes->apps();
 		// $data['noti'] = $this->componentes->notificaciones();
 		// $data['card'] = $this->componentes->card();
 		// $this->load->view('header',$data);
-		$this->load->view('pruebaform');
-		$this->load->view('footer');
 	}
 
 	private function login(){
@@ -137,7 +139,7 @@ class Inicio extends CI_Controller {
 		$par['usuario'] = $_GET['usuario'];
 		$par['password'] = $_GET['password'];
 		$this->api = new RestClient();
-		var_dump($this->api->post('http://127.0.0.1:8005/api_rest/autorizacion/inicio', 'POST', $par));
+		var_dump($this->api->post('http://127.0.0.1/api_rest/autorizacion/inicio', 'POST', $par));
 	}
 
 	private function respuesta($data){

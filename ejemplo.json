@@ -1,2 +1,123 @@
-[{id:1, id_doc:'17762', nom_doc:'Oficio',id_usuario:'34', nom_usuario:'Misael', id_evento:'678',nom_evento:'Acualizar',fecha_evt:'14/07/2019'},
-    {id:1, id_doc:'17762', nom_doc:'Oficio',id_usuario:'34', nom_usuario:'Misael', id_evento:'678',nom_evento:'Acualizar',fecha_evt:'14/07/2019'}]
+[
+        {
+            "id_bitacora": 1,
+            "id_usuario": 1,
+            "usuario": "agonzalezr",
+            "id_documento": 0,
+            "numero_documento": "",
+            "id_usuario_modificado": 4,
+            "usuario_modificado": "",
+            "evento": "insertar_usuario",
+            "fecha_evento": "2008-09-22 14:12:40.0000000"
+        },
+        {
+            "id_bitacora": 2,
+            "id_usuario": 2,
+            "usuario": "blopezh",
+            "id_documento": 1,
+            "numero_documento": "",
+            "id_usuario_modificado": 0,
+            "usuario_modificado": "",
+            "evento": "insertar",
+            "fecha_evento": "2008-09-22 14:33:25.0000000"
+        },
+        {
+            "id_bitacora": 3,
+            "id_usuario": 2,
+            "usuario": "blopezh",
+            "id_documento": 0,
+            "numero_documento": "",
+            "id_usuario_modificado": 5,
+            "usuario_modificado": "",
+            "evento": "insertar_usuario",
+            "fecha_evento": "2008-09-22 14:39:51.0000000"
+        },
+        {
+            "id_bitacora": 4,
+            "id_usuario": 2,
+            "usuario": "blopezh",
+            "id_documento": 0,
+            "numero_documento": "",
+            "id_usuario_modificado": 2,
+            "usuario_modificado": "",
+            "evento": "actualizar_usuario",
+            "fecha_evento": "2008-09-22 14:40:55.0000000"
+        },
+        {
+            "id_bitacora": 5,
+            "id_usuario": 1,
+            "usuario": "agonzalezr",
+            "id_documento": 1,
+            "numero_documento": "",
+            "id_usuario_modificado": 0,
+            "usuario_modificado": "",
+            "evento": "actualizar",
+            "fecha_evento": "2008-09-22 16:40:13.0000000"
+        },
+        {
+            "id_bitacora": 6,
+            "id_usuario": 1,
+            "usuario": "agonzalezr",
+            "id_documento": 1,
+            "numero_documento": "",
+            "id_usuario_modificado": 0,
+            "usuario_modificado": "",
+            "evento": "actualizar",
+            "fecha_evento": "2008-09-22 16:41:06.0000000"
+        },
+        {
+            "id_bitacora": 7,
+            "id_usuario": 1,
+            "usuario": "agonzalezr",
+            "id_documento": 1,
+            "numero_documento": "",
+            "id_usuario_modificado": 0,
+            "usuario_modificado": "",
+            "evento": "actualizar",
+            "fecha_evento": "2008-09-22 16:41:38.0000000"
+        },
+        {
+            "id_bitacora": 8,
+            "id_usuario": 1,
+            "usuario": "agonzalezr",
+            "id_documento": 1,
+            "numero_documento": "",
+            "id_usuario_modificado": 0,
+            "usuario_modificado": "",
+            "evento": "actualizar",
+            "fecha_evento": "2008-09-22 16:41:58.0000000"
+        },
+        {
+            "id_bitacora": 9,
+            "id_usuario": 1,
+            "usuario": "agonzalezr",
+            "id_documento": 1,
+            "numero_documento": "",
+            "id_usuario_modificado": 0,
+            "usuario_modificado": "",
+            "evento": "actualizar",
+            "fecha_evento": "2008-09-22 16:44:26.0000000"
+        },
+        {
+            "id_bitacora": 10,
+            "id_usuario": 1,
+            "usuario": "agonzalezr",
+            "id_documento": 1,
+            "numero_documento": "",
+            "id_usuario_modificado": 0,
+            "usuario_modificado": "",
+            "evento": "actualizar",
+            "fecha_evento": "2008-09-22 16:46:48.0000000"
+        },
+        {
+            "id_bitacora": 11,
+            "id_usuario": 1,
+            "usuario": "agonzalezr",
+            "id_documento": 1,
+            "numero_documento": "",
+            "id_usuario_modificado": 0,
+            "usuario_modificado": "",
+            "evento": "actualizar",
+            "fecha_evento": "2008-09-22 16:52:08.0000000"
+        }
+    ]

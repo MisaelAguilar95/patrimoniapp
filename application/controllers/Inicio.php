@@ -11,8 +11,8 @@ class Inicio extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->api = new RestClient([
-			'base_url' => "http://127.0.0.1:8005/api_rest/api",
-			'headers' => ['Ephylone'=>'sas-doc']
+			'base_url' => "http://10.254.250.17:81/api",
+			'headers' => ['ephylone'=>'sas-doc']
 		]);
 	}
 
@@ -28,23 +28,23 @@ class Inicio extends CI_Controller {
 
 	private function crea_select($obj){
 		$result = '<option></option>';
-		for ($i=0; $i < count($obj); $i++){
+		for ($i=0; $i < is_array($obj); $i++){
 			$result .= '<option  >'.$obj[$i]->nombre.'</option>';
 		}
 		return $result;
 	}
 	
-	private function prepara($obj,$tipo=null){
+	/* private function prepara($obj,$tipo=null){
 		if($tipo == 'array')
 			return json_encode((json_decode($obj->response)->data));
 		else
 			return json_decode($obj->response)->data;
-	}
+	} */
 
 
 	private function principal(){
-		$data['tabla'] = 'dbo.vw_documentos';
-		$data['datos'] = $this->prepara($this->api->post('consulta', $data),'array');
+		$data['tabla'] = 'dbo.documentos';
+		//$data['datos'] = $this->prepara($this->api->post('consulta', $data),'array');
 		$data['menu'] = $this->componentes->menu();
 		$data['apps'] = $this->componentes->apps();
 		$data['noti'] = $this->componentes->notificaciones();
@@ -58,8 +58,8 @@ class Inicio extends CI_Controller {
 	public function nuevo_documento(){
 		$data['tabla'] = 'catalogos.c_tipos_documento';
 		$data['campo_orden'] = 'nombre';
-		$resultado = $this->prepara($this->api->post('consulta', $data));
-		$data['tipos_documento'] = $this->crea_select($resultado);
+		//$resultado = $this->prepara($this->api->post('consulta', $data));
+		//$data['tipos_documento'] = $this->crea_select($resultado);
 		$this->load->library('componentes');
 		$data['menu'] = $this->componentes->menu();
 		$data['apps'] = $this->componentes->apps();

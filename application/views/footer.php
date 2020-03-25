@@ -40,6 +40,8 @@
 <!-- TABULATOR -->
 <script type="text/javascript" src="<?=base_url()?>frontend/js/tabulator.js"></script>
 <script src="<?=base_url()?>frontend/js/select2.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.0.5/jspdf.plugin.autotable.js"></script>
 <script>
  
 </script>

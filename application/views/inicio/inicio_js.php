@@ -47,18 +47,21 @@ $(document).ready(function() {
         paginationSize:20,
         paginationSizeSelector:[5,10,15,20,25,30,40,50],
         columnMinWidth:80,
+        data:<?=file_get_contents(base_url().'documentos.json');?>,
         columns:[
-            {title:"# Oficio", field:"num_oficio", width:150,align:"center"},
-            {title:"Expediente", field:"num_exp", width:150,align:"center"},
-            {title:"Asunto", field:"asunto",width:250},
-            {title:"Tipo", field:"tipo",width:100},
-            {title:"Remitente", field:"remitente",width:200},
-            {title:"Fecha Emisión", field:"fecha_emision",width:170,align:"center"},
-            {title:"Dias Restantes", field:"dias_restantes",width:150,align:"center"},
-            {title:"Estatus", field:"estatus",width:130,align:"center"},
+            {title:"ID", field:"id", width:30,align:"center"},
+            {title:"#Documento", field:"num_doc", width:50,align:"center"},
+            {title:"Recepcion", field:"fecha_recibido", width:50,align:"center"},
+            {title:"Emision", field:"fecha_emision", width:50,align:"center"},
+            {title:"Asunto", field:"asunto", width:50,align:"center"},
+            {title:"Remitente", field:"remitente_id",width:100},
+            {title:"Expediente", field:"num_exp", width:50,align:"center"},
+            {title:"Tipo", field:"tipo_doc_id",width:50},
+            {title:"Expira", field:"fecha_limite",width:50,align:"center"},
+            {title:"Estatus", field:"estatus_id",width:30,align:"center"},
             {title:"Acciones", width:300,formatter:icons,align:"center"}
-        ]
-        //autoColumns:true
+        ],
+        
     });
 
     //Llenar los tipos de campo con un foreach que proviene de table object
@@ -69,9 +72,9 @@ $(document).ready(function() {
        
     $("#filtro-campo").html(campos);
     
-    //Llnerar table con datos
+    /* //Llnerar table con datos
     table.setData('<?=$datos?>');
-
+ */
     //Limpiar los filtros de consulta
     $(document.body).on('click','#btn_limpiar_filtro',function(){
         $("#filtro-campo").prop("selectedIndex", 0);
@@ -94,7 +97,15 @@ $(document).ready(function() {
         let val = $(this).attr('rel');
         table.setFilter('estatus', 'like', val);
     })
-    
+
+    //trigger para descargar pdf
+    $("#download-pdf").click(function(){
+        table.download("pdf", "data.pdf", {
+            orientation:"landscape", //set page orientation to portrait
+            title:"Reporte", //add title to report
+        });
+    });
+
 });
 
 

@@ -22,6 +22,11 @@
         <div class="bg-light text-white" id="oficios_tab"></div>
     </div>
 </div>
+<br>
+<div class="col-md-6 text-right m-t-10">
+    <div class="col-md-3"><button id="download-pdf" class="btn btn-light">Descargar PDF</button></div>
+</div>
+
 
 
 

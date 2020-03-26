@@ -7,7 +7,7 @@
 
 //define table
 
-var table = new Tabulator("#tablas", {
+var table = new Tabulator("#bitacora", {
     layout:"fitDataFill",
     data:<?=file_get_contents(base_url().'ejemplo.json');?>,
     autoColumns: true,

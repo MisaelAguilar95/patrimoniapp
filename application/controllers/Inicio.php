@@ -20,7 +20,7 @@ class Inicio extends CI_Controller {
 		]);
 		//$this->seguridad();
 		}
-		/* private function seguridad(){
+		private function seguridad(){
 			if(isset($_SESSION['token'])){
 				if(!json_decode($this->api->GET('/validacion')->response)->status){
 					$this->salir();
@@ -29,7 +29,7 @@ class Inicio extends CI_Controller {
 			else{
 				$this->salir();
 			}
-		} */
+		}
 		private function response($arr){
 			echo json_encode($arr);
 		}

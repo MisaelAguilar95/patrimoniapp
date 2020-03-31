@@ -186,8 +186,8 @@ class Inicio extends CI_Controller {
 		}
 	}
 
-	public function eliminar(){
-		$res = $this->api->post('/eliminar',array('datos'=>$_POST,'tabla'=>'dbo.docuemntos'));
+	public function elimina(){
+		$res = $this->api->post('/eliminar',array('datos'=>$_POST,'tabla'=>'dbo.documentos'));
 		if($res['ban'])
 			$this->response(array('msg'=>true));
 		else

@@ -6,39 +6,51 @@ $(document).ready(function() {
         alertm('Mensaje nuevo','','danger');
     })
 
+    $(document.body).on('click','#editar',function(){
+        $.malert({
+            title: "Please confirm", 
+            body: "Editar documento seleccionado ?", 
+            textTrue: "Aceptar", 
+            textFalse: "Cancelar",
+            
+            
+        })
+    });
 
-    $(document.body).on('click','.ver',()=>{
-        salert('mensaje','titulo','success')
+    $(document.body).on('click','#ver',()=>{
+        $.malert({
+            title: "Please confirm", 
+            body: "Ver docuemnto seleccionado", 
+            textTrue: "Aceptar", 
+            textFalse: "Cancelar",
+            
+            
+        })
     })
 
-    $(document.body).on('click','.eliminar',()=>{
+    $('body').on('click','#eliminar',function(){
+        alert('No se pudo eliminar','No se pudo eliminar la actividad','error','<?=base_url()?>inicio/');
+        })
+
+    $(document.body).on('click','#asignar',()=>{
         
         $.malert({
             title: "Please confirm", 
-            body: "Desea eliminar el registro?", 
+            body: "A quien desea asignar el documento ?", 
             textTrue: "Aceptar", 
             textFalse: "Cancelar",
-            onSubmit: function (result) {
-                if (result) {
-                    salert('Cambio realizado','Actualizacion de Datos','success')
-                } 
-                else {
-                    salert('Cancelacion realizada','Cancelación','danger')
-                }
-            },
-            onDispose: function () {
-                console.log("modal cerrado")
-            }
+            
+            
         })
     })
 
     //crear tabla
     var icons = function(cell, formatterParams){
-        return "<div class='btn btn-light btn-sm' ide='' title='Ver'><i class='fa fa-eye'></i></div> \
-                <div class='btn btn-primary btn-sm' ide='' title='Editar'><i class='fa fa-pencil'></i></div> \
-                <div class='btn btn-dark btn-sm' ide='' title='Asignar'><i class='fa fa-exchange'></i></div> \
-                <div class='btn btn-secondary btn-sm' ide='' title='Contestar'><i class='fas fa-reply'></i></div> \
-                <div class='btn btn-success btn-sm' ide='' title='Atender'><i class='fal fa-check'></i></div>";
+        return "<div class='btn btn-light btn-sm' id='ver' title='Ver'><i class='fa fa-eye'></i></div> \
+                <div class='btn btn-primary btn-sm' id='editar' title='Editar'><i class='fa fa-pencil'></i></div> \
+                <div class='btn btn-dark btn-sm' id='asignar' title='Asignar'><i class='fa fa-exchange'></i></div> \
+                <div class='btn btn-secondary btn-sm' id='contestar' title='Contestar'><i class='fas fa-reply'></i></div> \
+                <div class='btn btn-danger btn-sm' id='eliminar' title='Eliminar'><i class='fa fa-trash'></i></div>";
     };
     
     var table = new Tabulator('#oficios_tab', {

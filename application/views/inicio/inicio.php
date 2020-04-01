@@ -27,7 +27,7 @@
     <div class="col-md-3"><button id="download-pdf" class="btn btn-light">Descargar PDF</button></div>
 </div>
 
-
+<div id="txtOut"></div>
 
 
 

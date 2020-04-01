@@ -1,3 +1,4 @@
+
 <script>
 $(document).ready(function() {
     $('body').addClass('nav-function-fixed');
@@ -59,7 +60,7 @@ $(document).ready(function() {
         paginationSize:20,
         paginationSizeSelector:[5,10,15,20,25,30,40,50],
         columnMinWidth:80,
-        data:<?=file_get_contents(base_url().'documentos.json');?>,
+       /*  data:<?=file_get_contents(base_url().'documentos.json');?>, */
         columns:[
             {title:"ID", field:"id", width:30,align:"center"},
             {title:"#Documento", field:"num_doc", width:50,align:"center"},
@@ -75,6 +76,7 @@ $(document).ready(function() {
         ],
         
     });
+  
 
     //Llenar los tipos de campo con un foreach que proviene de table object
     let campos = '';
@@ -84,9 +86,10 @@ $(document).ready(function() {
        
     $("#filtro-campo").html(campos);
     
-    /* //Llnerar table con datos
+    //Llnerar table con datos
+   
     table.setData('<?=$datos?>');
- */
+
     //Limpiar los filtros de consulta
     $(document.body).on('click','#btn_limpiar_filtro',function(){
         $("#filtro-campo").prop("selectedIndex", 0);
@@ -121,4 +124,25 @@ $(document).ready(function() {
 });
 
 
+/* fetch('https://www.hatchways.io/api/assessment/students')
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(myJson) {
+    var divOut = document.getElementById('txtOut');
+    var allStudents = myJson.students;
+    var txtOut = "";
+    for (var k in allStudents) {
+      txtOut += `<b>${allStudents[k].firstName}</b><br />`;
+      txtOut += `email: ${allStudents[k].email}<br />`;
+      txtOut += `Company: ${allStudents[k].company}<br />`;
+      txtOut += `Skill: ${allStudents[k].skill}<br />`;
+      txtOut += `Average: ${allStudents[k].grades}<br />`;
+      txtOut += `<img src="${allStudents[k].pic}"><hr />`;
+    }
+    divOut.innerHTML = txtOut;
+  });
+  */
+
 </script>
+

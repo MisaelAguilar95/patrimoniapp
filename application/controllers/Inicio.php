@@ -13,10 +13,11 @@ class Inicio extends CI_Controller {
 		$this->load->helper(array('form', 'url'));
 
 		$this->api = new RestClient([
-			'base_url' => 'http://10.254.250.17/API_REST/api', 
+			'base_url' => 'http://10.254.250.17/API_REST/api',
+			'format' => "json",
 			'headers' => [
 				'Ephylone'=>'doc',
-				'Autorizacion' => $this->session->token]
+				'Autorizacion' =>'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJudW1fZW1wIjoiMCIsImVtcF90eXBlIjoiUFNQIiwicHVlc3RvIjoiQXBveW8gUGFyYSBFbCBTZWd1aW1pZW50bywgU29sdWNpb24gRGUgSW5jaWRlbmNpYXMgRSBJbXBsZW1lbnRhYyIsInVzdWFyaW8iOiJkZXNhcnJvbGxvMTAiLCJwYXNzIjoibTFzYWVsYWciLCJub21icmVfY29tcGxldG8iOiJEZXNhcnJvbGxvMTAiLCJleHQiOiIiLCJjb29yZGluYWNpb24iOiJDb29yZGluYWNpb24gR2VuZXJhbCBEZSBQbGFuZWFjaW9uIEUgSW5mb3JtYWNpb24iLCJlbWFpbCI6ImRlc2Fycm9sbG8xMEBjb25hZm9yLmdvYi5teCIsImZlY2hhX2NyZWFjaW9uIjoiMjAyMC0wNC0wMSAwODo0NTo0MSJ9.xfSsDryI8J5FTLH5L3Vk6h37AFFzAeNL3_kDelKdc4I']
 		]);
 		//$this->seguridad();
 		}
@@ -54,25 +55,32 @@ class Inicio extends CI_Controller {
 		exit;
 	}
 	
-	/* private function prepara($obj,$tipo=null){
+	private function prepara($obj,$tipo=null){
 		if($tipo == 'array')
 			return json_encode((json_decode($obj->response)->data));
 		else
 			return json_decode($obj->response)->data;
-	} */
+	}
 
 
 	private function principal(){
-		$data['tabla'] = 'dbo.documentos';
+
+		$data ['tabla'] = 'documentos';
+		$consulta = array('consulta'=>"SELECT * from documentos");
+		$data['datos'] = $this->prepara($this->api->post('/consulta',$data),'array');
+
+		//$data['datos'] = json_decode(json_encode(json_decode($this->api->post('consulta', $data)->response)->data));
+		
 		//$data['datos'] = $this->prepara($this->api->post('consulta', $data),'array');
 		$data['menu'] = $this->componentes->menu();
 		$data['apps'] = $this->componentes->apps();
 		$data['noti'] = $this->componentes->notificaciones();
 		$data['card'] = $this->componentes->card();
 		$this->load->view('header',$data);
-		$this->load->view('inicio/inicio');
+		$this->load->view('inicio/inicio',$data);
 		$this->load->view('footer');
 		$this->load->view('inicio/inicio_js',$data);
+		
 	}
 
 	public function nuevo_documento(){

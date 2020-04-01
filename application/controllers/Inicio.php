@@ -17,7 +17,7 @@ class Inicio extends CI_Controller {
 			'format' => "json",
 			'headers' => [
 				'Ephylone'=>'doc',
-				'Autorizacion' =>'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJudW1fZW1wIjoiMCIsImVtcF90eXBlIjoiUFNQIiwicHVlc3RvIjoiQXBveW8gUGFyYSBFbCBTZWd1aW1pZW50bywgU29sdWNpb24gRGUgSW5jaWRlbmNpYXMgRSBJbXBsZW1lbnRhYyIsInVzdWFyaW8iOiJkZXNhcnJvbGxvMTAiLCJwYXNzIjoibTFzYWVsYWciLCJub21icmVfY29tcGxldG8iOiJEZXNhcnJvbGxvMTAiLCJleHQiOiIiLCJjb29yZGluYWNpb24iOiJDb29yZGluYWNpb24gR2VuZXJhbCBEZSBQbGFuZWFjaW9uIEUgSW5mb3JtYWNpb24iLCJlbWFpbCI6ImRlc2Fycm9sbG8xMEBjb25hZm9yLmdvYi5teCIsImZlY2hhX2NyZWFjaW9uIjoiMjAyMC0wNC0wMSAwODo0NTo0MSJ9.xfSsDryI8J5FTLH5L3Vk6h37AFFzAeNL3_kDelKdc4I']
+				'Autorizacion' =>'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJudW1fZW1wIjoiMCIsImVtcF90eXBlIjoiUFNQIiwicHVlc3RvIjoiQXBveW8gUGFyYSBFbCBTZWd1aW1pZW50bywgU29sdWNpb24gRGUgSW5jaWRlbmNpYXMgRSBJbXBsZW1lbnRhYyIsInVzdWFyaW8iOiJkZXNhcnJvbGxvMTAiLCJwYXNzIjoibTFzYWVsYWciLCJub21icmVfY29tcGxldG8iOiJEZXNhcnJvbGxvMTAiLCJleHQiOiIiLCJjb29yZGluYWNpb24iOiJDb29yZGluYWNpb24gR2VuZXJhbCBEZSBQbGFuZWFjaW9uIEUgSW5mb3JtYWNpb24iLCJlbWFpbCI6ImRlc2Fycm9sbG8xMEBjb25hZm9yLmdvYi5teCIsImZlY2hhX2NyZWFjaW9uIjoiMjAyMC0wNC0wMiAxMjowMToyOCJ9.Mc-rr1zY34Y5wZM3tAuQ5UgmN3Oz63a7F9O61D3SKgA']
 		]);
 		//$this->seguridad();
 		}
@@ -170,17 +170,17 @@ class Inicio extends CI_Controller {
 		var_dump($this->api->post('http://127.0.0.1/api_rest/autorizacion/inicio', 'POST', $par));
 	}
 	public function insertar(){
-		if($_POST['documento'] != ''){
-			$_POST['usuario_id'] = $this->session->num_emp;
+		if($_POST['asunto'] != ''|| $_POST['email'] != ''|| $_POST['num_exp'] != ''|| $_POST['fecha_emision'] != ''||
+			$_POST['fecha_limite'] != ''|| $_POST['remitente_id'] != ''){
 			$_POST['fecha_creacion'] = date('Y-m-d');
-			$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'dbo.documentos'));
+			$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'documentos'));
 			if($res['ban'])
 				$this->response(array('msg'=>true));
 			else
 				$this->response(array('msg'=>false,'error'=>$res['error']));
 		}
 		else{
-			$this->response(array('msg'=>false,'error'=>'El documento no puede ir vacio'));
+			$this->response(array('msg'=>false,'error'=>'Error al llenar el formulario'));
 		}		
 	}
 

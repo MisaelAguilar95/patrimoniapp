@@ -1,17 +1,9 @@
-<?php echo form_open_multipart('Inicio/insertar');?>
-                <!-- <label for="asunto">Asunto</label>
-                <input type="text" class="form-control"maxlength="70" type="text" placeholder="Ingrese el asunto del documento.." name="asunto" required>
-                <label class="form-label" for="email">E-mail</label>
-                <input class="form-control" placeholder="Ingrese su email.." name="email">   
-                <label class="form-label" for="expediente">Expediente</label>
-                <input type="text" class="form-control" placeholder="Ingrese el número de expediente.." name="num_exp" maxlength="10">
-                <br><button id="btn_enviar" class=" btn btn-success"> Enviar</button> -->
 <div class="accordion accordion-hover" id="accordion">
     <div class="card">
         <div class="card-header">
-            <a href="#" class="card-title collapsed bg-primary text-white"  data-target="#pest1" aria-expanded="false">
-                <i class="fas fa-file width-2"></i>Nuevo Documento
-            </a>
+                    <a href="#" class="card-title collapsed bg-primary text-white"  data-target="#pest1" aria-expanded="false">
+                        <i class="fas fa-file width-2"></i>Nuevo Documento
+                    </a>
         </div>
         <div id="pest1" class="collapse show" data-parent="#accordion">
             <div class="card-body bg-gray-dark">
@@ -26,37 +18,6 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-md-3">
-                        <label class="form-label" for="expediente">Expediente</label>
-                        <input type="text" class="form-control" placeholder="Ingrese el número de expediente" name="num_exp" maxlength="10">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="asunto">Asunto</label>
-                        <input type="text" class="form-control"maxlength="70" type="text" placeholder="Ingrese el asunto del documento" name="asunto" required>
-                    </div>
-                </div>
-                <div class="row">
-                <div class="form-group col-md-3">
-                    <label class="form-label" for="fechaemision">Fecha de Recepción</label>
-                    <input class="form-control" type="date" name="fecha_emision"value="<?php echo date("Y-m-d");?>">
-                </div>   
-                <div class="form-group col-md-3">
-                    <label class="form-label" for="fechalimite">Fecha Límite</label>
-                    <input class="form-control" type="date" name="fecha_limite">
-                </div> 
-                    <div class="form-group col-md-3">
-                        <label class="form-label" for="email">E-mail</label>
-                        <input class="form-control"  name="email">
-                    </div>                    
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <label class="form-label" for="remitente">Remitente</label>
-                        <input  class="form-control" name="remitente_id">
-                    </div>   
-                </div> 
-                <br><button id="btn_enviar" class=" btn btn-success"> Enviar</button>
-                <!--<div class="row">
                     <div class="form-group col-md-3">
                         <label class="form-label" for="expediente">Expediente</label>
                         <input type="text" class="form-control" placeholder="Ingrese el número de expediente" name="num_exp" maxlength="10">
@@ -121,8 +82,16 @@
                             <label class="custom-file-label" for="customFile">Elegir Archivo PF</label>
                         </div>
                     </div>
-                </div>      -->
+                </div>     
             </div>
         </div>
     </div>
 </div>
+<br>
+<div class="row">
+    <div class="offset-md-9 col-md-3 text-right">
+        <button id="btn_guardar_nuevo" class="btn btn-primary"> Guardar</button>
+        <button id="btn_enviar_nuevo" class="btn btn-success "type="submit"> Enviar</button>
+    </div>
+</div>
+        

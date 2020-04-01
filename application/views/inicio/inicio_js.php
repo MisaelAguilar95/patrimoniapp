@@ -63,6 +63,7 @@ $(document).ready(function() {
        /*  data:<?=file_get_contents(base_url().'documentos.json');?>, */
         columns:[
             {title:"ID", field:"id", width:30,align:"center"},
+            {title:"E-mail", field:"email", width:50,align:"center"},
             {title:"#Documento", field:"num_doc", width:50,align:"center"},
             {title:"Recepcion", field:"fecha_recibido", width:50,align:"center"},
             {title:"Emision", field:"fecha_emision", width:50,align:"center"},

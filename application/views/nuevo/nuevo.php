@@ -1,11 +1,5 @@
-<?php echo form_open_multipart('Inicio/insertar');?>
-                <!-- <label for="asunto">Asunto</label>
-                <input type="text" class="form-control"maxlength="70" type="text" placeholder="Ingrese el asunto del documento.." name="asunto" required>
-                <label class="form-label" for="email">E-mail</label>
-                <input class="form-control" placeholder="Ingrese su email.." name="email">   
-                <label class="form-label" for="expediente">Expediente</label>
-                <input type="text" class="form-control" placeholder="Ingrese el número de expediente.." name="num_exp" maxlength="10">
-                <br><button id="btn_enviar" class=" btn btn-success"> Enviar</button> -->
+
+<?php echo form_open_multipart('Inicio/save');?>
 <div class="accordion accordion-hover" id="accordion">
     <div class="card">
         <div class="card-header">
@@ -25,7 +19,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <br><div class="row">
                     <div class="form-group col-md-3">
                         <label class="form-label" for="expediente">Expediente</label>
                         <input type="text" class="form-control" placeholder="Ingrese el número de expediente" name="num_exp" maxlength="10">
@@ -42,7 +36,7 @@
                 </div>   
                 <div class="form-group col-md-3">
                     <label class="form-label" for="fechalimite">Fecha Límite</label>
-                    <input class="form-control" type="date" name="fecha_limite">
+                    <input class="form-control" type="date" name="fecha_limite"value="<?php echo date("Y-m-d");?>">
                 </div> 
                     <div class="form-group col-md-3">
                         <label class="form-label" for="email">E-mail</label>
@@ -53,44 +47,10 @@
                     <div class="col-md-3">
                         <label class="form-label" for="remitente">Remitente</label>
                         <input  class="form-control" name="remitente_id">
-                    </div>   
-                </div> 
-                <br><button id="btn_enviar" class=" btn btn-success"> Enviar</button>
-                <!--<div class="row">
-                    <div class="form-group col-md-3">
-                        <label class="form-label" for="expediente">Expediente</label>
-                        <input type="text" class="form-control" placeholder="Ingrese el número de expediente" name="num_exp" maxlength="10">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="asunto">Asunto</label>
-                        <input type="text" class="form-control"maxlength="70" type="text" placeholder="Ingrese el asunto del documento" name="asunto" required>
-                    </div>
-                </div>
-                <div class="row">
-                    
-                    <div class="form-group col-md-3">
-                        <label class="form-label" for="fechaemision">Fecha de Recepción</label>
-                        <input class="form-control" type="date" name="fechaemision"value="<?php echo date("Y-m-d");?>">
-                    </div>   
-                    <div class="form-group col-md-3">
-                        <label class="form-label" for="fechalimite">Fecha Límite</label>
-                        <input class="form-control" type="date" name="fechalimite">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label class="form-label" for="email">E-mail</label>
-                        <input class="form-control"  name="email">
-                    </div>                    
-                </div> 
-                <div class="row">
-                    <div class="col-md-3">
-                        <label class="form-label" for="remitente">Remitente</label>
-                        <input type="text" class="form-control" name="remitente">
                     </div>
                     <div class="col-md-3">
                         <label class="form-label" for="destinatario">Destinatario</label>
-                        <select class="multiple-select2 bg-dark form-control" name="destinatario" placeholder="Seleccionea destinatarios para copia">
-                            <?=$tipos_documento;?>
-                        </select>
+                        <input class='form-control'name="destinatario_id" >
                     </div>
                     <div class="form-group col-md-3">
                         <label class="form-label">Área/Unidad Responsable</label>
@@ -98,30 +58,34 @@
                     </div>
                     <div class="form-group col-md-3">
                         <label class="form-label" for="anexos">N° de Anexos</label>
-                        <input type="number" class="form-control">
+                        <input  name ='num_anexos'type="number" class="form-control">
                     </div>
                 </div>
-                <div class="row m-t-10">
-                    <div class="form-group col-md-4">
+                <div class="row">
+                    <div class="col-md-4">
                         <label class="form-label" for="concopia">CC</label>
                         <select class="multiple-select2 form-control" name="concopia" multiple="multiple" placeholder="Seleccionea destinatarios para copia">
                             <?=$tipos_documento;?>
                         </select>
                     </div>
-                    <div class="form-group col-md-8">
+                    <div class="col-md-8">
                         <label class="form-label" for="nota">Nota</label>
                         <textarea class="form-control" placeholder="Escriba una nota" name="nota" rows="5" maxlength="60"></textarea>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <label class="form-label">Archivo</label>
+                        <br><label class="form-label" for="selec_pdf">Seleccionar PDF</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" accept="application/pdf">
-                            <label class="custom-file-label" for="customFile">Elegir Archivo PF</label>
+                            
+                            <input type="file" name="cargar_pdf" id="cargar_pdf"  class="custom-file-input">
+                            <label class="custom-file-label" for="customFile">Cargar PDF</label>
+                        </div>
+                        <div class="offset-md-9 col-md-3 text-right">
+                            <br><button id="btn_enviar" class=" btn btn-success"> Enviar</button>
                         </div>
                     </div>
-                </div>      -->
+                </div>
             </div>
         </div>
     </div>

@@ -17,7 +17,7 @@ class Inicio extends CI_Controller {
 			'format' => "json",
 			'headers' => [
 				'Ephylone'=>'doc',
-				'Autorizacion' =>'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJudW1fZW1wIjoiMCIsImVtcF90eXBlIjoiUFNQIiwicHVlc3RvIjoiQXBveW8gUGFyYSBFbCBTZWd1aW1pZW50bywgU29sdWNpb24gRGUgSW5jaWRlbmNpYXMgRSBJbXBsZW1lbnRhYyIsInVzdWFyaW8iOiJkZXNhcnJvbGxvMTAiLCJwYXNzIjoibTFzYWVsYWciLCJub21icmVfY29tcGxldG8iOiJEZXNhcnJvbGxvMTAiLCJleHQiOiIiLCJjb29yZGluYWNpb24iOiJDb29yZGluYWNpb24gR2VuZXJhbCBEZSBQbGFuZWFjaW9uIEUgSW5mb3JtYWNpb24iLCJlbWFpbCI6ImRlc2Fycm9sbG8xMEBjb25hZm9yLmdvYi5teCIsImZlY2hhX2NyZWFjaW9uIjoiMjAyMC0wNC0wMiAxMjowMToyOCJ9.Mc-rr1zY34Y5wZM3tAuQ5UgmN3Oz63a7F9O61D3SKgA']
+				'Autorizacion' =>'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJudW1fZW1wIjoiMCIsImVtcF90eXBlIjoiUFNQIiwicHVlc3RvIjoiQXBveW8gUGFyYSBFbCBTZWd1aW1pZW50bywgU29sdWNpb24gRGUgSW5jaWRlbmNpYXMgRSBJbXBsZW1lbnRhYyIsInVzdWFyaW8iOiJkZXNhcnJvbGxvMTAiLCJwYXNzIjoibTFzYWVsYWciLCJub21icmVfY29tcGxldG8iOiJEZXNhcnJvbGxvMTAiLCJleHQiOiIiLCJjb29yZGluYWNpb24iOiJDb29yZGluYWNpb24gR2VuZXJhbCBEZSBQbGFuZWFjaW9uIEUgSW5mb3JtYWNpb24iLCJlbWFpbCI6ImRlc2Fycm9sbG8xMEBjb25hZm9yLmdvYi5teCIsImZlY2hhX2NyZWFjaW9uIjoiMjAyMC0wNC0wMiAwNjo0NjozNCJ9.veTPp74mcvpHq0YLsT0-s2dhP9kTGZch65pDGRsCx_c']
 		]);
 		//$this->seguridad();
 		}
@@ -171,7 +171,7 @@ class Inicio extends CI_Controller {
 	}
 	public function insertar(){
 		if($_POST['asunto'] != ''|| $_POST['email'] != ''|| $_POST['num_exp'] != ''|| $_POST['fecha_emision'] != ''||
-			$_POST['fecha_limite'] != ''|| $_POST['remitente_id'] != ''){
+			$_POST['fecha_limite'] != ''|| $_POST['remitente_id'] != ''|| $_POST['destinatario_id'] != ''){
 			$_POST['fecha_creacion'] = date('Y-m-d');
 			$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'documentos'));
 			if($res['ban'])
@@ -183,6 +183,29 @@ class Inicio extends CI_Controller {
 			$this->response(array('msg'=>false,'error'=>'Error al llenar el formulario'));
 		}		
 	}
+	//Funcion para guadar los datos de un empleado
+	public function save(){
+		//cargamos configuraciones
+		$config['upload_path'] = './frontend/pdf/';
+        $config['allowed_types'] = 'pdf';
+        $config['max_size'] = 1000;
+		$config['file_name'] = md5(date('Y-m-d h:i:s'));
+		//Cragamos libreria necesaria
+		$this->load->library('upload', $config);
+		//verificamos la carga del archivo
+		if($this->upload->do_upload('cargar_pdf')){
+			$_POST['pdf'] = $this->upload->data()['file_name'];
+			$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'documentos'));
+			if($res['ban'])
+				$this->response(array('ban'=>true,'msg'=>'Documento creado'));
+			else
+				$this->response(array('ban'=>false,'msg'=>'Error al enviar','error'=>$res['error']));
+		}
+		else{
+			$this->response(array('ban'=>false,'msg'=>'No existe Documento','error'=>$this->upload->display_errors()));
+		}
+	}
+
 
 	public function actualizar(){
 		if($_POST['documento'] != ''){

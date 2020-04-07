@@ -4,7 +4,7 @@
     	<meta charset="utf-8" />
     	<title>SAS - DOC</title>
     	<link rel="icon" type="image/png" href="<?=base_url()?>frontend/images/favicon.png">
-    	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
     	<meta content="Jose Manuel, Misael Aguilar,Mauricio Ramirez" name="author" />
     	<meta content="Control de oficios y atentas notas" name="description" />
     	<!-- ================== BEGIN BASE CSS STYLE ================== -->
@@ -48,25 +48,30 @@
                                     <div class="card p-4 mt-40 rounded-plus bg-faded">
                                         <form id="js-login" novalidate="">
                                             <div class="form-group " id="bloqueUsuario">
-                                                <input type="email" id="username" autocomplete="off" class="form-control form-control-lg" placeholder="Usuario" value="" required>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="username" name="usuario" autocomplete="off" required>
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">@conafor.gob.mx</span>
+                                                </div>
+                                                </div>
                                                 <div class="invalid-feedback">Escribe tu usuario.</div>
-                                                <div class="help-block">* Utiliza tu nombre de usuario de CONAFOR</div>
                                             </div>
-                                            <div class="form-group" id="bloquePass">
-                                                <input type="password" id="password" class="form-control form-control-lg" placeholder="Contraseña" value="" required>
+                                            <div class="form-group" id="bloquePass" style="display:none;">
+                                                <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Contraseña" value="" required>
                                                 <div class="invalid-feedback">Escribe tu contraseña.</div>
                                                 <div class="help-block">* Utiliza tu contraseña de CONAFOR</div>
                                             </div>
                                             <div class="row no-gutters">
                                                 <div class="col-lg-12 pl-lg-1 my-2">
                                                     <button id="siguiente" type="button" class="btn btn-block btn-success btn-lg"><i class="ts-20 mr-10 fal fa-arrow-alt-right"></i> Siguiente</button>
-                                                    <button id="regresar" type="button" class="btn btn-block btn-success btn-lg"><i class="ts-20 mr-10 fal fa-arrow-alt-left"></i> Regresar</button>
-                                                    <button id="js-login-btn" type="button" class="btn btn-block btn-success btn-lg"><i class="ts-20 mr-10 fal fa-sign-in"></i> Iniciar sesión</button>
+                                                    <button style="display:none;" id="regresar" type="button" class="btn btn-block btn-success btn-lg"><i class="ts-20 mr-10 fal fa-arrow-alt-left"></i> Regresar</button>
+                                                    <button style="display:none;" id="js-login-btn" type="button" class="btn btn-block btn-success btn-lg"><i class="ts-20 mr-10 fal fa-sign-in"></i> Iniciar sesión</button>
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -75,11 +80,10 @@
         </div>
         <script src="<?=base_url()?>frontend/js/vendors.bundle.js"></script>
         <script src="<?=base_url()?>frontend/js/app.bundle.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
         <script>
 
-            $("#bloquePass").hide();
-            $("#regresar").hide();
-            $("#js-login-btn").hide();
             $("#siguiente").attr('disabled',true);
 
             function togle (elementos){
@@ -111,8 +115,34 @@
                 var form = $("#js-login")
                 if (form[0].checkValidity() === true){
                     event.preventDefault()
-                    event.stopPropagation() 
-                }else{
+                    event.stopPropagation()
+
+                    let data = form.serialize();
+                    axios({
+                        method: 'post',
+                        url: 'http://187.218.230.37/API_REST/api/autorizacion',
+                        data: data
+                    })
+                    .then(function (response) {
+                        if(response.data.status == 200){
+                        $.ajax({
+                            method: 'post',
+                            url: '<?=base_url()?>login/asigna_token',
+                            data: {'data':response.data.data},
+                        })
+                        .then(function(){
+                            window.location.href = '<?=base_url()?>inicio'
+                        })
+                        }
+                        else{
+                        sclose('Sin conexion aparente con el servidor','error')
+                        }
+                    })
+                    .catch(function (error) {
+                        sclose('Credenciales Incorrectas','error')
+                    });
+                }
+                else{
                     form.addClass('was-validated');
                 }
             });

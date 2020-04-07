@@ -13,11 +13,10 @@ class Login extends CI_Controller {
 	}
 
 	public function index(){
-        //$this->load->view('mantenimiento/index');
-        
+        $this->load->view('funciones');
         $this->load->view('login/login');
-        
     }
+
     public function asigna_token(){
         if(isset($_POST['data'])){
             $data = $_POST['data'];
@@ -38,6 +37,4 @@ class Login extends CI_Controller {
             echo json_decode('Faltan parametros de conexión');
         }
     }
-
-}
 }

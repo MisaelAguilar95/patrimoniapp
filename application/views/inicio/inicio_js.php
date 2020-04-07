@@ -8,14 +8,9 @@ $(document).ready(function() {
     })
 
     $(document.body).on('click','#editar',function(){
-        $.malert({
-            title: "Please confirm", 
-            body: "Editar documento seleccionado ?", 
-            textTrue: "Aceptar", 
-            textFalse: "Cancelar",
-            
-            
-        })
+        let act = $(this).parent().parent().find('span[name=actividad]').text();
+            let id = $(this).attr('ide');
+            modal(act,id);
     });
 
     $(document.body).on('click','#ver',()=>{
@@ -47,7 +42,7 @@ $(document).ready(function() {
 
     //crear tabla
     var icons = function(cell, formatterParams){
-        return "<div class='btn btn-light btn-sm' id='ver' title='Ver'><i class='fa fa-eye'></i></div> \
+        return "<a href='inicio/ver'><div class='btx_ver btn btn-light btn-sm'  href='inicio/ver' ide='"+cell.getRow().getData().id+" id='ver' title='Ver'><i class='fa fa-eye'></i></a></div> \
                 <div class='btn btn-primary btn-sm' id='editar' title='Editar'><i class='fa fa-pencil'></i></div> \
                 <div class='btn btn-dark btn-sm' id='asignar' title='Asignar'><i class='fa fa-exchange'></i></div> \
                 <div class='btn btn-secondary btn-sm' id='contestar' title='Contestar'><i class='fas fa-reply'></i></div> \
@@ -64,8 +59,8 @@ $(document).ready(function() {
         columns:[
             {title:"ID", field:"id", width:30,align:"center"},
             {title:"E-mail", field:"email", width:50,align:"center"},
-            {title:"#Documento", field:"num_doc", width:50,align:"center"},
-            {title:"Recepcion", field:"fecha_recibido", width:50,align:"center"},
+            //{title:"#Documento", field:"num_doc", width:50,align:"center"},
+            //{title:"Recepcion", field:"fecha_recibido", width:50,align:"center"},
             {title:"Emision", field:"fecha_emision", width:50,align:"center"},
             {title:"Asunto", field:"asunto", width:50,align:"center"},
             {title:"Remitente", field:"remitente_id",width:100},
@@ -91,6 +86,11 @@ $(document).ready(function() {
    
     table.setData('<?=$datos?>');
 
+    $(document.body).on('click', '.btx_ver', function(){
+        let id = $(this).attr('ide');
+        console.log(id);
+      
+    })
     //Limpiar los filtros de consulta
     $(document.body).on('click','#btn_limpiar_filtro',function(){
         $("#filtro-campo").prop("selectedIndex", 0);
@@ -98,6 +98,7 @@ $(document).ready(function() {
         $("#filtro-valor").val("");
         table.clearFilter();
     });
+
 
     //Funcion para actualizar datos de table
     function updateFilter(){

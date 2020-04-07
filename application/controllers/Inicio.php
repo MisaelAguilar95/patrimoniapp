@@ -17,7 +17,7 @@ class Inicio extends CI_Controller {
 			'format' => "json",
 			'headers' => [
 				'Ephylone'=>'doc',
-				'Autorizacion' =>'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJudW1fZW1wIjoiMCIsImVtcF90eXBlIjoiUFNQIiwicHVlc3RvIjoiQXBveW8gUGFyYSBFbCBTZWd1aW1pZW50bywgU29sdWNpb24gRGUgSW5jaWRlbmNpYXMgRSBJbXBsZW1lbnRhYyIsInVzdWFyaW8iOiJkZXNhcnJvbGxvMTAiLCJwYXNzIjoibTFzYWVsYWciLCJub21icmVfY29tcGxldG8iOiJEZXNhcnJvbGxvMTAiLCJleHQiOiIiLCJjb29yZGluYWNpb24iOiJDb29yZGluYWNpb24gR2VuZXJhbCBEZSBQbGFuZWFjaW9uIEUgSW5mb3JtYWNpb24iLCJlbWFpbCI6ImRlc2Fycm9sbG8xMEBjb25hZm9yLmdvYi5teCIsImZlY2hhX2NyZWFjaW9uIjoiMjAyMC0wNC0wMiAwNjo0NjozNCJ9.veTPp74mcvpHq0YLsT0-s2dhP9kTGZch65pDGRsCx_c']
+				'Autorizacion' =>'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJudW1fZW1wIjoiMCIsImVtcF90eXBlIjoiUFNQIiwicHVlc3RvIjoiQXBveW8gUGFyYSBFbCBTZWd1aW1pZW50bywgU29sdWNpb24gRGUgSW5jaWRlbmNpYXMgRSBJbXBsZW1lbnRhYyIsInVzdWFyaW8iOiJkZXNhcnJvbGxvMTAiLCJwYXNzIjoibTFzYWVsYWciLCJub21icmVfY29tcGxldG8iOiJEZXNhcnJvbGxvMTAiLCJleHQiOiIiLCJjb29yZGluYWNpb24iOiJDb29yZGluYWNpb24gR2VuZXJhbCBEZSBQbGFuZWFjaW9uIEUgSW5mb3JtYWNpb24iLCJlbWFpbCI6ImRlc2Fycm9sbG8xMEBjb25hZm9yLmdvYi5teCIsImZlY2hhX2NyZWFjaW9uIjoiMjAyMC0wNC0wNyAwNjoxMjoyNyJ9.oOG2udV_xodoP0dZA6x8oG1MO3OY0xpjiloub3omUVI']
 		]);
 		//$this->seguridad();
 		}
@@ -83,8 +83,25 @@ class Inicio extends CI_Controller {
 		
 	}
 
+	public function ver(){
+		$data['tabla'] = 'c_tipos_documento';
+		$data['campo_orden'] = 'nombre';
+		//$resultado = $this->prepara($this->api->post('consulta', $data));
+		//$data['tipos_documento'] = $this->crea_select($resultado);
+		$this->load->library('componentes');
+		$data['menu'] = $this->componentes->menu();
+		$data['apps'] = $this->componentes->apps();
+		$data['noti'] = $this->componentes->notificaciones();
+		$data['card'] = $this->componentes->card();
+		$this->load->view('header',$data);
+		$this->load->view('ver',$data);
+		$this->load->view('footer');
+		$this->load->view('nuevo/nuevo_js',$data);
+	}
+
+
 	public function nuevo_documento(){
-		$data['tabla'] = 'catalogos.c_tipos_documento';
+		$data['tabla'] = 'c_tipos_documento';
 		$data['campo_orden'] = 'nombre';
 		//$resultado = $this->prepara($this->api->post('consulta', $data));
 		//$data['tipos_documento'] = $this->crea_select($resultado);
@@ -202,11 +219,10 @@ class Inicio extends CI_Controller {
 				$this->response(array('ban'=>false,'msg'=>'Error al enviar','error'=>$res['error']));
 		}
 		else{
-			$this->response(array('ban'=>false,'msg'=>'No existe Documento','error'=>$this->upload->display_errors()));
+			$this->response(array('ban'=>false,'msg'=>'No existe Docu','error'=>$this->upload->display_errors()));
 		}
 	}
-
-
+	
 	public function actualizar(){
 		if($_POST['documento'] != ''){
 			$res = $this->api->post('/actualizar',array('datos'=>array('documento'=>$_POST['documento']),'tabla'=>'dbo.documentos','condicion'=>array('id'=>$_POST['id'])));

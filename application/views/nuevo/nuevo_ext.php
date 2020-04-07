@@ -113,7 +113,7 @@
                                 <option>Persona 3</option>
                                 <option>Persona 4</option>
                                 <option>Persona 5</option>
-                            </select>
+                            </select>    
                         </div>
                         <div class="form-group col-md-3">
                             <label class="form-label" for="fecharecibido" >Fecha de recibido</label>

@@ -1,17 +1,19 @@
-
+    
 <?php echo form_open_multipart('Inicio/save');?>
 <div class="accordion accordion-hover" id="accordion">
     <div class="card">
         <div class="card-header">
-            <a href="#" class="card-title collapsed bg-primary text-white"  data-target="#pest1" aria-expanded="false">
+            <a href="#" class="card-title collapsed bg-primary text-white"  data-target="#pest1" aria-expanded="false"><br>
                 <i class="fas fa-file width-2"></i>Nuevo Documento
             </a>
         </div>
         <div id="pest1" class="collapse show" data-parent="#accordion">
             <div class="card-body bg-gray-dark">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
+                     <!-- <object data="<?=base_url()?>frontend\pdf\1507c5263be4a61794fe503d34a0fea3.pdf"></object>  -->
+                     <iframe src="<?=base_url()?>frontend\pdf\1507c5263be4a61794fe503d34a0fea3.pdf" width="1000" height="300"></iframe>
+                     <div class="col-md-12">
+                        <br><div class="form-group">
                             <h3 class="form-label" for="tipodoc">Selecciona el tipo de documento</h3>
                             <select id="tipodoc" class="form-control" name="tipodoc">
                                 <?=$tipos_documento?>
@@ -19,16 +21,17 @@
                         </div>
                     </div>
                 </div>
+                
                 <br><div class="row">
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-4">
                         <label class="form-label" for="expediente">Expediente</label>
                         <input type="text" class="form-control" placeholder="Ingrese el número de expediente" name="num_exp" maxlength="10">
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label for="asunto">Asunto</label>
                         <input type="text" class="form-control"maxlength="70" type="text" placeholder="Ingrese el asunto del documento" name="asunto" required>
-                    </div>
-                </div>
+                    </div> 
+                   </div>
                 <div class="row">
                 <div class="form-group col-md-3">
                     <label class="form-label" for="fechaemision">Fecha de Recepción</label>
@@ -90,3 +93,18 @@
         </div>
     </div>
 </div>
+<script>
+    let valores = <?=json_encode($usuario)?>;
+    $('input').each(function(){
+    $(this).val(valores[$(this).attr('name')])
+    })
+    $('select').each(function(){
+        $(this).val(valores[$(this).attr('name')])
+    })
+    $('textarea').each(function(){
+        $(this).val(valores[$(this).attr('name')])
+    })
+    if(valores['cargar_pdf'] != ''){
+        $('object[name=cargar_pdf]').attr('data','<?=base_url()?>frontend/pdf/'+valores['cargar_pdf'])
+    }
+</script>

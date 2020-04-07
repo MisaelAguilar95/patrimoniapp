@@ -15,19 +15,19 @@ class Inicio extends CI_Controller {
 
 		$this->api = new RestClient([
 			'base_url' => 'http://10.254.250.17/API_REST/api',
-			'format' => "json",
 			'headers' => [
-				'Ephylone'=>'doc'
-			]
+				'Ephylone'=>'doc',
+				'Autorizacion' => $this->session->token],
+			'format' => "json"
 		]);
-		//$this->seguridad();
+		$this->seguridad();
 	}
 
 	//Funcion de seguridad para validar token
 	private function seguridad(){
 		if(isset($_SESSION['token'])){
 			if(!json_decode($this->api->GET('/validacion')->response)->status){
-				$this->salir();
+			 	$this->salir();
 			}
 		}
 		else{
@@ -82,10 +82,6 @@ class Inicio extends CI_Controller {
 		$this->load->view('footer');
 		$this->load->view('inicio/inicio_js',$data);
 	}
-
-
-
-
 	
 	public function salir(){
 		$this->session->sess_destroy();

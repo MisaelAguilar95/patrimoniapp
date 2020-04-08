@@ -21,15 +21,14 @@ class Inicio extends CI_Controller {
 			'format' => "json"
 		]);
 		$this->seguridad();
-	}
-
-	//Funcion de seguridad para validar token
-	private function seguridad(){
-		if(isset($_SESSION['token'])){
-			if(!json_decode($this->api->GET('/validacion')->response)->status){
-			 	$this->salir();
-			}
 		}
+		private function seguridad(){
+			if(isset($_SESSION['token'])){
+				if(!json_decode($this->api->GET('/validacion')->response)->status){
+					$this->salir();
+				}
+			}
+		
 		else{
 			$this->salir();
 		}

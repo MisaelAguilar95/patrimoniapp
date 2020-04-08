@@ -1,27 +1,53 @@
-
 <script>
 $(document).ready(function() {
     $('body').addClass('nav-function-fixed');
 
+    //crear tabla
+    var icons = function(cell, formatterParams){
+        return "<a href='inicio/ver'><div class='btx_ver btn btn-light btn-sm'  href='inicio/ver' ide='"+cell.getRow().getData().id+" id='ver' title='Ver'><i class='fa fa-eye'></i></a></div> \
+                <div class='btn btn-primary btn-sm' id='editar' title='Editar'><i class='fa fa-pencil'></i></div> \
+                <div class='btn btn-dark btn-sm' id='asignar' title='Asignar'><i class='fa fa-exchange'></i></div> \
+                <div class='btn btn-secondary btn-sm' id='contestar' title='Contestar'><i class='fas fa-reply'></i></div> \
+                <div class='btn btn-danger btn-sm text-white' id='eliminar' title='Eliminar'><i class='fas fa-trash'></i></div>";
+    };
+    
+    var table = new Tabulator('#oficios_tab', {
+        layout:"fitDataFill",
+        pagination:"local",
+        paginationSize:20,
+        paginationSizeSelector:[5,10,15,20,25,30,40,50],
+        columnMinWidth:80,
+        columns:[
+            {title:"#Documento", field:"num_doc", width:150,align:"center"},
+            {title:"Destinatario", field:"email", width:180,align:"center"},
+            {title:"Asunto", field:"asunto", width:240,align:"center"},
+            {title:"Expira", field:"fecha_limite",width:150,align:"center"},
+            {title:"Estatus", field:"estatus_id",width:130,align:"center"},
+            {title:"Acciones", formatter:icons,align:"center",width:250}
+        ],
+        
+    });
+
+    table.setData(<?=$datos?>);
 
 
 
-    // $('body').on('click','#editar',function(){
-    //     let act = $(this).parent().parent().find('span[name=actividad]').text();
-    //         let id = $(this).attr('ide');
-    //         modal(act,id);
-    // });
+
 
     // $(document.body).on('click','#ver',()=>{
     //     $.malert({
     //         title: "Please confirm", 
     //         body: "Ver docuemnto seleccionado", 
     //         textTrue: "Aceptar", 
-    //         textFalse: "Cancelar",
-            
-            
+    //         textFalse: "Cancelar" 
     //     })
     // })
+
+    // $('body').on('click','#editar',function(){
+    //     let act = $(this).parent().parent().find('span[name=actividad]').text();
+    //         let id = $(this).attr('ide');
+    //         modal(act,id);
+    // });
 
     // $('body').on('click','#eliminar',function(){
     //     alert('No se pudo eliminar','No se pudo eliminar la actividad','error','<=base_url()?>inicio/');
@@ -36,39 +62,6 @@ $(document).ready(function() {
     //         textFalse: "Cancelar",            
     //     })
     // })
-
-    // //crear tabla
-    // var icons = function(cell, formatterParams){
-    //     return "<a href='inicio/ver'><div class='btx_ver btn btn-light btn-sm'  href='inicio/ver' ide='"+cell.getRow().getData().id+" id='ver' title='Ver'><i class='fa fa-eye'></i></a></div> \
-    //             <div class='btn btn-primary btn-sm' id='editar' title='Editar'><i class='fa fa-pencil'></i></div> \
-    //             <div class='btn btn-dark btn-sm' id='asignar' title='Asignar'><i class='fa fa-exchange'></i></div> \
-    //             <div class='btn btn-secondary btn-sm' id='contestar' title='Contestar'><i class='fas fa-reply'></i></div> \
-    //             <div class='btn btn-danger btn-sm' id='eliminar' title='Eliminar'><i class='fa fa-trash'></i></div>";
-    // };
-    
-    // var table = new Tabulator('#oficios_tab', {
-    //     layout:"fitDataFill",
-    //     pagination:"local",
-    //     paginationSize:20,
-    //     paginationSizeSelector:[5,10,15,20,25,30,40,50],
-    //     columnMinWidth:80,
-    //    /*  data:<=(base_url().'documentos.json');?>, */
-    //     columns:[
-    //         {title:"ID", field:"id", width:30,align:"center"},
-    //         {title:"E-mail", field:"email", width:50,align:"center"},
-    //         //{title:"#Documento", field:"num_doc", width:50,align:"center"},
-    //         //{title:"Recepcion", field:"fecha_recibido", width:50,align:"center"},
-    //         {title:"Emision", field:"fecha_emision", width:50,align:"center"},
-    //         {title:"Asunto", field:"asunto", width:50,align:"center"},
-    //         {title:"Remitente", field:"remitente_id",width:100},
-    //         {title:"Expediente", field:"num_exp", width:50,align:"center"},
-    //         {title:"Tipo", field:"tipo_doc_id",width:50},
-    //         {title:"Expira", field:"fecha_limite",width:50,align:"center"},
-    //         {title:"Estatus", field:"estatus_id",width:30,align:"center"},
-    //         {title:"Acciones", width:300,formatter:icons,align:"center"}
-    //     ],
-        
-    // });
   
     // //Llenar los tipos de campo con un foreach que proviene de table object
     // let campos = '';
@@ -79,8 +72,6 @@ $(document).ready(function() {
     // $("#filtro-campo").html(campos);
     
     // //Llnerar table con datos
-   
-    // table.setData('<=$datos?>');
 
     // $(document.body).on('click', '.btx_ver', function(){
     //     let id = $(this).attr('ide');

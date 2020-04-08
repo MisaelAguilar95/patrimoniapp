@@ -49,30 +49,26 @@ class Inicio extends CI_Controller {
 	}
 		
 	public function index(){
-		// if(isset($this->session->data_info['token'])){
-		// }else
-		// 	$this->login();
 		$this->principal();
 	}
 
 	private function prepara($obj,$tipo=null){
 		if($tipo == 'array')
-			return json_encode((json_decode($obj->response)->data));
+			return json_encode((json_decode($obj->response,true)->data));
 		else
 			return json_decode($obj->response)->data;
 	}
 
 	private function principal(){
-
-		$data ['tabla'] = 'documentos';
+		$data['tabla'] = 'dbo.documentos';
+		$data['condicion'] = array('remitente'=>$this->session->email);
 		//$consulta = array('consulta'=>"SELECT * from documentos");
-		//$data['datos'] = $this->prepara($this->api->post('/consulta',$data),'array');
+		$data['datos'] = json_encode(json_decode($this->api->post('/consulta_unica',$data)->response)->data);
+
 
 		//$data['datos'] = json_decode(json_encode(json_decode($this->api->post('consulta', $data)->response)->data));
 		
-		//$data['datos'] = $this->prepara($this->api->post('consulta', $data),'array');
-		$data['datos'] = '';
-		
+		//$data['datos'] = $this->prepara($this->api->post('consulta', $data),'array');		
 		$data['menu'] = $this->componentes->menu();
 		$data['apps'] = $this->componentes->apps();
 		$data['noti'] = $this->componentes->notificaciones();

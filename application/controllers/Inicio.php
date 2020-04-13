@@ -61,13 +61,7 @@ class Inicio extends CI_Controller {
 	private function principal(){
 		$data['tabla'] = 'dbo.documentos';
 		$data['condicion'] = array('remitente'=>$this->session->email);
-		//$consulta = array('consulta'=>"SELECT * from documentos");
-		$data['datos'] = json_encode(json_decode($this->api->post('/consulta_unica',$data)->response)->data);
-
-
-		//$data['datos'] = json_decode(json_encode(json_decode($this->api->post('consulta', $data)->response)->data));
-		
-		//$data['datos'] = $this->prepara($this->api->post('consulta', $data),'array');		
+		$data['datos'] = json_encode(json_decode($this->api->post('/consulta_unica',$data)->response)->data);		
 		$data['menu'] = $this->componentes->menu();
 		$data['apps'] = $this->componentes->apps();
 		$data['noti'] = $this->componentes->notificaciones();
@@ -82,9 +76,7 @@ class Inicio extends CI_Controller {
 		$this->session->sess_destroy();
 		header('Location: '.base_url().'login/');
 		exit;
-	}
-	
-	
+	}	
 
 	public function ver(){
 		$data['tabla'] = 'c_tipos_documento';

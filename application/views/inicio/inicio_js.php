@@ -10,6 +10,8 @@ $(document).ready(function() {
                 <div class='btn btn-secondary btn-sm' id='contestar' title='Contestar'><i class='fas fa-reply'></i></div> \
                 <div class='btn btn-danger btn-sm text-white' id='eliminar' title='Eliminar'><i class='fas fa-trash'></i></div>";
     };
+     
+
     
     var table = new Tabulator('#oficios_tab', {
         layout:"fitDataFill",

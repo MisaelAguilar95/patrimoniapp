@@ -73,17 +73,7 @@
                         <textarea class="form-control" placeholder="Escriba una nota" name="nota" rows="5" maxlength="60"readonly></textarea>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <br><label class="form-label" for="selec_pdf">Seleccionar PDF</label>
-                        <div class="custom-file">
-                            
-                            <input type="file" name="cargar_pdf" id="cargar_pdf"  class="custom-file-input"readonly>
-                            <label class="custom-file-label" for="customFile">Cargar PDF</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
+                <br><div class="row">
                     <div class="col-md-12">
                     <iframe src="<?=base_url()?>frontend\pdf\1507c5263be4a61794fe503d34a0fea3.pdf" width="100%" height="300"></iframe>
                     </div>

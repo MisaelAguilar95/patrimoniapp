@@ -119,15 +119,7 @@
                 </div>
                 <!-- BEGIN PRIMARY NAVIGATION -->
                 <nav id="js-primary-nav" class="primary-nav" role="navigation">
-                    <div class="info-card">
-                        <div class="info-card-text">
-                            <span class="text-truncate text-truncate-sm d-inline-block">Nombre Completo    . </span>
-                            <br><span class="text-truncate text-truncate-sm d-inline-block">Puesto</span>
-                            <br><span class="text-truncate text-truncate-sm d-inline-block">Gerencia</span>
-                            <br><span class="text-truncate text-truncate-sm d-inline-block">Coordinación</span>
-                        </div>
-                        <img src="<?=base_url()?>frontend/images/cover-2-lg.png" class="cover" alt="cover">
-                    </div>
+      
                     <!-- MENU -->
                     <?=$menu['cuerpo'];?>
                     <!-- <div class="filter-message js-filter-message bg-success-600"></div> -->

@@ -10,9 +10,7 @@
         <div id="pest1" class="collapse show" data-parent="#accordion">
             <div class="card-body bg-gray-dark">
                 <div class="row">
-                     <!-- <object data="<?=base_url()?>frontend\pdf\1507c5263be4a61794fe503d34a0fea3.pdf"></object>  -->
-                     <iframe src="<?=base_url()?>frontend\pdf\1507c5263be4a61794fe503d34a0fea3.pdf" width="1000" height="300"></iframe>
-                     <div class="col-md-12">
+                    <div class="col-md-12">
                         <br><div class="form-group">
                             <h3 class="form-label" for="tipodoc">Selecciona el tipo de documento</h3>
                             <select id="tipodoc" class="form-control" name="tipodoc">
@@ -84,9 +82,11 @@
                             <input type="file" name="cargar_pdf" id="cargar_pdf"  class="custom-file-input">
                             <label class="custom-file-label" for="customFile">Cargar PDF</label>
                         </div>
-                        <div class="offset-md-9 col-md-3 text-right">
-                            <br><button id="btn_enviar" class=" btn btn-success"> Enviar</button>
-                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <iframe src="<?=base_url()?>frontend\pdf\1507c5263be4a61794fe503d34a0fea3.pdf" width="100%" height="300"></iframe>
                     </div>
                 </div>
             </div>

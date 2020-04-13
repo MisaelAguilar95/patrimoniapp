@@ -1,6 +1,6 @@
 <script>
 $(document).ready(function() {
-    $('body').addClass('nav-function-fixed');
+    $('body').addClass('nav-function-fixed pace-done nav-function-minify');
 
     //crear tabla
     var icons = function(cell, formatterParams){
@@ -18,12 +18,13 @@ $(document).ready(function() {
         paginationSizeSelector:[5,10,15,20,25,30,40,50],
         columnMinWidth:80,
         columns:[
-            {title:"#Documento", field:"num_doc", width:150,align:"center"},
-            {title:"Destinatario", field:"email", width:180,align:"center"},
-            {title:"Asunto", field:"asunto", width:240,align:"center"},
-            {title:"Expira", field:"fecha_limite",width:150,align:"center"},
-            {title:"Estatus", field:"estatus_id",width:130,align:"center"},
-            {title:"Acciones", formatter:icons,align:"center",width:250}
+            {title:"#Documento", field:"num_doc", width:120,align:"center",headerFilter:"input" },
+            {title:"Remitente", field:"remitente", width:190,align:"center",headerFilter:"input"},
+            {title:"Destinatario", field:"email", width:190,align:"center",headerFilter:"input"},
+            {title:"Asunto", field:"asunto", width:290,align:"center",headerFilter:"input"},
+            {title:"Expira el", field:"fecha_limite",width:120,align:"center",headerFilter:"input"},
+            {title:"Estatus", field:"estatus_id",width:120,align:"center",headerFilter:"input"},
+            {title:"Acciones", formatter:icons, align:"center",width:250}
         ],
         
     });

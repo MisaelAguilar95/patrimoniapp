@@ -214,7 +214,7 @@ class Inicio extends CI_Controller {
 				$this->response(array('ban'=>false,'msg'=>'Error al enviar','error'=>$res['error']));
 		}
 		else{
-			$this->response(array('ban'=>false,'msg'=>'No existe Docu','error'=>$this->upload->display_errors()));
+			$this->response(array('ban'=>false,'msg'=>'No existe Documento','error'=>$this->upload->display_errors()));
 		}
 	}
 	

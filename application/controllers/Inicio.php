@@ -39,13 +39,13 @@ class Inicio extends CI_Controller {
 	}
 
 	//funcion para crear un selectg apartir de datos de la base
-	public function crea_select($tabla, $id = null){
-        $valores = "<option value=''>Selecciona</option>";
-        $array =  $this->api->post('consulta');
+	public function crea_select($array,$id=null){
+		$valores = '<option>Seleeciona</option>';
+		//$array = json_decode($data);
         foreach ($array as $valor) {
             if ($id != null && $valor->id == $id)
                $valores .= '<option selected value="' . $valor->id . '">' . $valor->nombre . '</option>';
-            else
+			else
                $valores .= '<option value="' . $valor->id . '">' . $valor->nombre . '</option>';
         }
         return $valores;
@@ -87,7 +87,6 @@ class Inicio extends CI_Controller {
 		$data['campo_orden'] = 'nombre';
 		//$resultado = $this->prepara($this->api->post('consulta', $data));
 		//$data['tipos_documento'] = $this->crea_select($resultado);
-		$this->load->library('componentes');
 		$data['menu'] = $this->componentes->menu();
 		$data['apps'] = $this->componentes->apps();
 		$data['noti'] = $this->componentes->notificaciones();
@@ -101,10 +100,10 @@ class Inicio extends CI_Controller {
 
 	public function nuevo_documento(){
 		$data['tabla'] = 'dbo.c_destino';
-		$data['campo_orden'] = 'nombre';
-		$data['consulta'] = "SELECT id,nombre FROM dbo.c_destino order by nombre ";
-		$data['datos'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
-		$data['tipos_documento'] = $this->crea_select($data);
+		//$data['campo_orden'] = 'nombre';
+		$data['consulta'] = "SELECT id,gerencia as nombre FROM dbo.c_destino order by gerencia ";
+		$gerencias = json_decode($this->api->post('/ejecuta',$data)->response)->data;
+		$data['gerencia_destino'] = $this->crea_select($gerencias);
 		$this->load->library('componentes');
 		$data['menu'] = $this->componentes->menu();
 		$data['apps'] = $this->componentes->apps();

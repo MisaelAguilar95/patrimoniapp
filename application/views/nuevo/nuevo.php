@@ -41,6 +41,14 @@
                     <div class="form-group col-md-3">
                         <label class="form-label" for="email">E-mail</label>
                         <input class="form-control"  name="email">
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="form-label" for="tipodoc">Gerencia destino:</labe>
+                            <select id="gerencia_dest" class="form-control" name="gerencia_dest">
+                                <?=$gerencia_destino?>
+                            </select>
+                        </div>
                     </div>                    
                 </div>
                 <div class="row">

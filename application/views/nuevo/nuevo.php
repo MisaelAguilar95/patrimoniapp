@@ -38,18 +38,14 @@
                     <label class="form-label" for="fechalimite">Fecha Límite</label>
                     <input class="form-control" type="date" name="fecha_limite"value="<?php echo date("Y-m-d");?>">
                 </div> 
-                    <div class="form-group col-md-3">
-                        <label class="form-label" for="email">E-mail</label>
-                        <input class="form-control"  name="email">
-                    </div>
-                    <div class="col-md-3">
+                   <div class="col-md-3">
                         <div class="form-group">
-                            <label class="form-label" for="tipodoc">Gerencia destino:</labe>
-                            <select id="gerencia_dest" class="form-control" name="gerencia_dest">
+                            <label class="form-label" for="area">Gerencia destino:</labe>
+                            <select id="area" class="form-control" name="area">
                                 <?=$gerencia_destino?>
                             </select>
                         </div>
-                    </div>                    
+                    </div>                
                 </div>
                 <div class="row">
                     <div class="col-md-3">

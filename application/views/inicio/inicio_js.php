@@ -23,6 +23,7 @@ $(document).ready(function() {
             {title:"#Documento", field:"num_doc", width:120,align:"center",headerFilter:"input" },
             {title:"Remitente", field:"remitente", width:190,align:"center",headerFilter:"input"},
             {title:"Destinatario", field:"destinatario", width:190,align:"center",headerFilter:"input"},
+            {title:"Area destino ", field:"area", width:190,align:"center",headerFilter:"input"},
             {title:"Asunto", field:"asunto", width:290,align:"center",headerFilter:"input"},
             {title:"Expira el", field:"fecha_limite",width:120,align:"center",headerFilter:"input"},
             {title:"Estatus", field:"estatus_id",width:120,align:"center",headerFilter:"input"},

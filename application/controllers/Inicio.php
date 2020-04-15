@@ -186,8 +186,8 @@ class Inicio extends CI_Controller {
 		var_dump($this->api->post('http://127.0.0.1/api_rest/autorizacion/inicio', 'POST', $par));
 	}
 	public function insertar(){
-		if($_POST['asunto'] != ''|| $_POST['email'] != ''|| $_POST['num_exp'] != ''|| $_POST['fecha_emision'] != ''||
-			$_POST['fecha_limite'] != ''|| $_POST['remitente_id'] != ''|| $_POST['destinatario_id'] != ''){
+		if($_POST['asunto'] != ''|| $_POST['num_exp'] != ''|| $_POST['fecha_emision'] != ''||
+			$_POST['fecha_limite'] != ''|| $_POST['remitente'] != ''|| $_POST['destinatario'] != ''){
 			$_POST['fecha_creacion'] = date('Y-m-d');
 			$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'documentos'));
 			if($res['ban'])

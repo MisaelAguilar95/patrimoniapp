@@ -64,7 +64,7 @@ class Inicio extends CI_Controller {
 
 	private function principal(){
 		$data['tabla'] = 'dbo.documentos';
-		$data['consulta'] = "select * from dbo.documentos where remitente in('".$this->session->email."') OR (email = '".$this->session->email."')";
+		$data['consulta'] = "select * from dbo.documentos where remitente in('".$this->session->email."') OR (destinatario= '".$this->session->email."')";
 		$data['datos'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);		
 		$data['menu'] = $this->componentes->menu();
 		$data['apps'] = $this->componentes->apps();

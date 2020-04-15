@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 
     $(".multiple-select2").select2({ placeholder: "Seleccionea una o varias personas" });
 
@@ -36,4 +36,4 @@
         $(this).val($(this).val().toUpperCase())
     })
 
-</script>
+</script> -->

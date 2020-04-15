@@ -46,11 +46,11 @@
                 <div class="row">
                     <div class="col-md-3">
                         <label class="form-label" for="remitente">Remitente</label>
-                        <input  class="form-control" name="remitente_id">
+                        <input  class="form-control" name="remitente">
                     </div>
                     <div class="col-md-3">
                         <label class="form-label" for="destinatario">Destinatario</label>
-                        <input class='form-control'name="destinatario_id" >
+                        <input class='form-control'name="destinatario" >
                     </div>
                     <div class="form-group col-md-3">
                         <label class="form-label">Área/Unidad Responsable</label>

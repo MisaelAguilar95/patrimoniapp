@@ -39,13 +39,17 @@ class Inicio extends CI_Controller {
 	}
 
 	//funcion para crear un selectg apartir de datos de la base
-	private function crea_select($obj){
-		$result = '<option></option>';
-		for ($i=0; $i < is_array($obj); $i++){
-			$result .= '<option  >'.$obj[$i]->nombre.'</option>';
-		}
-		return $result;
-	}
+	public function crea_select($tabla, $id = null){
+        $valores = "<option value=''>Selecciona</option>";
+        $array =  $this->api->post('consulta');
+        foreach ($array as $valor) {
+            if ($id != null && $valor->id == $id)
+               $valores .= '<option selected value="' . $valor->id . '">' . $valor->nombre . '</option>';
+            else
+               $valores .= '<option value="' . $valor->id . '">' . $valor->nombre . '</option>';
+        }
+        return $valores;
+    }
 		
 	public function index(){
 		$this->principal();
@@ -60,7 +64,7 @@ class Inicio extends CI_Controller {
 
 	private function principal(){
 		$data['tabla'] = 'dbo.documentos';
-		$data['consulta'] = "select * from dbo.documentos where remitente in('".$this->session->email."','manuel.peralta@conafor.gob.mx') OR (email = '".$this->session->email."')";
+		$data['consulta'] = "select * from dbo.documentos where remitente in('".$this->session->email."') OR (email = '".$this->session->email."')";
 		$data['datos'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);		
 		$data['menu'] = $this->componentes->menu();
 		$data['apps'] = $this->componentes->apps();
@@ -96,10 +100,11 @@ class Inicio extends CI_Controller {
 
 
 	public function nuevo_documento(){
-		$data['tabla'] = 'c_tipos_documento';
+		$data['tabla'] = 'dbo.c_destino';
 		$data['campo_orden'] = 'nombre';
-		//$resultado = $this->prepara($this->api->post('consulta', $data));
-		//$data['tipos_documento'] = $this->crea_select($resultado);
+		$data['consulta'] = "SELECT id,nombre FROM dbo.c_destino order by nombre ";
+		$data['datos'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
+		$data['tipos_documento'] = $this->crea_select($data);
 		$this->load->library('componentes');
 		$data['menu'] = $this->componentes->menu();
 		$data['apps'] = $this->componentes->apps();

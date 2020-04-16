@@ -4,15 +4,14 @@
 <!-- BEGIN Page Footer -->
     <footer class="page-footer" role="contentinfo">
         <div class="d-flex align-items-center flex-1 text-muted">
-            <span class="hidden-md-down fw-700">2019 © SAS-DOC</span>
+            <span class="hidden-md-down fw-700">2020 © SAS-DOC</span>
         </div>
         <div class="d-flex align-items-center flex-1 text-muted">
-            <span class="hidden-md-down fw-700">Versión: 20191119-01</span>
+            <span class="hidden-md-down fw-700">Versión: 2020.1.0</span>
         </div>
         <div>
             <ul class="list-table m-0">
-                <li><a href="#" class="text-secondary fw-700">Acerca de</a></li>
-                <li class="pl-3"><a href="#" class="text-secondary fw-700">Documentación</a></li>
+                <li class="pl-3"><a href="<?=base_url()?>inicio/documentacion" class="text-secondary fw-700">Documentación</a></li>
             </ul>
         </div>
     </footer>

@@ -4,11 +4,11 @@ $(document).ready(function() {
 
     //crear tabla
     var icons = function(cell, formatterParams){
-        return "<a href='inicio/ver'><div class='btx_ver btn btn-light btn-sm'  href='inicio/ver' ide='"+cell.getRow().getData().id+" id='ver' title='Ver'><i class='fa fa-eye'></i></a></div> \
-                <div class='btn btn-primary btn-sm' id='editar' title='Editar'><i class='fa fa-pencil'></i></div> \
-                <div class='btn btn-dark btn-sm' id='asignar' title='Asignar'><i class='fa fa-exchange'></i></div> \
-                <div class='btn btn-secondary btn-sm' id='contestar' title='Contestar'><i class='fas fa-reply'></i></div> \
-                <div class='btn btn-danger btn-sm text-white' id='eliminar' title='Eliminar'><i class='fas fa-trash'></i></div>";
+        return "<a href='inicio/ver'><div class='btx_ver btn btn-light btn-sm'  href='inicio/ver' ide='"+cell.getRow().getData().id+"' id='ver' title='Ver'><i class='fa fa-eye'></i></a></div> \
+                <div class='btn btn-primary btn-sm'  ide='"+cell.getRow().getData().id+"' id='editar' title='Editar'><i class='fa fa-pencil'></i></div> \
+                <div class='btn btn-dark btn-sm' id='turnar' title='Turnar'><i class='fa fa-exchange'></i></div> \
+                <div class='btn btn-secondary btn-sm' id='enviar' title='Enviar'><i class='fas fa-share'></i></div> \
+                <div class='btn btn-danger btn-sm text-white' ide='"+cell.getRow().getData().id+"' id='eliminar' title='Eliminar'><i class='fas fa-trash'></i></div>";
     };
      
 
@@ -24,8 +24,8 @@ $(document).ready(function() {
             {title:"Remitente", field:"remitente", width:190,align:"center",headerFilter:"input"},
             {title:"Destinatario", field:"destinatario", width:190,align:"center",headerFilter:"input"},
             {title:"Area destino ", field:"area", width:190,align:"center",headerFilter:"input"},
-            {title:"Asunto", field:"asunto", width:290,align:"center",headerFilter:"input"},
-            {title:"Expira el", field:"fecha_limite",width:120,align:"center",headerFilter:"input"},
+            {title:"Asunto", field:"asunto", width:200,align:"center",headerFilter:"input"},
+            {title:"Fecha limite", field:"fecha_limite",width:120,align:"center",headerFilter:"input"},
             {title:"Estatus", field:"estatus_id",width:120,align:"center",headerFilter:"input"},
             {title:"Acciones", formatter:icons, align:"center",width:250}
         ],
@@ -53,9 +53,9 @@ $(document).ready(function() {
     //         modal(act,id);
     // });
 
-    // $('body').on('click','#eliminar',function(){
-    //     alert('No se pudo eliminar','No se pudo eliminar la actividad','error','<=base_url()?>inicio/');
-    //     })
+     $('body').on('click','#eliminar',function(){
+         alert('No se pudo eliminar','No se pudo eliminar la actividad','error','<=base_url()?>inicio/');
+         })
 
     // $(document.body).on('click','#asignar',()=>{
         

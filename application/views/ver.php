@@ -12,9 +12,7 @@
                     <div class="col-md-12">
                         <br><div class="form-group">
                             <h3 class="form-label" for="tipodoc">Selecciona el tipo de documento</h3>
-                            <select id="tipodoc" class="form-control"  name="tipodoc">
-                                <?=$tipos_documento?>
-                            </select>
+                            <input type="text" class="form-control" readonly name="tipo_doc_id" maxlength="10">
                         </div>
                     </div>
                 </div>
@@ -22,11 +20,11 @@
                 <br><div class="row">
                     <div class="form-group col-md-4">
                         <label class="form-label" for="expediente">Expediente</label>
-                        <input type="text" class="form-control" placeholder="Ingrese el número de expediente" readonly name="num_exp" maxlength="10">
+                        <input type="text" class="form-control"  readonly name="num_exp" maxlength="10">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="asunto">Asunto</label>
-                        <input type="text" class="form-control"maxlength="70" type="text" placeholder="Ingrese el asunto del documento" readonly name="asunto" required>
+                        <input type="text" class="form-control"maxlength="70" type="text"  readonly name="asunto" required>
                     </div> 
                    </div>
                 <div class="row">
@@ -39,8 +37,8 @@
                     <input class="form-control" type="date" name="fecha_limite"value="<?php echo date("Y-m-d");?>" readonly>
                 </div> 
                     <div class="form-group col-md-3">
-                        <label class="form-label" for="email">E-mail</label>
-                        <input class="form-control"  name="email" readonly>
+                        <label class="form-label" for="area">Gerencia destino</label>
+                        <input class="form-control"  name="area" readonly>
                     </div>                    
                 </div>
                 <div class="row">

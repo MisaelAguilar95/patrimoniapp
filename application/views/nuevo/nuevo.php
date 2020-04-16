@@ -13,7 +13,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <h3 class="form-label" for="tipodoc">Selecciona el tipo de documento</h3>
-                            <select id="tipodoc" class="form-control" name="tipodoc">
+                            <select id="tipo_doc_id" class="form-control" name="tipo_doc_id">
                                 <?=$tipos_documento?>
                             </select>
                         </div>
@@ -21,8 +21,8 @@
                 </div>
                 <br><div class="row">
                     <div class="form-group col-md-3">
-                        <label class="form-label" for="expediente">Expediente</label>
-                        <input type="text" class="form-control" placeholder="Ingrese el número de expediente" name="num_exp" maxlength="10">
+                        <label class="form-label" for="documento">Numero de Documento</label>
+                        <input type="text" class="form-control" placeholder="Ingrese el número de Documento" name="num_doc" maxlength="10">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="asunto">Asunto</label>
@@ -69,7 +69,7 @@
                     <div class="col-md-4">
                         <label class="form-label" for="concopia">CC</label>
                         <select class="multiple-select2 form-control" name="concopia" multiple="multiple" placeholder="Seleccionea destinatarios para copia">
-                            <?=$tipos_documento;?>
+                            <?=$con_copia;?>
                         </select>
                     </div>
                     <div class="col-md-8">

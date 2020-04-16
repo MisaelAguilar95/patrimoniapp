@@ -21,14 +21,14 @@ class Inicio extends CI_Controller {
 			'format' => "json"
 		]);
 		$this->seguridad();
-		}
-		private function seguridad(){
-			if(isset($_SESSION['token'])){
-				if(!json_decode($this->api->GET('/validacion')->response)->status){
-					$this->salir();
-				}
+	}
+
+	private function seguridad(){
+		if(isset($_SESSION['token'])){
+			if(!json_decode($this->api->GET('/validacion')->response)->status){
+				$this->salir();
 			}
-		
+		}
 		else{
 			$this->salir();
 		}
@@ -62,15 +62,20 @@ class Inicio extends CI_Controller {
 			return json_decode($obj->response)->data;
 	}
 
-	private function principal(){
-		$data['tabla'] = 'dbo.documentos';
-		$data['consulta'] = "select * from dbo.documentos where remitente in('".$this->session->email."') OR (destinatario= '".$this->session->email."')";
-		$data['datos'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);		
+	private function basicas(){
 		$data['menu'] = $this->componentes->menu();
 		$data['apps'] = $this->componentes->apps();
 		$data['noti'] = $this->componentes->notificaciones();
 		$data['card'] = $this->componentes->card();
 		$this->load->view('header',$data);
+		return $data;
+	}
+
+	private function principal(){		
+		$data = $this->basicas();
+		$data['tabla'] = 'dbo.documentos';
+		$data['consulta'] = "select * from dbo.documentos where remitente in('".$this->session->email."') OR (destinatario= '".$this->session->email."')";
+		$data['datos'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
 		$this->load->view('inicio/inicio',$data);
 		$this->load->view('footer');
 		$this->load->view('inicio/inicio_js',$data);
@@ -82,19 +87,16 @@ class Inicio extends CI_Controller {
 		exit;
 	}	
 
-	public function ver(){
-		$data['tabla'] = 'c_tipos_documento';
-		$data['campo_orden'] = 'nombre';
-		//$resultado = $this->prepara($this->api->post('consulta', $data));
+	public function ver($id){
+		//var_dump($data['oficio']);
 		//$data['tipos_documento'] = $this->crea_select($resultado);
-		$data['menu'] = $this->componentes->menu();
-		$data['apps'] = $this->componentes->apps();
-		$data['noti'] = $this->componentes->notificaciones();
-		$data['card'] = $this->componentes->card();
-		$this->load->view('header',$data);
-		$this->load->view('ver',$data);
+		$data = $this->basicas();
+		$data['tabla'] = 'documentos';
+		$data['condicion'] = array('id'=>$id);
+		$data['oficio'] = json_encode(json_decode($this->api->post('consulta_unica', $data)->response)->data[0]);
+		$this->load->view('inicio/ver',$data);
 		$this->load->view('footer');
-		$this->load->view('nuevo/nuevo_js',$data);
+		$this->load->view('inicio/ver_js',$data);
 	}
 
 

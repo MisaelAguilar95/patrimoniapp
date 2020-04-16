@@ -119,7 +119,7 @@
                 </div>
                 <!-- BEGIN PRIMARY NAVIGATION -->
                 <nav id="js-primary-nav" class="primary-nav" role="navigation">
-                <div class="info-card">
+                <!-- <div class="info-card">
                         <div class="info-card-text">
                             <span class="text-truncate text-truncate-sm d-inline-block"><?=$this->session->nombre_completo?> </span>
                             <br><span class="text-truncate text-truncate-sm d-inline-block"><?=$this->session->puesto?></span>
@@ -128,7 +128,7 @@
                             <br><span class="text-truncate text-truncate-sm d-inline-block"><?=$this->session->num_emp?></span>
                         </div>
                         <img src="<?=base_url()?>frontend/images/cover-2-lg.png" class="cover" alt="cover">
-                    </div>
+                    </div> -->
                     <!-- MENU -->
                     <?=$menu['cuerpo'];?>
                     <!-- <div class="filter-message js-filter-message bg-success-600"></div> -->

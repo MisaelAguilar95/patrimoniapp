@@ -4,14 +4,12 @@ $(document).ready(function() {
 
     //crear tabla
     var icons = function(cell, formatterParams){
-        return "<a href='inicio/ver'><div class='btx_ver btn btn-light btn-sm'  href='inicio/ver' ide='"+cell.getRow().getData().id+"' id='ver' title='Ver'><i class='fa fa-eye'></i></a></div> \
+        return "<div class='btx_ver btn btn-light btn-sm'  href='inicio/ver' ide='"+cell.getRow().getData().id+"' id='ver' title='Ver'><i class='fa fa-eye'></i></div> \
                 <div class='btn btn-primary btn-sm'  ide='"+cell.getRow().getData().id+"' id='editar' title='Editar'><i class='fa fa-pencil'></i></div> \
-                <div class='btn btn-dark btn-sm' id='turnar' title='Turnar'><i class='fa fa-exchange'></i></div> \
-                <div class='btn btn-secondary btn-sm' id='enviar' title='Enviar'><i class='fas fa-share'></i></div> \
+                <div class='btn btn-dark btn-sm'ide='"+cell.getRow().getData().id+"' id='turnar' title='Turnar'><i class='fa fa-exchange'></i></div> \
+                <div class='btn btn-secondary btn-sm' ide='"+cell.getRow().getData().id+"' id='enviar' title='Enviar'><i class='fas fa-share'></i></div> \
                 <div class='btn btn-danger btn-sm text-white' ide='"+cell.getRow().getData().id+"' id='eliminar' title='Eliminar'><i class='fas fa-trash'></i></div>";
     };
-     
-
     
     var table = new Tabulator('#oficios_tab', {
         layout:"fitDataFill",
@@ -20,7 +18,7 @@ $(document).ready(function() {
         paginationSizeSelector:[5,10,15,20,25,30,40,50],
         columnMinWidth:80,
         columns:[
-            {title:"#Documento", field:"num_doc", width:120,align:"center",headerFilter:"input" },
+            {title:"#Oficio", field:"num_doc", width:120,align:"center",headerFilter:"input" },
             {title:"Remitente", field:"remitente", width:190,align:"center",headerFilter:"input"},
             {title:"Destinatario", field:"destinatario", width:190,align:"center",headerFilter:"input"},
             {title:"Area destino ", field:"area", width:190,align:"center",headerFilter:"input"},
@@ -35,17 +33,6 @@ $(document).ready(function() {
     table.setData(<?=$datos?>);
 
 
-
-
-
-    // $(document.body).on('click','#ver',()=>{
-    //     $.malert({
-    //         title: "Please confirm", 
-    //         body: "Ver docuemnto seleccionado", 
-    //         textTrue: "Aceptar", 
-    //         textFalse: "Cancelar" 
-    //     })
-    // })
 
     // $('body').on('click','#editar',function(){
     //     let act = $(this).parent().parent().find('span[name=actividad]').text();
@@ -76,12 +63,12 @@ $(document).ready(function() {
     // $("#filtro-campo").html(campos);
     
     // //Llnerar table con datos
+    $('body').on('click','.btx_ver',function(){
+        let ide = $(this).attr('ide');
+        location.href = '<?=base_url()?>inicio/ver/'+ide;
+    })
 
-    // $(document.body).on('click', '.btx_ver', function(){
-    //     let id = $(this).attr('ide');
-    //     console.log(id);
-      
-    // })
+    
     // //Limpiar los filtros de consulta
     // $(document.body).on('click','#btn_limpiar_filtro',function(){
     //     $("#filtro-campo").prop("selectedIndex", 0);

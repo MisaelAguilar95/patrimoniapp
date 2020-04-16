@@ -44,10 +44,10 @@ class Inicio extends CI_Controller {
 		//$array = json_decode($data);
         foreach ($array as $valor) {
             if ($id != null && $valor->id == $id)
-               $valores .= '<option selected value="' . $valor->id . '">' . $valor->nombre . '</option>';
+				$valores .= '<option selected value="' . $valor->id . '">' . $valor->nombre . '</option>';
 			else
                $valores .= '<option value="' . $valor->id . '">' . $valor->nombre . '</option>';
-        }
+		}
         return $valores;
     }
 		
@@ -244,7 +244,7 @@ class Inicio extends CI_Controller {
 	}
 
 	public function elimina(){
-		$res = $this->api->post('/eliminar',array('datos'=>$_POST,'tabla'=>'dbo.documentos'));
+		$res = $this->api->post('/eliminar',array('datos'=>$_POST,'tabla'=>'documentos'));
 		if($res['ban'])
 			$this->response(array('msg'=>true));
 		else

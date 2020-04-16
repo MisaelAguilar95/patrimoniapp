@@ -5,10 +5,9 @@ $(document).ready(function() {
     //crear tabla
     var icons = function(cell, formatterParams){
         return "<div class='btx_ver btn btn-light btn-sm'  href='inicio/ver' ide='"+cell.getRow().getData().id+"' id='ver' title='Ver'><i class='fa fa-eye'></i></div> \
-                <div class='btn btn-primary btn-sm'  ide='"+cell.getRow().getData().id+"' id='editar' title='Editar'><i class='fa fa-pencil'></i></div> \
-                <div class='btn btn-dark btn-sm'ide='"+cell.getRow().getData().id+"' id='turnar' title='Turnar'><i class='fa fa-exchange'></i></div> \
+                <div class='btn btn-dark btn-sm turnar'ide='"+cell.getRow().getData().id+"' id='turnar' title='Turnar'><i class='fa fa-exchange'></i></div> \
                 <div class='btn btn-secondary btn-sm' ide='"+cell.getRow().getData().id+"' id='enviar' title='Enviar'><i class='fas fa-share'></i></div> \
-                <div class='btn btn-danger btn-sm text-white' ide='"+cell.getRow().getData().id+"' id='eliminar' title='Eliminar'><i class='fas fa-trash'></i></div>";
+                <div class='btx_eliminar btn btn-danger btn-sm text-white' ide='"+cell.getRow().getData().id+"' id='eliminar' title='Eliminar'><i class='fas fa-trash'></i></div>";
     };
     
     var table = new Tabulator('#oficios_tab', {
@@ -40,19 +39,16 @@ $(document).ready(function() {
     //         modal(act,id);
     // });
 
-     $('body').on('click','#eliminar',function(){
-         alert('No se pudo eliminar','No se pudo eliminar la actividad','error','<=base_url()?>inicio/');
+     $('body').on('click','.btx_eliminar',function(){
+        let id = $(this).attr('ide');
+        location.href = '<?=base_url()?>inicio/elimina/'+ide;
          })
 
-    // $(document.body).on('click','#asignar',()=>{
-        
-    //     $.malert({
-    //         title: "Please confirm", 
-    //         body: "A quien desea asignar el documento ?", 
-    //         textTrue: "Aceptar", 
-    //         textFalse: "Cancelar",            
-    //     })
-    // })
+    $(document.body).on('click','#turnar',()=>{ 
+        console.log('chido');
+        let id = $(this).attr('ide');
+        modal('',id);
+    })
   
     // //Llenar los tipos de campo con un foreach que proviene de table object
     // let campos = '';

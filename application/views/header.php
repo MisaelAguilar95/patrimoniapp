@@ -43,6 +43,7 @@
             case 6: $dia="Sábado";
             break;
         }
+        
         $fecha= array('dia'=>$dia, 'numDia'=>$hoy['mday'], 'mes'=>$mes, 'anio'=>$hoy['year']);
         return "Hoy es ".$fecha['dia']." ".$fecha['numDia']." de ".$fecha['mes']." de ".$fecha['anio'];
     }
@@ -190,8 +191,11 @@
                             <small class="text-truncate">
                                 <?=$menu['descripcion'];?>
                             </small>
+                            
                         </h1>
-                        <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"><?=fecha_esp();?></span></li>
+                    <li class="position-absolute pos-top pos-right d-none d-sm-block"><i class="fa fa-user m-r-5"> :</i><?=$this->session->nombre_completo?> / <i class="fa fa-cube m-r-5"></i> : <?=$this->session->gerencia?></li>
+                        <li class="pos-top pos-right d-none d-sm-block"><span class="js-get-date"><?=fecha_esp();?></span></li>
                     </div>
+                    
                     <hr>
                     

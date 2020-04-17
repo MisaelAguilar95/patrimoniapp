@@ -73,12 +73,13 @@ class Inicio extends CI_Controller {
 
 	private function principal(){		
 		$data = $this->basicas();
-		$data['tabla'] = 'dbo.documentos';
+		//$data['tabla'] = 'dbo.documentos';
 		$data['consulta'] = "select * from dbo.documentos where remitente in('".$this->session->email."') OR (destinatario= '".$this->session->email."')";
 		$data['datos'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
 		$this->load->view('inicio/inicio',$data);
 		$this->load->view('footer');
 		$this->load->view('inicio/inicio_js',$data);
+		
 	}
 	
 	public function salir(){
@@ -103,6 +104,7 @@ class Inicio extends CI_Controller {
 	public function nuevo_documento(){
 		//$data['tabla'] = 'dbo.c_destino';
 		//$data['campo_orden'] = 'nombre';
+		$data = $this->basicas();
 		$data['consulta'] = "SELECT id_tipo_documento as id ,nombre as nombre FROM catalogos.c_tipos_documento order by nombre ";
 		$nombre = json_decode($this->api->post('/ejecuta',$data)->response)->data;
 		$data['tipos_documento'] = $this->crea_select($nombre);
@@ -110,35 +112,21 @@ class Inicio extends CI_Controller {
 		$gerencias = json_decode($this->api->post('/ejecuta',$data)->response)->data;
 		$data['gerencia_destino'] = $this->crea_select($gerencias);
 		$this->load->library('componentes');
-		$data['menu'] = $this->componentes->menu();
-		$data['apps'] = $this->componentes->apps();
-		$data['noti'] = $this->componentes->notificaciones();
-		$data['card'] = $this->componentes->card();
-		$this->load->view('header',$data);
 		$this->load->view('nuevo/nuevo',$data);
 		$this->load->view('footer');
 		$this->load->view('nuevo/nuevo_js',$data);
 	}
 
 	public function nuevo_ext(){
+		$data = $this->basicas();
 		$this->load->library('componentes');
-		$data['menu'] = $this->componentes->menu();
-		$data['apps'] = $this->componentes->apps();
-		$data['noti'] = $this->componentes->notificaciones();
-		$data['card'] = $this->componentes->card();
-		$this->load->view('header',$data);
 		$this->load->view('nuevo/nuevo_ext');
 		$this->load->view('footer');
 		$this->load->view('nuevo/nuevo_ext_js',$data);
 	}
 
 	public function bitacora(){
-		$this->load->library('componentes');
-		$data['menu'] = $this->componentes->menu();
-		$data['apps'] = $this->componentes->apps();
-		$data['noti'] = $this->componentes->notificaciones();
-		$data['card'] = $this->componentes->card();
-		$this->load->view('header',$data);
+		$data = $this->basicas();
 		$this->load->view('bitacora/bitacora');
 		$this->load->view('footer');
 		$this->load->view('bitacora/bitacora_js',$data);
@@ -148,24 +136,14 @@ class Inicio extends CI_Controller {
 		
 	}
 	public function reportes(){
-		$this->load->library('componentes');
-		$data['menu'] = $this->componentes->menu();
-		$data['apps'] = $this->componentes->apps();
-		$data['noti'] = $this->componentes->notificaciones();
-		$data['card'] = $this->componentes->card();
-		$this->load->view('header',$data);
+		$data = $this->basicas();
 		$this->load->view('reportes/reportes');
 		$this->load->view('footer');
 		$this->load->view('reportes/reportes_js',$data);
 	}
 
 	public function perfiles(){
-		$this->load->library('componentes');
-		$data['menu'] = $this->componentes->menu();
-		$data['apps'] = $this->componentes->apps();
-		$data['noti'] = $this->componentes->notificaciones();
-		$data['card'] = $this->componentes->card();
-		$this->load->view('header',$data);
+		$data = $this->basicas();
 		$this->load->view('perfiles/perfiles');
 		$this->load->view('footer');
 		$this->load->view('perfiles/perfiles_js',$data);
@@ -219,6 +197,7 @@ class Inicio extends CI_Controller {
 		//verificamos la carga del archivo
 		if($this->upload->do_upload('cargar_pdf')){
 			$_POST['pdf'] = $this->upload->data()['file_name'];
+			$_POST['estatus'] = 'enviado';
 			$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'documentos'));
 			if($res['ban']){
 				$this->principal();
@@ -244,7 +223,7 @@ class Inicio extends CI_Controller {
 	}
 
 	public function elimina(){
-		$res = $this->api->post('/eliminar',array('datos'=>$_POST,'tabla'=>'documentos'));
+		$res = $this->api->post('/eliminar',array('datos'=>$_POST,'tabla'=>'dbo.documentos'));
 		if($res['ban'])
 			$this->response(array('msg'=>true));
 		else

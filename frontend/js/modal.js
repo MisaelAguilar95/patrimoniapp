@@ -41,11 +41,12 @@
             '<div class="modal-content">' +
             '<div class="modal-header">' +
             '<h5 class="modal-title"></h5>' +
-            '<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">' +
+            '<button type="button" class="close text-black" data-dismiss="modal" aria-label="Close">' +
             '<span aria-hidden="true">&times;</span>' +
             '</button>' +
             '</div>' +
             '<div class="modal-body"></div>' +
+            '<br><div class="col-md-12"><label class="form-label" for="destinatario">Turnar :</label><input class="form-control"name="m_turnar" ></div>'+
             '<div class="modal-footer"></div>' +
             '</div>' +
             '</div>'

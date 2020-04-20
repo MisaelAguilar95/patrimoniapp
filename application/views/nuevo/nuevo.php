@@ -66,12 +66,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                   <!--  <div class="col-md-4">
                         <label class="form-label" for="concopia">CC</label>
                         <select class="multiple-select2 form-control" name="concopia" multiple="multiple" placeholder="Seleccionea destinatarios para copia">
                             <?=$con_copia;?>
                         </select>
-                    </div>
+                    </div> -->
                     <div class="col-md-8">
                         <label class="form-label" for="nota">Nota</label>
                         <textarea class="form-control" placeholder="Escriba una nota" name="nota" rows="5" maxlength="60"></textarea>

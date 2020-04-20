@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="asunto">Asunto</label>
-                        <input type="text" class="form-control"maxlength="70" type="text"  readonly name="asunto" required>
+                        <input type="text" class="form-control"maxlength="70" type="text"   name="asunto" required>
                     </div> 
                    </div>
                 <div class="row">
@@ -60,12 +60,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <label class="form-label" for="concopia">CC</label>
                         <select class="multiple-select2 form-control" name="concopia" multiple="multiple" placeholder="Seleccionea destinatarios para copia"readonly>
                             <?=$con_copia;?>
                         </select>
-                    </div>
+                    </div> -->
                     <div class="col-md-8">
                         <label class="form-label" for="nota">Nota</label>
                         <textarea class="form-control" placeholder="Escriba una nota" name="nota" rows="5" maxlength="60"readonly></textarea>
@@ -76,6 +76,10 @@
                     <iframe name="oficio_pdf" src="#" width="100%" height="300"></iframe>
                     </div>
                 </div>
+                <div class=".offset-md-9 text-right">
+                <button type="button" class="btn btn-warning ">Pendiente</button>
+                <button type="button" class="btn btn-success ">Atendido</button>
+                </div>          
             </div>
         </div>
     </div>

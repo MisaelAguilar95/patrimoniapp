@@ -74,7 +74,8 @@ class Inicio extends CI_Controller {
 	private function principal(){		
 		$data = $this->basicas();
 		//$data['tabla'] = 'dbo.documentos';
-		$data['consulta'] = "select * from dbo.documentos where remitente in('".$this->session->email."') OR (destinatario= '".$this->session->email."')";
+		$data['consulta'] = "select * from dbo.documentos where remitente in('".$this->session->email."')
+		OR (destinatario= '".$this->session->email."')";
 		$data['datos'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
 		$this->load->view('inicio/inicio',$data);
 		$this->load->view('footer');
@@ -197,7 +198,7 @@ class Inicio extends CI_Controller {
 		//verificamos la carga del archivo
 		if($this->upload->do_upload('cargar_pdf')){
 			$_POST['pdf'] = $this->upload->data()['file_name'];
-			$_POST['estatus'] = 'enviado';
+			//$_POST['estatus'] = 'enviado';
 			$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'documentos'));
 			if($res['ban']){
 				$this->principal();

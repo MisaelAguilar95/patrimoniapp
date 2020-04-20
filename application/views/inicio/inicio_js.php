@@ -6,7 +6,8 @@ $(document).ready(function() {
     //crear tabla
     var icons = function(cell, formatterParams){
         return "<div class='btx_ver btn btn-light btn-sm'  href='inicio/ver' ide='"+cell.getRow().getData().id+"' id='ver' title='Ver'><i class='fa fa-eye'></i></div> \
-        <div class='btx_turnar btn btn-dark btn-sm' ide='"+cell.getRow().getData().id+"' id='turnar' title='Turnar'><i class='fas fa-exchange'></i></div>\
+        <div class='btn btn-secondary btn-sm' ide='"+cell.getRow().getData().id+"' id='editar' title='Editar'><i class='fas fa-edit'></i></div> \
+            <div class='btx_turnar btn btn-dark btn-sm' ide='"+cell.getRow().getData().id+"' id='turnar' title='Turnar'><i class='fas fa-exchange'></i></div>\
                 <div class='btn btn-secondary btn-sm' ide='"+cell.getRow().getData().id+"' id='enviar' title='Enviar'><i class='fas fa-share'></i></div> ";
                // <div class='btx_eliminar btn btn-danger btn-sm text-white' ide='"+cell.getRow().getData().id+"' id='eliminar' title='Eliminar'><i class='fas fa-trash'></i></div>";
     };

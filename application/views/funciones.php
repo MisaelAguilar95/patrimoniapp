@@ -42,4 +42,17 @@
         focusConfirm: false,
       })
   }
+
+  function modal_html(titulo,html){
+    Swal.fire({
+        title: titulo,
+        icon: '',
+        html:html,
+        showCloseButton: false,
+        showCancelButton: false,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        focusConfirm: false,
+      })
+  }
 </script>

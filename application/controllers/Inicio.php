@@ -74,11 +74,35 @@ class Inicio extends CI_Controller {
 	private function principal(){		
 		$data = $this->basicas();
 		//$data['tabla'] = 'dbo.documentos';
-		$data['consulta'] = "select * from dbo.documentos where remitente in('".$this->session->email."')
-		OR (destinatario= '".$this->session->email."')";
+		$data['consulta'] = "SELECT
+								DOC.id,
+								DOC.num_doc,
+								SEG.remitente,
+								SEG.destinatario,
+								DOC.asunto,
+								DOC.fecha_limite,
+								SEG.estatus_r as estatus
+							FROM
+								dbo.documentos DOC
+							LEFT JOIN seguimiento SEG ON SEG.id_seguimiento = DOC.id 
+							WHERE SEG.remitente in ('".$this->session->email."')
+							UNION ALL
+							SELECT
+							DOC.id,
+							DOC.num_doc,
+								SEG.remitente,
+								SEG.destinatario,
+								DOC.asunto,
+								DOC.fecha_limite,
+								SEG.estatus_d as estatus
+							FROM
+								dbo.documentos DOC
+							LEFT JOIN seguimiento SEG ON SEG.id_seguimiento = DOC.id 
+							WHERE SEG.destinatario in ('".$this->session->email."')";
 		$data['datos'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
 		$this->load->view('inicio/inicio',$data);
 		$this->load->view('footer');
+		$this->load->view('funciones');
 		$this->load->view('inicio/inicio_js',$data);
 		
 	}
@@ -93,9 +117,10 @@ class Inicio extends CI_Controller {
 		//var_dump($data['oficio']);
 		//$data['tipos_documento'] = $this->crea_select($resultado);
 		$data = $this->basicas();
-		$data['tabla'] = 'documentos';
+		$data['tabla'] = 'dbo.vw_documentos';
 		$data['condicion'] = array('id'=>$id);
-		$data['oficio'] = json_encode(json_decode($this->api->post('consulta_unica', $data)->response)->data[0]);
+		$data['oficio'] = json_encode(json_decode($this->api->post('consulta_unica', $data)->response)->data);
+		//var_dump($data['oficio']);
 		$this->load->view('inicio/ver',$data);
 		$this->load->view('footer');
 		$this->load->view('inicio/ver_js',$data);
@@ -106,10 +131,10 @@ class Inicio extends CI_Controller {
 		//$data['tabla'] = 'dbo.c_destino';
 		//$data['campo_orden'] = 'nombre';
 		$data = $this->basicas();
-		$data['consulta'] = "SELECT id_tipo_documento as id ,nombre as nombre FROM catalogos.c_tipos_documento order by nombre ";
+		$data['consulta'] = "SELECT id ,nombre as nombre FROM catalogos.c_tipos_documento order by nombre ";
 		$nombre = json_decode($this->api->post('/ejecuta',$data)->response)->data;
 		$data['tipos_documento'] = $this->crea_select($nombre);
-		$data['consulta'] = "SELECT id,gerencia as nombre FROM dbo.c_destino order by gerencia ";
+		$data['consulta'] = "SELECT id,gerencia as nombre FROM catalogos.c_destino order by gerencia ";
 		$gerencias = json_decode($this->api->post('/ejecuta',$data)->response)->data;
 		$data['gerencia_destino'] = $this->crea_select($gerencias);
 		$this->load->library('componentes');
@@ -150,43 +175,12 @@ class Inicio extends CI_Controller {
 		$this->load->view('perfiles/perfiles_js',$data);
 	}
 
-	public function form(){
-		$datos = $_POST;
-		
-		$this->load->view('pruebaform');
-		$this->load->view('footer');
-		// $data['menu'] = $this->componentes->menu();
-		// $data['apps'] = $this->componentes->apps();
-		// $data['noti'] = $this->componentes->notificaciones();
-		// $data['card'] = $this->componentes->card();
-		// $this->load->view('header',$data);
-	}
 
 	private function login(){
 		$this->load->view('login/login');
 	}
 
-	public function conectar(){
-		$par['usuario'] = $_GET['usuario'];
-		$par['password'] = $_GET['password'];
-		$this->api = new RestClient();
-		var_dump($this->api->post('http://127.0.0.1/api_rest/autorizacion/inicio', 'POST', $par));
-	}
-	public function insertar(){
-		if($_POST['asunto'] != ''|| $_POST['num_exp'] != ''|| $_POST['fecha_emision'] != ''||
-			$_POST['fecha_limite'] != ''|| $_POST['remitente'] != ''|| $_POST['destinatario'] != ''){
-			$_POST['fecha_creacion'] = date('Y-m-d');
-			$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'documentos'));
-			if($res['ban'])
-				$this->response(array('msg'=>true));
-			else
-				$this->response(array('msg'=>false,'error'=>$res['error']));
-		}
-		else{
-			$this->response(array('msg'=>false,'error'=>'Error al llenar el formulario'));
-		}		
-	}
-	//Funcion para guadar los datos de un empleado
+
 	public function save(){
 		//cargamos configuraciones
 		$config['upload_path'] = './frontend/pdf/';
@@ -196,13 +190,23 @@ class Inicio extends CI_Controller {
 		//Cragamos libreria necesaria
 		$this->load->library('upload', $config);
 		//verificamos la carga del archivo
+		
 		if($this->upload->do_upload('cargar_pdf')){
 			$_POST['pdf'] = $this->upload->data()['file_name'];
-			//$_POST['estatus'] = 'enviado';
 			$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'documentos'));
+			
 			if($res['ban']){
-				$this->principal();
-				header('Location: '.base_url().'inicio');
+				$id_insertado = $res['id_insertado'];
+				$data['remitente'] = $_POST['remitente'];
+				$data['destinatario'] = $_POST['destinatario'];
+				$data['id_seguimiento'] = $id_insertado;
+				$res2 = $this->api->post('/insertar',array('datos'=>$data,'tabla'=>'seguimiento'));
+				if($res2['ban']){
+					$this->principal();
+				}
+				else{
+					$this->response(array('ban'=>false,'msg'=>'Error al enviar','error'=>$res['error']));
+				}
 			}
 			else{
 				$this->response(array('ban'=>false,'msg'=>'Error al enviar','error'=>$res['error']));
@@ -211,29 +215,20 @@ class Inicio extends CI_Controller {
 		else{
 			$this->response(array('ban'=>false,'msg'=>'No existe Documento','error'=>$this->upload->display_errors()));
 		}
-	}
 	
-	public function actualizar(){
-		if($_POST['documento'] != ''){
-			$res = $this->api->post('/actualizar',array('datos'=>array('documento'=>$_POST['documento']),'tabla'=>'dbo.documentos','condicion'=>array('id'=>$_POST['id'])));
-			if($res['ban'])
-				$this->response(array('msg'=>true));
-			else
-				$this->response(array('msg'=>false,'error'=>$res['error']));
+	}
+
+	
+	public function turnar(){
+		if(isset($_POST)){
+			$_POST['remitente'] = $this->session->email;
+			$_POST['estatus_r'] = 'Turnado';
+			$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'seguimiento'));
+			if(!$res['ban']){
+				$this->response(array('ban'=>false,'msg'=>'Error al enviar','error'=>$res['error']));
+			}
 		}
-	}
-
-	public function elimina(){
-		$res = $this->api->post('/eliminar',array('datos'=>$_POST,'tabla'=>'dbo.documentos'));
-		if($res['ban'])
-			$this->response(array('msg'=>true));
-		else
-			$this->response(array('msg'=>false,'error'=>$res['error']));
-	}
-
-
-	private function respuesta($data){
-		var_dump($data->response);
+		$this->principal();
 	}
 
 }

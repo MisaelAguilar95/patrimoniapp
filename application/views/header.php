@@ -72,7 +72,6 @@
     <link rel="stylesheet" media="screen, print" href="<?=base_url()?>frontend/css/toastr.css">
     <!-- TABULATOR -->
     <link href="<?=base_url()?>frontend/css/tabulator.css" rel="stylesheet">
-    <link href="<?=base_url()?>frontend/css/select2.css" rel="stylesheet">
 </head>
 <body>
 	<script>

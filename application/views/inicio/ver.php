@@ -8,12 +8,12 @@
         </div>
         <div id="pest1" class="collapse show" data-parent="#accordion">
             <div class="card-body bg-gray-dark">
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-2 offset-md-10">
                         <label class="form-label" for="fechaemision">Estatus:</label>
                         <input class="form-control text-center"  name="estatus"value="<?php echo date("Y-m-d");?> " readonly>
                     </div>
-                </div>
+                </div> -->
                 <div class="row m-t-10">
                     <div class="col-md-2 offset-md-10">
                         <label class="form-label" for="fechaemision">Fecha de Recepción</label>

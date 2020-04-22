@@ -79,9 +79,9 @@
                             <input type="file" name="cargar_pdf" id="cargar_pdf"  class="custom-file-input">
                             
                         </div>
-                        <div class="offset-md-9 col-md-3 text-right">
+                       <!--  <div class="offset-md-9 col-md-3 text-right">
                             <br><button id="btn_enviar" class=" btn btn-success"> Enviar</button>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

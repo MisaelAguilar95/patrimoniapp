@@ -175,11 +175,9 @@ class Inicio extends CI_Controller {
 		$this->load->view('perfiles/perfiles_js',$data);
 	}
 
-
 	private function login(){
 		$this->load->view('login/login');
 	}
-
 
 	public function save(){
 		//cargamos configuraciones
@@ -218,7 +216,6 @@ class Inicio extends CI_Controller {
 	
 	}
 
-	
 	public function turnar(){
 		if(isset($_POST)){
 			$_POST['remitente'] = $this->session->email;
@@ -230,5 +227,32 @@ class Inicio extends CI_Controller {
 		}
 		$this->principal();
 	}
+	
+	public function atendido(){
+		if(isset($_POST)){
+			$_POST['remitente'] = $this->session->email;
+			$_POST['estatus_r'] = 'Atendido';
+			$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'seguimiento'));
+			if(!$res['ban']){
+				$this->response(array('ban'=>false,'msg'=>'Error al enviar','error'=>$res['error']));
+			}
+		}
+		$this->principal();
+	}
+	
+	public function contestar(){
+		$data = $this->basicas();
+		$data['consulta'] = "SELECT id ,nombre as nombre FROM catalogos.c_tipos_documento order by nombre ";
+		$nombre = json_decode($this->api->post('/ejecuta',$data)->response)->data;
+		$data['tipos_documento'] = $this->crea_select($nombre);
+		$data['consulta'] = "SELECT id,gerencia as nombre FROM catalogos.c_destino order by gerencia ";
+		$gerencias = json_decode($this->api->post('/ejecuta',$data)->response)->data;
+		$data['gerencia_destino'] = $this->crea_select($gerencias);
+		$this->load->library('componentes');
+		$this->load->view('nuevo/nuevo',$data);
+		$this->load->view('footer');
+		$this->load->view('nuevo/nuevo_js',$data);
+	}
+
 
 }

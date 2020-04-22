@@ -6,8 +6,9 @@ $(document).ready(function() {
     //crear tabla
     var icons = function(cell, formatterParams){
         return "<div class='btx_ver btn btn-light btn-sm'  href='inicio/ver' ide='"+cell.getRow().getData().id+"' id='ver' title='Ver'><i class='fa fa-eye'></i></div> \
+                <div class='btx_atendido btn btn-success btn-sm' ide='"+cell.getRow().getData().id+"' id='atendido' title='Atendido'><i class='fas fa-check'></i></div>\
                 <div class='btx_turnar btn btn-dark btn-sm' ide='"+cell.getRow().getData().id+"' id='turnar' title='Turnar'><i class='fas fa-exchange'></i></div>\
-                <div class='btn btn-secondary btn-sm' ide='"+cell.getRow().getData().id+"' id='contestar' title='Contestar'><i class='fas fa-share'></i></div> ";
+                <div class='btx_contestar btn btn-secondary btn-sm' href='inicio/contestar' ide='"+cell.getRow().getData().id+"' id='contestar' title='Contestar'><i class='fas fa-share'></i></div> ";
                 //<div class=' btx_editar btn btn-secondary btn-sm' href='inicio/editar' ide='"+cell.getRow().getData().id+"' id='editar' title='Editar'><i class='fas fa-edit'></i></div> 
                 // <div class='btx_eliminar btn btn-danger btn-sm text-white' ide='"+cell.getRow().getData().id+"' id='eliminar' title='Eliminar'><i class='fas fa-trash'></i></div>";
     };
@@ -42,12 +43,6 @@ $(document).ready(function() {
     //         modal(act,id);
     // });
 
-     $('body').on('click','.btx_eliminar',function(){
-        let id = $(this).attr('ide');
-       console.log('elimina',id);
-       location.href = '<?=base_url()?>inicio/elimina/'+id;
-    })
-
     //mostrar modal de turnado
     $('body').on('click','.btx_turnar',function(){
         let id = $(this).attr('ide');
@@ -60,6 +55,19 @@ $(document).ready(function() {
         '</div></div><div class="row m-t-10"><div class="col-md-12 text-right"><button type="submit" id="btn_turnar" type="button" class="btn btn-success"> Enviar</button>' +
         '<button type="button" class="btn btn-danger btx_regresar m-l-10">Cancelar</button></div></div></div></form>';
        modal_html('Turnar Documento',html);      
+    })
+
+    $('body').on('click','.btx_atendido',function(){
+        let id = $(this).attr('ide');
+        let title=$(this).attr('ide');
+       
+       let html = '<?=trim(form_open_multipart('Inicio/atendido'))?>' +
+         '<input style="display:none" name="id_seguimiento" value="'+id+'"><div class="text-left">' +
+        '<div class="row m-t-10"><div class="col-md-12">' +
+        '<label class="form-label" for="nota">Notas :</label><textarea class="form-control" placeholder="Escriba una nota" name="notas" rows="3" maxlength="200"></textarea>' +
+        '</div></div><div class="row m-t-10"><div class="col-md-12 text-right"><button type="submit" id="btn_atendido" type="button" class="btn btn-success"> Aceptar</button>' +
+        '<button type="button" class="btn btn-danger btx_regresar m-l-10">Cancelar</button></div></div></div></form>';
+       modal_html('Marcar como atendido ?',html);      
     })
 
     //botonazo de modal para regresar
@@ -100,14 +108,33 @@ $(document).ready(function() {
         location.href = '<?=base_url()?>inicio/ver/'+ide;
     })
 
-    $('body').on('click','.btx_editar',function(){
+    $('body').on('click','.btx_contestar',function(){
         let ide = $(this).attr('ide');
-        location.href = '<?=base_url()?>inicio/editar/'+ide;
+        location.href = '<?=base_url()?>inicio/contestar/';
     })
 
     
 
 });
+/* $("form").submit(function(e){
+        e.preventDefault();    
+        var formData = new FormData(this);
+        let url = '<?=base_url()?>inicio/save';
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: formData,
+            cache: false,
+            success: function (data) {
+                if(JSON.parse(data).ban){
+                    alert('',JSON.parse(data).msg,'success');
+                }
+                else{
+                    alert('',JSON.parse(data).msg,'error');
+                }
+            }
+        });
+    }) */
 
 </script>
 

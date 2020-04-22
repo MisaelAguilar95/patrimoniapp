@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
     $(document).ready(function(){
         
         let valores = <?=($oficio)?>;
@@ -16,4 +16,4 @@
             $('iframe[name=oficio_pdf]').attr('src','<?=base_url()?>frontend/pdf/'+valores.pdf)
         }
     })
-</script>
+</script> -->

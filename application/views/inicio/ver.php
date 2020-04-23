@@ -41,9 +41,9 @@
                     </div>
                 </div>
                 <div class="row m-t-10">
-                    <div class="col-md-12">
+                <div class="col-md-12">
                         <label for="asunto">Asunto</label>
-                        <input type="text" class="form-control"maxlength="70" type="text" readonly name="asunto" required>
+                        <input type="text" class="form-control"maxlength="70" type="text" placeholder="Ingrese el asunto del documento" name="asunto" required>
                     </div>
                 </div>
                 <div class="row m-t-10">
@@ -62,6 +62,20 @@
                     <div class="col-md-3">
                         <label class="form-label" for="area">Gerencia destino</label>
                         <input class="form-control"  name="area" readonly>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div class="col-md-6">
+                    <div class="form-group">
+                            <label class="form-label" for="indicacion">Selecciona la indicacion:</label>
+                            <select id="indicacion" class="form-control" name="indicacion">
+                                <?=$tipo_indicacion?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                    <label class="form-label">Tercero:</label>
+                        <input name='tercero' placeholder="Tercero" type='email' class="form-control" >
                     </div>
                 </div>
                 <div class="row m-t-10">

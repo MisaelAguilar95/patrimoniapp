@@ -65,7 +65,21 @@
                         <input name='acronimo' placeholder="Ingrese Área/Unidad Responsable" type='text' class="form-control" >
                     </div>
                 </div>
-                <div class="row">
+                <div class="row m-t-10">
+                    <div class="col-md-6">
+                    <div class="form-group">
+                            <label class="form-label" for="indicacion">Selecciona la indicacion:</label>
+                            <select id="indicacion" class="form-control" name="indicacion">
+                                <?=$tipo_indicacion?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                    <label class="form-label">Tercero:</label>
+                        <input name='tercero' placeholder="Tercero" type='email' class="form-control" >
+                    </div>
+                </div>
+                <div class="row m-t-10">
                     <div class="col-md-12">
                         <label class="form-label" for="nota">Nota</label>
                         <textarea class="form-control" placeholder="Escriba una nota" name="nota" rows="5" maxlength="60"></textarea>
@@ -88,14 +102,3 @@
         </div>
     </div>
 </div>
-
-
-
-  <!-- etiqueta de entrada de archivo -->
-  
-
-  
-
-
-
- 

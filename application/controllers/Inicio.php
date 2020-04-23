@@ -236,7 +236,7 @@ class Inicio extends CI_Controller {
 	public function atendido(){
 		if(isset($_POST)){
 			$_POST['remitente'] = $this->session->email;
-			$_POST['estatus_r'] = 'Atendido';
+			$_POST['estatus_r'] = '6';
 			$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'seguimiento'));
 			if(!$res['ban']){
 				$this->response(array('ban'=>false,'msg'=>'Error al enviar','error'=>$res['error']));

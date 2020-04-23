@@ -3,7 +3,7 @@
     <div class="card">
         <div class="card-header">
             <a href="#" class="card-title collapsed bg-primary text-white"  data-target="#pest1" aria-expanded="false"><br>
-                <i class="fas fa-file width-2"></i>Nuevo Documento
+                <i class="fas fa-file width-2"></i> Documento
             </a>
         </div>
         <div id="pest1" class="collapse show" data-parent="#accordion">
@@ -67,15 +67,13 @@
                 <div class="row m-t-10">
                     <div class="col-md-6">
                     <div class="form-group">
-                            <label class="form-label" for="indicacion">Selecciona la indicacion:</label>
-                            <select id="indicacion" class="form-control" name="indicacion">
-                                <?=$tipo_indicacion?>
-                            </select>
+                        <label class="form-label" for="tipodoc">Indicación :</label>
+                        <input type="text" class="form-control" readonly name="indicacion" maxlength="10">
                         </div>
                     </div>
                     <div class="col-md-6">
                     <label class="form-label">Tercero:</label>
-                        <input name='tercero' placeholder="Tercero" type='email' class="form-control" >
+                        <input name='tercero' placeholder="Tercero" readonly type='email' class="form-control" >
                     </div>
                 </div>
                 <div class="row m-t-10">

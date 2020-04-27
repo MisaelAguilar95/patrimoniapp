@@ -64,6 +64,9 @@ $(document).ready(function() {
        let html = '<?=trim(form_open_multipart('Inicio/atendido'))?>' +
          '<input style="display:none" name="id_seguimiento" value="'+id+'"><div class="text-left">' +
         '<div class="row m-t-10"><div class="col-md-12">' +
+        '<label class="form-label" for="destinatario">Informar de atendido a :</label>' +
+        '<input class="form-control" placeholder = "Ingrese el correo .."type="email" name="destinatario"></div></div>'+
+        '<div class="row m-t-10"><div class="col-md-12">' +
         '<label class="form-label" for="nota">Notas :</label><textarea class="form-control" placeholder="Escriba una nota" name="notas" rows="3" maxlength="200"></textarea>' +
         '</div></div><div class="row m-t-10"><div class="col-md-12 text-right"><button type="submit" id="btn_atendido" type="button" class="btn btn-success"> Aceptar</button>' +
         '<button type="button" class="btn btn-danger btx_regresar m-l-10">Cancelar</button></div></div></div></form>';

@@ -205,19 +205,20 @@ class Inicio extends CI_Controller {
 				$data['id_seguimiento'] = $id_insertado;
 				$res2 = $this->api->post('/insertar',array('datos'=>$data,'tabla'=>'seguimiento'));
 				if($res2['ban']){
-					$this->principal();
+					header('Location: '.base_url().'inicio/');
+					//$this->principal();
 				}
 				else{
-					$this->response(array('ban'=>false,'msg'=>'Error en el if 1','error'=>$res['error']));
+					$this->response(array('ban'=>false,'msg'=>'Error al enviar #1','error'=>$res['error']));
 				}
 			}
 			else{
-				$this->response(array('ban'=>false,'msg'=>'Error en el if 2','error'=>$res['error']));
-				var_dump($res2);
+				$this->response(array('ban'=>false,'msg'=>'Error al enviar #2','error'=>$res['error']));
+				
 			}
 		}
 		else{
-			$this->response(array('ban'=>false,'msg'=>'No existe Documento','error'=>$this->upload->display_errors()));
+			$this->response(array('msg'=>'No existe Documento','error'=>$this->upload->display_errors()));
 		}
 	
 	}
@@ -231,19 +232,21 @@ class Inicio extends CI_Controller {
 				$this->response(array('ban'=>false,'msg'=>'Error al enviar','error'=>$res['error']));
 			}
 		}
-		$this->principal();
+		header('Location: '.base_url().'inicio/');
+		//$this->principal();
 	}
 	
 	public function atendido(){
 		if(isset($_POST)){
 			$_POST['remitente'] = $this->session->email;
-			$_POST['estatus_r'] = '6';
+			$_POST['estatus_r'] = 6;
 			$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'seguimiento'));
 			if(!$res['ban']){
 				$this->response(array('ban'=>false,'msg'=>'Error al enviar','error'=>$res['error']));
 			}
 		}
-		$this->principal();
+		header('Location: '.base_url().'inicio/');
+		//$this->principal();
 	}
 	
 	public function contestar(){

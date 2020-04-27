@@ -17,7 +17,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="form-label" for="tipodoc">Selecciona el tipo de documento</label>
-                            <select id="tipo_doc_id" class="form-control" name="tipo_doc_id">
+                            <select id="tipo_doc_id" class="form-control" name="tipo_doc_id" required>
                                 <?=$tipos_documento?>
                             </select>
                         </div>
@@ -45,7 +45,7 @@
                    <div class="col-md-4">
                         <div class="form-group">
                             <label class="form-label" for="area">Gerencia destino:</labe>
-                            <select id="area" class="form-control" name="area">
+                            <select id="area" class="form-control" name="area" required>
                                 <?=$gerencia_destino?>
                             </select>
                         </div>
@@ -54,11 +54,11 @@
                 <div class="row">
                     <div class="col-md-4">
                         <label class="form-label" for="remitente">Ingresar Correo del Remitente</label>
-                        <input  class="form-control" placeholder="Ingrese el correo del remitente" name="remitente">
+                        <input  class="form-control" id="remitente" placeholder="Ingrese el correo del remitente" name="remitente" required>
                     </div>
                     <div class="col-md-4">
                         <label class="form-label" for="destinatario">Ingresar Correo del Destinatario</label>
-                        <input class='form-control' placeholder="Ingrese el correo del destinatario" name="destinatario" >
+                        <input class='form-control' id="destinatario" placeholder="Ingrese el correo del destinatario" name="destinatario" required>
                     </div>
                     <div class="form-group col-md-4">
                         <label class="form-label">Área/Unidad Responsable</label>

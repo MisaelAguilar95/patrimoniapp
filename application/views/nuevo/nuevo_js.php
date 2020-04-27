@@ -1,6 +1,6 @@
-<!-- <script>
-
-    $(".multiple-select2").select2({ placeholder: "Seleccionea una o varias personas" });
+ <script>
+/* 
+$(".multiple-select2").select2({ placeholder: "Seleccionea una o varias personas" });
 
     let num_oficio = $("#documento").val();
     let expediente = $("#expediente").val();
@@ -34,6 +34,26 @@
 
     $('input[name=acronimo]').keyup(function(){
         $(this).val($(this).val().toUpperCase())
-    })
+    })  */
+   /*  $('body').on('click','#btn_enviar',function(){
+        
+        $.malert({
+            title: "Please confirm", 
+            body: "Desea eliminar el registro?", 
+            textTrue: "Aceptar", 
+            textFalse: "Cancelar",
+            onSubmit: function (result) {
+                if (result) {
+                    salert('Cambio realizado','Actualizacion de Datos','success')
+                } 
+                else {
+                    salert('Cancelacion realizada','Cancelación','danger')
+                }
+            },
+            onDispose: function () {
+                console.log("modal cerrado")
+            }
+        })
+    })   */
 
-</script> -->
+</script> 

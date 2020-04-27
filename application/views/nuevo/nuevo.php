@@ -53,11 +53,11 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <label class="form-label" for="remitente">Remitente</label>
+                        <label class="form-label" for="remitente">Ingresar Correo del Remitente</label>
                         <input  class="form-control" placeholder="Ingrese el correo del remitente" name="remitente">
                     </div>
                     <div class="col-md-4">
-                        <label class="form-label" for="destinatario">Destinatario</label>
+                        <label class="form-label" for="destinatario">Ingresar Correo del Destinatario</label>
                         <input class='form-control' placeholder="Ingrese el correo del destinatario" name="destinatario" >
                     </div>
                     <div class="form-group col-md-4">
@@ -69,7 +69,7 @@
                     <div class="col-md-6">
                     <div class="form-group">
                             <label class="form-label" for="indicacion">Selecciona la indicacion:</label>
-                            <select id="indicacion" class="form-control" name="indicacion">
+                            <select id="indicacion" class="form-control" name="indicacion" required>
                                 <?=$tipo_indicacion?>
                             </select>
                         </div>
@@ -85,12 +85,11 @@
                         <textarea class="form-control" placeholder="Escriba una nota" name="nota" rows="5" maxlength="60"></textarea>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <br><label class="form-label" for="selec_pdf">Seleccionar PDF</label>
+                <div class="row m-t-10">
+                    <div class="col-md-12 text-center">
                         <div class="custom-file">
-                        <label class="custom-file-label" for="customFile">Cargar PDF</label>
-                            <input type="file" name="cargar_pdf" id="cargar_pdf"  class="custom-file-input">
+                       <!--  <label class="custom-file-label" for="customFile">Cargar PDF</label> -->
+                            <input type="file" name="cargar_pdf" id="cargar_pdf" >
                             
                         </div>
                         <div class="offset-md-9 col-md-3 text-right">

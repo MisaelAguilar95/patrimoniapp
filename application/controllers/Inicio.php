@@ -208,11 +208,12 @@ class Inicio extends CI_Controller {
 					$this->principal();
 				}
 				else{
-					$this->response(array('ban'=>false,'msg'=>'Error al enviar','error'=>$res['error']));
+					$this->response(array('ban'=>false,'msg'=>'Error en el if 1','error'=>$res['error']));
 				}
 			}
 			else{
-				$this->response(array('ban'=>false,'msg'=>'Error al enviar','error'=>$res['error']));
+				$this->response(array('ban'=>false,'msg'=>'Error en el if 2','error'=>$res['error']));
+				var_dump($res2);
 			}
 		}
 		else{

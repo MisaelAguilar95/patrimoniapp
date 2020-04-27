@@ -64,7 +64,7 @@
                                             <div class="row no-gutters">
                                                 <div class="col-lg-12 pl-lg-1 my-2">
                                                     <button id="siguiente" type="button" class="btn btn-block btn-success btn-lg"><i class="ts-20 mr-10 fal fa-arrow-alt-right"></i> Siguiente</button>
-                                                    <button style="display:none;" id="regresar" type="button" class="btn btn-block btn-success btn-lg"><i class="ts-20 mr-10 fal fa-arrow-alt-left"></i> Regresar</button>
+                                                    
                                                     <button style="display:none;" id="js-login-btn" type="button" class="btn btn-block btn-success btn-lg"><i class="ts-20 mr-10 fal fa-sign-in"></i> Iniciar sesión</button>
                                                 </div>
                                             </div>

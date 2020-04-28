@@ -26,7 +26,7 @@ $(document).ready(function() {
             {title:"Destinatario", field:"destinatario", width:180,align:"center",headerFilter:"input"},
             {title:"Asunto", field:"asunto", width:230,align:"center",headerFilter:"input"},
             //{title:"Fecha limite", field:"fecha_limite",width:100,align:"center",headerFilter:"input"},
-            {title:"Fecha Recibido", field:"fecha_emision", width:130,align:"center",headerFilter:"input"},
+            {title:"Fecha Emision", field:"fecha_emision", width:130,align:"center",headerFilter:"input"},
             {title:"Estatus", field:"estatus",width:100,align:"center",headerFilter:"input"},
             {title:"Acciones", formatter:icons, align:"center",width:200}
         ],

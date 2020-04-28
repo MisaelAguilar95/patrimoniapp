@@ -21,14 +21,14 @@ $(document).ready(function() {
         paginationSizeSelector:[5,10,15,20,25,30,40,50],
         columnMinWidth:80,
         columns:[
-            {title:"#Oficio", field:"num_doc", width:180,align:"center",headerFilter:"input"},
-            {title:"Remitente", field:"remitente", width:190,align:"center",headerFilter:"input"},
-            {title:"Destinatario", field:"destinatario", width:190,align:"center",headerFilter:"input"},
-            //{title:"Area destino ", field:"area", width:130,align:"center",headerFilter:"input"},
-            {title:"Asunto", field:"asunto", width:170,align:"center",headerFilter:"input"},
-            {title:"Fecha limite", field:"fecha_limite",width:120,align:"center",headerFilter:"input"},
+            {title:"#Oficio", field:"num_doc", width:140,align:"center",headerFilter:"input"},
+            {title:"Remitente", field:"remitente", width:180,align:"center",headerFilter:"input"},
+            {title:"Destinatario", field:"destinatario", width:180,align:"center",headerFilter:"input"},
+            {title:"Asunto", field:"asunto", width:230,align:"center",headerFilter:"input"},
+            //{title:"Fecha limite", field:"fecha_limite",width:100,align:"center",headerFilter:"input"},
+            {title:"Fecha Recibido", field:"fecha_emision", width:130,align:"center",headerFilter:"input"},
             {title:"Estatus", field:"estatus",width:100,align:"center",headerFilter:"input"},
-            {title:"Acciones", formatter:icons, align:"center",width:250}
+            {title:"Acciones", formatter:icons, align:"center",width:200}
         ],
         
     });

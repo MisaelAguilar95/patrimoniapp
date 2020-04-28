@@ -38,7 +38,7 @@ class Inicio extends CI_Controller {
 		echo json_encode($arr);
 	}
 
-	//funcion para crear un selectg apartir de datos de la base
+	//funcion para crear un select apartir de datos de la base
 	public function crea_select($array,$id=null){
 		$valores = '<option>Selecciona</option>';
 		//$array = json_decode($data);
@@ -81,6 +81,7 @@ class Inicio extends CI_Controller {
 								SEG.destinatario,
 								DOC.asunto,
 								DOC.fecha_limite,
+								DOC.fecha_emision,
 								SEG.estatus_r as estatus
 							FROM
 								dbo.documentos DOC
@@ -95,6 +96,7 @@ class Inicio extends CI_Controller {
 								SEG.destinatario,
 								DOC.asunto,
 								DOC.fecha_limite,
+								DOC.fecha_emision,
 								SEG.estatus_d as estatus
 							FROM
 								dbo.documentos DOC

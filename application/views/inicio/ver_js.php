@@ -11,7 +11,7 @@
         })
         $('textarea').each(function(){
             $(this).val(valores[$(this).attr('name')])
-            $(this).attr('readonly',true)
+            //$(this).attr('readonly',true)
         })
         if(valores.pdf != ''){
             $('iframe[name=oficio_pdf]').attr('src','<?=base_url()?>frontend/pdf/'+valores.pdf)

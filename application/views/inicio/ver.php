@@ -79,7 +79,7 @@
                 <div class="row m-t-10">
                     <div class="col-md-12">
                         <label for=""><b>Notas:</b></label>
-                        <textarea name="notas" class="form-control" rows="10"></textarea>
+                        <textarea name="nota" class="form-control" rows="10"></textarea>
                     </div>
                 </div>
                 <div class="row m-t-10">

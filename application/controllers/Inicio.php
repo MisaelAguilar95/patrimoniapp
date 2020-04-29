@@ -198,7 +198,10 @@ class Inicio extends CI_Controller {
 		
 		if($this->upload->do_upload('cargar_pdf')){
 			$_POST['pdf'] = $this->upload->data()['file_name'];
+			$_POST['remitente'] = $this->session->email;
 			$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'documentos'));
+			$res2 = $this->api->post('/mail',array('mensaje'=>'Haz recibido una notificación, ingresa a : http://187.218.230.37/sasdoc/login/ Para atenderla ',
+				'email_destino'=>$_POST['destinatario'], 'asunto'=>'Notificación de SAS-DOC'));
 			
 			if($res['ban']){
 				$id_insertado = $res['id_insertado'];

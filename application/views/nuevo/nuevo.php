@@ -52,15 +52,11 @@
                     </div>                
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
-                        <label class="form-label" for="remitente">Ingresar Correo del Remitente</label>
-                        <input  class="form-control" id="remitente" placeholder="Ingrese el correo del remitente" name="remitente" required>
-                    </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label class="form-label" for="destinatario">Ingresar Correo del Destinatario</label>
                         <input class='form-control' id="destinatario" placeholder="Ingrese el correo del destinatario" name="destinatario" required>
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-6">
                         <label class="form-label">Área/Unidad Responsable</label>
                         <input name='acronimo' placeholder="Ingrese Área/Unidad Responsable" type='text' class="form-control" >
                     </div>

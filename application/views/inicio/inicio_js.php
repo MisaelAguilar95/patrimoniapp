@@ -35,15 +35,26 @@ $(document).ready(function() {
     });
 
     table.setData(<?=$datos?>);
+    //table.setFilter("estatus", "=", "Recibido");
+    ///BOTONES DE FILTROS///
+    $('body').on('click','.btx_frecibido',function(){
+        table.setFilter("estatus", "=", "Recibido");
+    })
 
+    $('body').on('click','.btx_fenviado',function(){
+        table.setFilter("estatus", "=", "Enviado");
+    })
 
+    $('body').on('click','.btx_fturnado',function(){
+        table.setFilter("estatus", "=", "Turnado");
+    })
 
-    // $('body').on('click','#editar',function(){
-    //     let act = $(this).parent().parent().find('span[name=actividad]').text();
-    //         let id = $(this).attr('ide');
-    //         modal(act,id);
-    // });
+    $('body').on('click','.btx_fatendido',function(){
+        table.setFilter("estatus", "=", "Atendido");
+    })
 
+    
+    ///BOTONES DE LA TABLA////
     //mostrar modal de turnado
     $('body').on('click','.btx_turnar',function(){
         let id = $(this).attr('ide');
@@ -78,48 +89,20 @@ $(document).ready(function() {
     $('body').on('click','.btx_regresar',function(){
         swal.close();
     })
-
-    // $('body').on('click','#btn_turnar',function(){
-    //     let id_t = $('input[name=id_t]').val();
-    //     let destinatario_t = $('input[name=destinatario_t]').val();
-    //     let obs_t = $('textarea[name=nota_t]').val();
-
-    // })
-    
-   $(document.body).on('click','.eliminar',()=>{
-        
-        $.malert({
-            title: "Please confirm", 
-            body: "Desea eliminar el registro?", 
-            textTrue: "Aceptar", 
-            textFalse: "Cancelar",
-            onSubmit: function (result) {
-                if (result) {
-                    salert('Cambio realizado','Actualizacion de Datos','success')
-                } 
-                else {
-                    salert('Cancelacion realizada','Cancelación','danger')
-                }
-            },
-            onDispose: function () {
-                console.log("modal cerrado")
-            }
-        })
-    })  
     
     $('body').on('click','.btx_ver',function(){
         let ide = $(this).attr('ide');
         location.href = '<?=base_url()?>inicio/ver/'+ide;
     })
 
-    $('body').on('click','.btx_contestar',function(){
-        let ide = $(this).attr('ide');
-        location.href = '<?=base_url()?>inicio/contestar/';
-    })
-
-    
-
 });
+
+// $('body').on('click','#btn_turnar',function(){
+    //     let id_t = $('input[name=id_t]').val();
+    //     let destinatario_t = $('input[name=destinatario_t]').val();
+    //     let obs_t = $('textarea[name=nota_t]').val();
+
+    // })
 /* $("form").submit(function(e){
         e.preventDefault();    
         var formData = new FormData(this);
@@ -138,7 +121,28 @@ $(document).ready(function() {
                 }
             }
         });
-    }) */
+    })
+    $(document.body).on('click','.eliminar',()=>{
+        
+        $.malert({
+            title: "Please confirm", 
+            body: "Desea eliminar el registro?", 
+            textTrue: "Aceptar", 
+            textFalse: "Cancelar",
+            onSubmit: function (result) {
+                if (result) {
+                    salert('Cambio realizado','Actualizacion de Datos','success')
+                } 
+                else {
+                    salert('Cancelacion realizada','Cancelación','danger')
+                }
+            },
+            onDispose: function () {
+                console.log("modal cerrado")
+            }
+        })
+    })   
+    */
 
 </script>
 

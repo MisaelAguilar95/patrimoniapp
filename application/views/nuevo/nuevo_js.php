@@ -1,4 +1,7 @@
  <script>
+     function cuenta(){
+       document.forms[0].email.value=document.forms[0].nota.value.length
+}
 /* 
 $(".multiple-select2").select2({ placeholder: "Seleccionea una o varias personas" });
 

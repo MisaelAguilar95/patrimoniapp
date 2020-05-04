@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-md-4">
                         <label class="form-label" for="anexos">N° de Anexos</label>
-                        <input  name ='num_anexos'type="number" placeholder="Ingrese el N. de Anexos" min="1" pattern="^[0-9]+"class="form-control">
+                        <input  name ='num_anexos'type="number" placeholder="0" min="1" pattern="^[0-9]+"class="form-control">
                     </div>
                 </div>
                 <br><div class="row">
@@ -49,12 +49,13 @@
                                 <?=$gerencia_destino?>
                             </select>
                         </div>
+
                     </div>                
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <label class="form-label" for="destinatario">Ingresar Correo del Destinatario</label>
-                        <input class='form-control' id="destinatario" placeholder="Ingrese el correo del destinatario" name="destinatario" required>
+                        <input class='form-control' id="destinatario" placeholder="Ingrese el correo del destinatario" name="destinatario" type="email" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label class="form-label">Área/Unidad Responsable</label>
@@ -71,14 +72,15 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                    <label class="form-label">Tercero:</label>
+                    <label class="form-label">Turnar a un Tercero:</label>
                         <input name='tercero' placeholder="Tercero" type='email' class="form-control" >
                     </div>
                 </div>
                 <div class="row m-t-10">
-                    <div class="col-md-12">
-                        <label class="form-label" for="nota">Nota</label>
-                        <textarea class="form-control" placeholder="Escriba una nota" name="nota" rows="5" maxlength="60"></textarea>
+                   <div class="col-md-12">
+                        <label class="form-label" for="nota">Notas :</label>
+                        <br><input class ="text-right" type="text"  style="border-width:0; background-color:#dad9db;" name=email size=3 readonly> <label for="caracteres">/600</label>
+                        <textarea class="form-control m-t-10" placeholder="Escriba una nota" name="nota" rows="5" maxlength="500"onKeyDown="cuenta()" onKeyUp="cuenta()"></textarea>
                     </div>
                 </div>
                 <div class="row m-t-10">
@@ -97,3 +99,6 @@
         </div>
     </div>
 </div>
+
+
+

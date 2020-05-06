@@ -11,12 +11,12 @@
             <div class="card-body bg-gray-dark">
                 <div class="row">
                 <div class="col-md-4">
-                        <label class="form-label" for="documento">Numero de Documento</label>
+                        <label class="form-label" for="documento">Numero de Documento: *</label>
                         <input type="text" class="form-control" placeholder="Ingrese el número de Documento" name="num_doc" maxlength="20">
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="form-label" for="tipodoc">Selecciona el tipo de documento</label>
+                            <label class="form-label" for="tipodoc">Selecciona el tipo de documento: *</label>
                             <select id="tipo_doc_id" class="form-control" name="tipo_doc_id" required>
                                 <?=$tipos_documento?>
                             </select>
@@ -29,7 +29,7 @@
                 </div>
                 <br><div class="row">
                     <div class="col-md-12">
-                        <label for="asunto">Asunto</label>
+                        <label for="asunto">Asunto: *</label>
                         <input type="text" class="form-control"maxlength="70" type="text" placeholder="Ingrese el asunto del documento" name="asunto" required>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                 </div> 
                    <div class="col-md-4">
                         <div class="form-group">
-                            <label class="form-label" for="area">Gerencia destino:</labe>
+                            <label class="form-label" for="area">Gerencia destino: *</labe>
                             <select id="area" class="form-control" name="area" required>
                                 <?=$gerencia_destino?>
                             </select>
@@ -54,18 +54,18 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <label class="form-label" for="destinatario">Ingresar Correo del Destinatario</label>
+                        <label class="form-label" for="destinatario">Ingresar Correo del Destinatario: *</label>
                         <input class='form-control' id="destinatario" placeholder="Ingrese el correo del destinatario" name="destinatario" type="email" required>
                     </div>
                     <div class="form-group col-md-6">
-                        <label class="form-label">Área/Unidad Responsable</label>
+                        <label class="form-label">Área/Unidad Responsable:</label>
                         <input name='acronimo' placeholder="Ingrese Área/Unidad Responsable" type='text' class="form-control" >
                     </div>
                 </div>
                 <div class="row m-t-10">
                     <div class="col-md-6">
                     <div class="form-group">
-                            <label class="form-label" for="indicacion">Selecciona la indicacion:</label>
+                            <label class="form-label" for="indicacion">Selecciona la indicacion: *</label>
                             <select id="indicacion" class="form-control" name="indicacion" required>
                                 <?=$tipo_indicacion?>
                             </select>

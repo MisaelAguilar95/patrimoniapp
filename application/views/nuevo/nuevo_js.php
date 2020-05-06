@@ -38,7 +38,7 @@ $(".multiple-select2").select2({ placeholder: "Seleccionea una o varias personas
     $('input[name=acronimo]').keyup(function(){
         $(this).val($(this).val().toUpperCase())
     })  */
-   /*  $('body').on('click','#btn_enviar',function(){
+    /*  $('body').on('click','#btn_enviar',function(){
         
         $.malert({
             title: "Please confirm", 
@@ -57,6 +57,21 @@ $(".multiple-select2").select2({ placeholder: "Seleccionea una o varias personas
                 console.log("modal cerrado")
             }
         })
-    })   */
+    })   
 
+    $('input[type="file"]').on('change', function(){
+//console.log($(this)[0].files[0].size);
+if ($(this).val() !='') {
+    if($(this)[0].files[0].size > 1048576){
+        console.log("El documento excede el tamaño máximo");
+        $('#modal-title').text('¡Precaución!');
+        $('#modal-msg').html("Se solicita un archivo no mayor a 1MB. Por favor verifica.");
+        $("#modal-gral").modal();           
+        $(this).val('');
+    }else{
+        $("#modal-gral").hide();                    
+    }   
+}
+});
+ */
 </script> 

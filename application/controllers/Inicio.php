@@ -216,15 +216,22 @@ class Inicio extends CI_Controller {
 				}
 				else{
 					$this->response(array('ban'=>false,'msg'=>'Error al enviar #1','error'=>$res['error']));
+					
 				}
 			}
 			else{
-				$this->response(array('ban'=>false,'msg'=>'Error al enviar #2','error'=>$res['error']));
+				echo'<script type="text/javascript">
+					alert("ERROR al enviar: Llenar los campos obligatorios, marcados con un : *");
+					window.location.href="nuevo_documento";
+   				</script>';
 				
 			}
 		}
 		else{
-			$this->response(array('msg'=>'No existe Documento','error'=>$this->upload->display_errors()));
+			echo'<script type="text/javascript">
+					alert("ERROR al enviar: Seleccionar un documento PDF");
+					window.location.href="nuevo_documento";
+   				</script>';
 		}
 	
 	}

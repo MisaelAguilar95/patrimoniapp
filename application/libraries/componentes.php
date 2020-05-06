@@ -77,11 +77,6 @@ class Componentes {
 							<span class="nav-link-text">Nuevo Documento</span>
 						</a>
 					</li>
-					<li class="'.$documentos_m_recibido.'">
-						<a href="'.base_url().'inicio/nuevo_ext" title="Crear Nuevo Documento Externo">
-							<span class="nav-link-text">Recibir Documento Externo</span>
-						</a>
-					<li>
 				</ul>
             </li>
              <li class="nav-title">Herramientas</li>

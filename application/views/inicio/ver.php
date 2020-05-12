@@ -73,7 +73,7 @@
                     </div>
                     <div class="col-md-6">
                     <label class="form-label">Tercero:</label>
-                        <input name='tercero' placeholder="Tercero" readonly type='email' class="form-control" >
+                        <input name='tercer' placeholder="Tercero" readonly type='email' class="form-control" >
                     </div>
                 </div>
                 <div class="row m-t-10">
@@ -86,6 +86,12 @@
                     <div class="col-md-12">
                         <label for=""><b>Documento Adjunto</b>:</label>
                         <iframe name="oficio_pdf" src="#" width="100%" height="300"></iframe>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div class="col-md-12">
+                        <label for=""><b>Anexo</b>:</label>
+                        <iframe name="anexo_pdf" src="#" width="100%" height="300"></iframe>
                     </div>
                 </div>
                 <div class="row m-t-10">

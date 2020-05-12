@@ -1,7 +1,15 @@
  <script>
      function cuenta(){
        document.forms[0].email.value=document.forms[0].nota.value.length
-}
+    }
+    $('input[ name ="num_anexos"]').on('change', function(){
+        if ($(this).val() >=1) {
+            document.getElementById('mostrarOcultar').style.display="block";
+            }
+            else{
+                document.getElementById('mostrarOcultar').style.display="none";
+            }
+    });
 /* 
 $(".multiple-select2").select2({ placeholder: "Seleccionea una o varias personas" });
 

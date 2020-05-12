@@ -24,7 +24,13 @@
                     </div>
                     <div class="col-md-4">
                         <label class="form-label" for="anexos">N° de Anexos</label>
-                        <input  name ='num_anexos'type="number" placeholder="0" min="1" pattern="^[0-9]+"class="form-control">
+                        <input  name ='num_anexos'type="number" placeholder="0" min="1" pattern="^[0-9]"class="form-control">
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div id="mostrarOcultar" class="col-md-12 text-center custom-file" style="display:none">
+                        <label class="form-label" for="anexos">Cargar Anexos</label>
+                        <br><input type="file" name="carga_anexo" >
                     </div>
                 </div>
                 <br><div class="row">
@@ -72,7 +78,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                    <label class="form-label">Turnar a un Tercero:</label>
+                        <label class="form-label">Turnar a un Tercero:</label>
                         <input name='tercero' placeholder="Tercero" type='email' class="form-control" >
                     </div>
                 </div>

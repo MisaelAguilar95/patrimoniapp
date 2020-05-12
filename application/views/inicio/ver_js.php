@@ -15,6 +15,10 @@
         })
         if(valores.pdf != ''){
             $('iframe[name=oficio_pdf]').attr('src','<?=base_url()?>frontend/pdf/'+valores.pdf)
+            
+        }
+        if(valores.carga_anexo != ''){
+            $('iframe[name=anexo_pdf]').attr('src','<?=base_url()?>frontend/pdf/'+valores.carga_anexo)
         }
 
         $('body').on('click','.btx_regresar',function(){

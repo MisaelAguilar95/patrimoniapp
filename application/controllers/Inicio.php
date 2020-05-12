@@ -40,7 +40,7 @@ class Inicio extends CI_Controller {
 
 	//funcion para crear un select apartir de datos de la base
 	public function crea_select($array,$id=null){
-		$valores = '<option>Selecciona</option>';
+		$valores = '<option value="">Selecciona</option>';
 		//$array = json_decode($data);
         foreach ($array as $valor) {
             if ($id != null && $valor->id == $id)
@@ -124,7 +124,7 @@ class Inicio extends CI_Controller {
 		$data['tabla'] = 'dbo.vw_documentos';
 		$data['condicion'] = array('id'=>$id);
 		$data['oficio'] = json_encode(json_decode($this->api->post('consulta_unica', $data)->response)->data);
-		var_dump($data['oficio']);
+		//var_dump($data['oficio']);
 		$this->load->view('inicio/ver',$data);
 		$this->load->view('footer');
 		$this->load->view('inicio/ver_js',$data);
@@ -186,51 +186,55 @@ class Inicio extends CI_Controller {
 		$this->load->view('login/login');
 	}
 
-	public function save(){
-		//cargamos configuraciones de PDF
-		$config['upload_path'] = './frontend/pdf/';
-        $config['allowed_types'] = 'pdf';
-        $config['max_size'] = 1000;
-		$config['file_name'] = md5(date('Y-m-d h:i:s'));
+	private function carga_archivo($nombre,$tam,$tipo,$path,$acro){
+		$config['upload_path'] = $path;
+        $config['allowed_types'] = $tipo;
+        $config['max_size'] = $tam;
+		$config['file_name'] = $acro.'_'.md5(date('Y-m-d h:i:s'));
 		
-		//Cragamos libreria necesaria
 		$this->load->library('upload', $config);
-		//Configuraciones de anexos	
-		//verificamos la carga del archivo
-			
-		if($this->upload->do_upload('cargar_pdf')){
-				$_POST['pdf'] = $this->upload->data()['file_name'];
-				$_POST['usuario_actualiza'] = 2;
-				$this->upload->do_upload('carga_anexo');
-				$_POST['carga_anexo'] = $this->upload->data()['file_name'];
-				$_POST['remitente'] = $this->session->email;
-				$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'documentos'));
-				$res2 = $this->api->post('/mail',array('mensaje'=>'Haz recibido una notificación, ingresa a : http://187.218.230.37/sasdoc/login/ Para atenderla. '
-					."<br />".'Fecha Límite: '.$_POST['fecha_limite'].'<br/>'.'Número de Oficio: '.$_POST['num_doc'].'<br />'.'Asunto : '.$_POST['asunto'].'<br />'.' Remitente: '.$_POST['remitente'],
-					'email_destino'=>$_POST['destinatario'], 'asunto'=>'Notificación de SAS-DOC'));
-				
-				if($res['ban']){
-					$id_insertado = $res['id_insertado'];
-					$data['remitente'] = $_POST['remitente'];
-					$data['destinatario'] = $_POST['destinatario'];
-					$data['id_seguimiento'] = $id_insertado;
-					$res2 = $this->api->post('/insertar',array('datos'=>$data,'tabla'=>'seguimiento'));
-					if($res2['ban']){
-						header('Location: '.base_url().'inicio/');
-						//$this->principal();
-					}
-					else{
-						$this->response(array('ban'=>false,'msg'=>'Error al enviar #1','error'=>$res['error']));
-						
-					}
+		$this->upload->initialize($config);
+		if($this->upload->do_upload($nombre))
+			return array('ban'=>true,'file_name'=>$config['file_name']);
+		else
+			return array('ban'=>false);
+	}
+
+	public function save(){
+		$file = $this->carga_archivo('cargar_pdf',1000,'pdf','./frontend/pdf/','pdf');
+		
+		if($file['ban']){
+			$_POST['pdf'] = $file['file_name'];
+			$file2 = $this->carga_archivo('carga_anexo',1000,'pdf','./frontend/anexos/','anexo');
+			if($file2['ban'])
+				$_POST['carga_anexo'] = $file2['file_name'];
+			$_POST['remitente'] = $this->session->email;
+			$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'documentos'));				
+			if($res['ban']){
+				$id_insertado = $res['id_insertado'];
+				$data['remitente'] = $_POST['remitente'];
+				$data['destinatario'] = $_POST['destinatario'];
+				$data['id_seguimiento'] = $id_insertado;
+				$res2 = $this->api->post('/insertar',array('datos'=>$data,'tabla'=>'seguimiento'));
+				if($res2['ban']){
+					$this->api->post('/mail',array('mensaje'=>'Haz recibido una notificación, ingresa a : http://187.218.230.37/sasdoc/login/ Para atenderla. '
+						."<br />".'Fecha Límite: '.$_POST['fecha_limite'].'<br/>'.'Número de Oficio: '.$_POST['num_doc'].'<br />'.'Asunto : '.$_POST['asunto'].'<br />'.' Remitente: '.$_POST['remitente'],
+						'email_destino'=>$_POST['destinatario'], 'asunto'=>'Notificación de SAS-DOC'));
+					header('Location: '.base_url().'inicio/');
+					//$this->principal();
 				}
 				else{
-					echo'<script type="text/javascript">
-						alert("ERROR al enviar: Llenar los campos obligatorios, marcados con un : *");
-						window.location.href="nuevo_documento";
-					</script>';
+					$this->response(array('ban'=>false,'msg'=>'Error al enviar #1','error'=>$res['error']));
 					
 				}
+			}
+			else{
+				echo'<script type="text/javascript">
+					alert("ERROR al enviar: Llenar los campos obligatorios, marcados con un : *");
+					window.location.href="nuevo_documento";
+				</script>';
+				
+			}
 		}
 		else{
 			echo'<script type="text/javascript">
@@ -238,7 +242,6 @@ class Inicio extends CI_Controller {
 					window.location.href="nuevo_documento";
    				</script>';
 		}
-	
 	}
 
 	public function turnar(){

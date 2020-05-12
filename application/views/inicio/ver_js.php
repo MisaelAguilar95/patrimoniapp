@@ -14,11 +14,11 @@
             //$(this).attr('readonly',true)
         })
         if(valores.pdf != ''){
-            $('iframe[name=oficio_pdf]').attr('src','<?=base_url()?>frontend/pdf/'+valores.pdf)
+            $('iframe[name=oficio_pdf]').attr('src','<?=base_url()?>frontend/pdf/'+valores.pdf+'.pdf')
             
         }
         if(valores.carga_anexo != ''){
-            $('iframe[name=anexo_pdf]').attr('src','<?=base_url()?>frontend/pdf/'+valores.carga_anexo)
+            $('iframe[name=anexo_pdf]').attr('src','<?=base_url()?>frontend/anexos/'+valores.carga_anexo+'.pdf')
         }
 
         $('body').on('click','.btx_regresar',function(){

@@ -10,6 +10,11 @@
                 document.getElementById('mostrarOcultar').style.display="none";
             }
     });
+
+    $('body').on('click','btx_anexo',function(e){
+        e.preventDefault();
+        $('input[name=carga_anexo]').click();
+    })
 /* 
 $(".multiple-select2").select2({ placeholder: "Seleccionea una o varias personas" });
 

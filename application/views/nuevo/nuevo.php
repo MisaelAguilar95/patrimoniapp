@@ -10,7 +10,7 @@
         <div id="pest1" class="collapse show" data-parent="#accordion">
             <div class="card-body bg-gray-dark">
                 <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                         <label class="form-label" for="documento">Numero de Documento: *</label>
                         <input type="text" class="form-control" placeholder="Ingrese el número de Documento" name="num_doc" maxlength="20">
                     </div>
@@ -22,15 +22,18 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <label class="form-label" for="anexos">N° de Anexos</label>
                         <input  name ='num_anexos'type="number" placeholder="0" min="1" pattern="^[0-9]"class="form-control">
                     </div>
-                </div>
-                <div class="row m-t-10">
-                    <div id="mostrarOcultar" class="col-md-12 text-center custom-file" style="display:none">
-                        <label class="form-label" for="anexos">Cargar Anexos</label>
-                        <br><input type="file" name="carga_anexo" >
+                    <div class="col-md-3">
+                        <div id="mostrarOcultar" style="display:none">
+                        <label for="">Anexo</label>
+                        <br><label class="btn btn-primary" for="my-file-selector">
+                            <input id="my-file-selector" name="carga_anexo" type="file" class="d-none">
+                            Cargar Anexo
+                        </label>
+                        </div>
                     </div>
                 </div>
                 <br><div class="row">

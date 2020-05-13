@@ -14,7 +14,7 @@
                         <label class="form-label" for="documento">Numero de Documento: *</label>
                         <input type="text" class="form-control" placeholder="Ingrese el número de Documento" name="num_doc" maxlength="20">
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label class="form-label" for="tipodoc">Selecciona el tipo de documento: *</label>
                             <select id="tipo_doc_id" class="form-control" name="tipo_doc_id" required>
@@ -24,21 +24,32 @@
                     </div>
                     <div class="col-md-2">
                         <label class="form-label" for="anexos">N° de Anexos</label>
-                        <input  name ='num_anexos'type="number" placeholder="0" min="1" pattern="^[0-9]"class="form-control">
+                        <input  name ='num_anexos'type="number" placeholder="0" min="0" max="4" pattern="^[0-9]"class="form-control">
                     </div>
-                    <div class="col-md-3">
-                        <div id="mostrarOcultar" style="display:none">
-                        <label for="">Anexo</label>
-                        <br><label class="btn btn-primary" for="my-file-selector">
-                            <input id="my-file-selector" name="carga_anexo" type="file" class="d-none">
-                            Cargar Anexo
-                        </label>
+                    <div class="col-md-4">
+                        <div id="mostrarOcultar1" style="display:none">
+                            <label class="form-label" for="documento">Anexo N.1</label>
+                            <input id="carga_anexo" name="carga_anexo" type="file">
                         </div>
                     </div>
                 </div>
-                <br><div class="row">
+                <div class="row m-t-10">
+                    <div class="col-md-4"id="mostrarOcultar2" style="display:none">
+                        <label class="form-label" for="documento">Anexo N.2</label>
+                        <input id="carga_anexo2" name="carga_anexo2" type="file">
+                    </div> 
+                    <div class="col-md-4"id="mostrarOcultar3" style="display:none">
+                        <label class="form-label" for="documento">Anexo N.3</label>
+                        <input id="carga_anexo3" name="carga_anexo3" type="file">
+                    </div>
+                    <div class="col-md-4"id="mostrarOcultar4" style="display:none">
+                        <label class="form-label" for="documento">Anexo N.4</label>
+                        <input id="carga_anexo4" name="carga_anexo4" type="file">
+                    </div>
+                </div>
+                <div class="row m-t-10">
                     <div class="col-md-12">
-                        <label for="asunto">Asunto: *</label>
+                        <label class="form-label" for="asunto">Asunto: *</label>
                         <input type="text" class="form-control"maxlength="70" type="text" placeholder="Ingrese el asunto del documento" name="asunto" required>
                     </div>
                 </div>
@@ -108,6 +119,3 @@
         </div>
     </div>
 </div>
-
-
-

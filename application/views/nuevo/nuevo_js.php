@@ -4,12 +4,19 @@
     }
     $('input[ name ="num_anexos"]').on('change', function(){
         if ($(this).val() >=1) {
-            document.getElementById('mostrarOcultar').style.display="block";
-            }
-            else{
-                document.getElementById('mostrarOcultar').style.display="none";
-            }
+            document.getElementById('mostrarOcultar1').style.display="block";
+        }else document.getElementById('mostrarOcultar1').style.display="none";
+        if ($(this).val() >=2) {
+        document.getElementById('mostrarOcultar2').style.display="block";
+        }else document.getElementById('mostrarOcultar2').style.display="none";
+       if ($(this).val() >=3) {
+            document.getElementById('mostrarOcultar3').style.display="block";
+        }else document.getElementById('mostrarOcultar3').style.display="none";
+        if ($(this).val() >=4) {
+            document.getElementById('mostrarOcultar4').style.display="block";
+        }else document.getElementById('mostrarOcultar4').style.display="none";
     });
+
 
     $('body').on('click','btx_anexo',function(e){
         e.preventDefault();

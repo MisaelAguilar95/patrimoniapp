@@ -208,6 +208,15 @@ class Inicio extends CI_Controller {
 			$file2 = $this->carga_archivo('carga_anexo',1000,'pdf','./frontend/anexos/','anexo');
 			if($file2['ban'])
 				$_POST['carga_anexo'] = $file2['file_name'];
+				$file3 = $this->carga_archivo('carga_anexo2',1000,'pdf','./frontend/anexos/','anexo2');
+			if($file3['ban'])
+				$_POST['carga_anexo2'] = $file3['file_name'];
+				$file4 = $this->carga_archivo('carga_anexo3',1000,'pdf','./frontend/anexos/','anexo3');
+			if($file4['ban'])
+				$_POST['carga_anexo3'] = $file3['file_name'];
+				$file5 = $this->carga_archivo('carga_anexo4',1000,'pdf','./frontend/anexos/','anexo4');
+			if($file5['ban'])
+				$_POST['carga_anexo4'] = $file3['file_name'];
 			$_POST['remitente'] = $this->session->email;
 			$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'documentos'));				
 			if($res['ban']){

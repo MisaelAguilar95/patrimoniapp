@@ -89,9 +89,27 @@
                     </div>
                 </div>
                 <div class="row m-t-10">
-                    <div class="col-md-12">
-                        <label for=""><b>Anexo</b>:</label>
+                    <div id ="mostrarOcultar"class="col-md-12" style="display:none">
+                        <label for=""><b>Anexo 1</b>:</label>
                         <iframe name="anexo_pdf" src="#" width="100%" height="300"></iframe>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div id ="mostrarOcultar2"class="col-md-12" style="display:none">
+                        <label for=""><b>Anexo 2</b>:</label>
+                        <iframe name="anexo_pdf2" src="#" width="100%" height="300"></iframe>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div id ="mostrarOcultar3"class="col-md-12" style="display:none">
+                        <label for=""><b>Anexo 3</b>:</label>
+                        <iframe name="anexo_pdf3" src="#" width="100%" height="300"></iframe>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div id ="mostrarOcultar4"class="col-md-12" style="display:none">
+                        <label for=""><b>Anexo 4</b>:</label>
+                        <iframe name="anexo_pdf4" src="#" width="100%" height="300"></iframe>
                     </div>
                 </div>
                 <div class="row m-t-10">

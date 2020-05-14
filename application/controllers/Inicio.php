@@ -138,7 +138,7 @@ class Inicio extends CI_Controller {
 		$data['consulta'] = "SELECT id ,nombre as nombre FROM catalogos.c_tipos_documento order by nombre ";
 		$nombre = json_decode($this->api->post('/ejecuta',$data)->response)->data;
 		$data['tipos_documento'] = $this->crea_select($nombre);
-		$data['consulta'] = "SELECT id ,nombre as nombre FROM catalogos.indicacion order by nombre ";
+		$data['consulta'] = "SELECT id ,nombre as nombre FROM catalogos.c_indicacion order by nombre ";
 		$nombre = json_decode($this->api->post('/ejecuta',$data)->response)->data;
 		$data['tipo_indicacion'] = $this->crea_select($nombre);
 		$data['consulta'] = "SELECT id,gerencia as nombre FROM catalogos.c_destino order by gerencia ";

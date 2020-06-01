@@ -92,14 +92,16 @@ class Componentes {
 			 		<span class="nav-link-text" data-i18n="nav.tables">Reportes</span>
                  </a>
              </li>
-             <li class="'.$perfiles_m.'">
+             
+		</li>					   
+	</ul>';
+	//PERFILES DE USUARIO
+	/* <li class="'.$perfiles_m.'">
                  <a href="'.base_url().'inicio/perfiles" title="Perfiles de Usuario" >
                     <i class="fal fa-user-circle"></i>
 			 		<span class="nav-link-text" data-i18n="nav.tables">Perfiles de Usuario</span>
                  </a>
-             </li>
-		</li>					   
-    </ul>';
+    </li> */
 		return array('url'=>$url,'titulo'=>$titulo_m,'descripcion'=>$descripcion, 'icono'=>$fa_icon,'cuerpo'=>$cuerpo);
 	}
 

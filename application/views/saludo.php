@@ -1,5 +1,0 @@
-<?Php
-
-echo "Mensaje: ".$mensaje;
-
-?>

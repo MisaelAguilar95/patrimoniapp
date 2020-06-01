@@ -104,10 +104,12 @@ class Inicio extends CI_Controller {
 							WHERE SEG.destinatario in ('".$this->session->email."')";
 							
 		$data['datos'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
+		
 		$this->load->view('inicio/inicio',$data);
 		$this->load->view('footer');
 		$this->load->view('funciones');
 		$this->load->view('inicio/inicio_js',$data);
+		
 		
 	}
 	
@@ -160,9 +162,15 @@ class Inicio extends CI_Controller {
 
 	public function bitacora(){
 		$data = $this->basicas();
-		$this->load->view('bitacora/bitacora');
+		//$data['tabla'] = 'dbo.documentos';
+		$data['consulta'] = "SELECT * FROM dbo.vw_seguimiento2 WHERE destinatario in ('".$this->session->email."') OR remitente in ('".$this->session->email."')";
+		$data['datos'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
+		$this->load->view('bitacora/bitacora',$data);
 		$this->load->view('footer');
+		$this->load->view('funciones');
 		$this->load->view('bitacora/bitacora_js',$data);
+
+		
 	}
 	public function documentacion(){
 		$this->load->view('documentacion');
@@ -222,6 +230,9 @@ class Inicio extends CI_Controller {
 			if($res['ban']){
 				$id_insertado = $res['id_insertado'];
 				$data['remitente'] = $_POST['remitente'];
+				$data['notas'] = $_POST['notas'];
+				$data['num_doc'] = $_POST['num_doc'];
+				$data['fecha'] = date('Y-m-d');
 				$data['destinatario'] = $_POST['destinatario'];
 				$data['id_seguimiento'] = $id_insertado;
 				$res2 = $this->api->post('/insertar',array('datos'=>$data,'tabla'=>'seguimiento'));
@@ -257,6 +268,7 @@ class Inicio extends CI_Controller {
 		if(isset($_POST)){
 			$_POST['remitente'] = $this->session->email;
 			$_POST['estatus_r'] = 3;
+			$_POST['fecha'] = date('Y-m-d');
 			$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'seguimiento'));
 			if(!$res['ban']){
 				$this->response(array('ban'=>false,'msg'=>'Error al enviar','error'=>$res['error']));
@@ -270,6 +282,7 @@ class Inicio extends CI_Controller {
 		if(isset($_POST)){
 			$_POST['remitente'] = $this->session->email;
 			$_POST['estatus_r'] = 6;
+			$_POST['fecha'] = date('Y-m-d');
 			$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'seguimiento'));
 			if(!$res['ban']){
 				$this->response(array('ban'=>false,'msg'=>'Error al enviar','error'=>$res['error']));

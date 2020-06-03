@@ -12,7 +12,7 @@ $(document).ready(function() {
         paginationSizeSelector:[5,10,15,20,25,30,40,50],
         columnMinWidth:80,
         columns:[
-            {title:"#Doc", field:"num_doc", width:90,align:"center",headerFilter:"input"},
+            {title:"#Doc", field:"num_doc", width:130,align:"center",headerFilter:"input"},
             {title:"Remitente", field:"remitente", width:180,align:"center",headerFilter:"input"},
             {title:"Estatus Remitente", field:"estatus_r", width:160,align:"center",headerFilter:"input"},
             {title:"Destinatario", field:"destinatario", width:180,align:"center",headerFilter:"input"},

@@ -163,7 +163,20 @@ class Inicio extends CI_Controller {
 	public function bitacora(){
 		$data = $this->basicas();
 		//$data['tabla'] = 'dbo.documentos';
-		$data['consulta'] = "SELECT * FROM dbo.vw_seguimiento2 WHERE destinatario in ('".$this->session->email."') OR remitente in ('".$this->session->email."')";
+		$data['consulta'] = "SELECT 
+		SEG.id,
+		num_doc,
+		notas,
+		remitente,
+		destinatario,
+		EST_r.nombre as estatus_r,
+		EST_d.nombre as estatus_d,
+		fecha
+		FROM
+		seguimiento SEG
+		LEFT JOIN catalogos.c_estatus_general EST_r ON EST_r.id = SEG.estatus_r
+		LEFT JOIN catalogos.c_estatus_general EST_d ON EST_d.id = SEG.estatus_d
+		WHERE destinatario in ('".$this->session->email."') OR remitente in ('".$this->session->email."')";
 		$data['datos'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
 		$this->load->view('bitacora/bitacora',$data);
 		$this->load->view('footer');
@@ -265,6 +278,8 @@ class Inicio extends CI_Controller {
 	}
 
 	public function turnar(){
+		$numdoc = $_POST['num_doc']; 
+		var_dump($numdoc);
 		if(isset($_POST)){
 			$_POST['remitente'] = $this->session->email;
 			$_POST['estatus_r'] = 3;
@@ -274,7 +289,7 @@ class Inicio extends CI_Controller {
 				$this->response(array('ban'=>false,'msg'=>'Error al enviar','error'=>$res['error']));
 			}
 		}
-		header('Location: '.base_url().'inicio/');
+		//header('Location: '.base_url().'inicio/');
 		//$this->principal();
 	}
 	

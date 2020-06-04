@@ -166,6 +166,7 @@ class Inicio extends CI_Controller {
 		$data['consulta'] = "SELECT 
 		SEG.id,
 		num_doc,
+		id_seguimiento,
 		notas,
 		remitente,
 		destinatario,
@@ -191,7 +192,31 @@ class Inicio extends CI_Controller {
 	}
 	public function reportes(){
 		$data = $this->basicas();
-		$this->load->view('reportes/reportes');
+		$data['consulta'] = "SELECT 
+		estatus_r
+		FROM
+		seguimiento
+		WHERE estatus_r = 1 AND remitente in ('".$this->session->email."')";
+		$data['datos'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
+		$data['consulta'] = "SELECT 
+		estatus_d
+		FROM
+		seguimiento
+		WHERE estatus_d = 2 AND destinatario in ('".$this->session->email."')";
+		$data['datos2'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
+		$data['consulta'] = "SELECT 
+		estatus_r
+		FROM
+		seguimiento
+		WHERE estatus_r = 6 AND remitente in ('".$this->session->email."')";
+		$data['datos3'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
+		$data['consulta'] = "SELECT 
+		estatus_r
+		FROM
+		seguimiento
+		WHERE estatus_r = 3 AND remitente in ('".$this->session->email."')";
+		$data['datos4'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
+		$this->load->view('reportes/reportes',$data);
 		$this->load->view('footer');
 		$this->load->view('reportes/reportes_js',$data);
 	}
@@ -278,8 +303,6 @@ class Inicio extends CI_Controller {
 	}
 
 	public function turnar(){
-		$numdoc = $_POST['num_doc']; 
-		var_dump($numdoc);
 		if(isset($_POST)){
 			$_POST['remitente'] = $this->session->email;
 			$_POST['estatus_r'] = 3;

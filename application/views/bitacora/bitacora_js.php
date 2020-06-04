@@ -11,8 +11,11 @@ $(document).ready(function() {
         paginationSize:20,
         paginationSizeSelector:[5,10,15,20,25,30,40,50],
         columnMinWidth:80,
+        groupBy:"id_seguimiento",
+        //groupToggleElement:"header",
         columns:[
-            {title:"#Doc", field:"num_doc", width:130,align:"center",headerFilter:"input"},
+            {title:"#Oficio", field:"num_doc", width:150,align:"center",headerFilter:"input"},
+            {title:"ID", field:"id_seguimiento", width:100,align:"center",headerFilter:"input"},
             {title:"Remitente", field:"remitente", width:180,align:"center",headerFilter:"input"},
             {title:"Estatus Remitente", field:"estatus_r", width:160,align:"center",headerFilter:"input"},
             {title:"Destinatario", field:"destinatario", width:180,align:"center",headerFilter:"input"},

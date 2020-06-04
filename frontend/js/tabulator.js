@@ -10131,9 +10131,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 			"groups": {
 
-				"item": "item",
+				"item": "Creado",
 
-				"items": "items"
+				"items": "Cambios"
 
 			},
 

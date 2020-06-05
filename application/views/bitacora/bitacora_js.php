@@ -17,7 +17,7 @@ $(document).ready(function() {
             {title:"#Oficio", field:"num_doc", width:150,align:"center",headerFilter:"input"},
             {title:"ID", field:"id_seguimiento", width:100,align:"center",headerFilter:"input"},
             {title:"Remitente", field:"remitente", width:180,align:"center",headerFilter:"input"},
-            {title:"Estatus Remitente", field:"estatus_r", width:160,align:"center",headerFilter:"input"},
+            {title:"Estatus Remitente", field:"estatus", width:160,align:"center",headerFilter:"input"},
             {title:"Destinatario", field:"destinatario", width:180,align:"center",headerFilter:"input"},
             //{title:"Estatus Destinatario", field:"estatus_d", width:160,align:"center",headerFilter:"input"},
             {title:"Notas", field:"notas",align:"center",headerFilter:"input"},
@@ -30,23 +30,23 @@ $(document).ready(function() {
     //table.setFilter("estatus", "=", "Recibido");
 ///BOTONES DE FILTROS///
     $('body').on('click','.btx_frecibido',function(){
-        table.setFilter("estatus_r", "=", "Recibido");
+        table.setFilter("estatus", "=", "Recibido");
     })
 
     $('body').on('click','.btx_fenviado',function(){
-        table.setFilter("estatus_r", "=", "Enviado");
+        table.setFilter("estatus", "=", "Enviado");
     })
 
     $('body').on('click','.btx_fturnado',function(){
-        table.setFilter("estatus_r", "=", "Turnado");
+        table.setFilter("estatus", "=", "Turnado");
     })
 
     $('body').on('click','.btx_fatendido',function(){
-        table.setFilter("estatus_r", "=", "Atendido");
+        table.setFilter("estatus", "=", "Atendido");
     })
 
     $('body').on('click','.btx_ftodos',function(){
-        table.setFilter("estatus_r", "!=", "");
+        table.setFilter("estatus", "!=", "");
     })
     
 //BOTONES PARA DESCARGAS//

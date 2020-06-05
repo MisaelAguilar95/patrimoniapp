@@ -170,14 +170,28 @@ class Inicio extends CI_Controller {
 		notas,
 		remitente,
 		destinatario,
-		EST_r.nombre as estatus_r,
-		EST_d.nombre as estatus_d,
+		EST_r.nombre as estatus,
 		fecha
 		FROM
 		seguimiento SEG
 		LEFT JOIN catalogos.c_estatus_general EST_r ON EST_r.id = SEG.estatus_r
+		WHERE remitente in ('".$this->session->email."')
+
+		UNION ALL
+		SELECT 
+		SEG.id,
+		num_doc,
+		id_seguimiento,
+		notas,
+		remitente,
+		destinatario,
+		EST_d.nombre as estatus,
+		fecha
+		FROM
+		seguimiento SEG
 		LEFT JOIN catalogos.c_estatus_general EST_d ON EST_d.id = SEG.estatus_d
-		WHERE destinatario in ('".$this->session->email."') OR remitente in ('".$this->session->email."')";
+		WHERE destinatario in ('".$this->session->email."')
+		";
 		$data['datos'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
 		$this->load->view('bitacora/bitacora',$data);
 		$this->load->view('footer');

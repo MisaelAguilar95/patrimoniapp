@@ -1,4 +1,5 @@
 <script>
+   
 var enviados = <?=$datos?>.length;
 var recibidos = <?=$datos2?>.length;
 var atendidos = <?=$datos3?>.length;

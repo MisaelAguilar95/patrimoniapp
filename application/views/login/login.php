@@ -3,7 +3,7 @@
     <head>
     	<meta charset="utf-8" />
     	<title>PATRIMONIAPP</title>
-    	<link rel="icon" type="image/png" href="<?=base_url()?>frontend/images/favicon.png">
+    	<link rel="icon" type="image/png" href="<?=base_url()?>frontend/images/logoconafor.gif">
     	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
     	<meta content="Jose Manuel, Misael Aguilar,Mauricio Ramirez" name="author" />
     	<meta content="Control de oficios y atentas notas" name="description" />
@@ -26,7 +26,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="page-logo width-mobile-auto m-0 align-items-center justify-content-center p-0 bg-transparent bg-img-none shadow-0 height-9">
-                                                <img style="width:50px" src="<?=base_url()?>frontend/images/favicon.png" alt="SmartAdmin WebApp" aria-roledescription="logo">
+                                                <img style="width:100px" src="<?=base_url()?>frontend/images/logoconafor.gif" alt="SmartAdmin WebApp" aria-roledescription="logo">
                                                 <span class="page-logo-text mr-1"><h1>PATRIMONIAPP</h1></span>
                                             </div>
                                         </div>

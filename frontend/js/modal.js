@@ -46,7 +46,7 @@
             '</button>' +
             '</div>' +
             '<div class="modal-body"></div>' +
-            '<br><div class="col-md-12"><label class="form-label" for="destinatario">Turnar :</label><input class="form-control"name="m_turnar" ></div>'+
+            '<br><div class="col-md-12"><label class="form-label" for="destinatario">Turn:</label><input class="form-control"name="m_turnar" ></div>'+
             '<div class="modal-footer"></div>' +
             '</div>' +
             '</div>'

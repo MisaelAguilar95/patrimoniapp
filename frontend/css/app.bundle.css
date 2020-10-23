@@ -340,7 +340,7 @@ RESULT:
 .page-logo, .page-sidebar, .nav-footer, .bg-brand-gradient {
   background-image: -webkit-gradient(linear, right top, left top, from(rgba(51, 148, 225, 0.18)), to(transparent));
   background-image: linear-gradient(270deg, rgba(51, 148, 225, 0.18), transparent);
-  background: #af182c;
+  background: #4b820c;
 }
 
 /*
@@ -609,7 +609,7 @@ RESULT:
 ========================================================================== */
 /* contains root variables to be used with css (see docs) */
 :root {
-  --theme-primary: #af182c;
+  --theme-primary: #4b820c;
   --theme-secondary: #868e96;
   --theme-success: #1dc9b7;
   --theme-info: #2196F3;
@@ -7103,7 +7103,7 @@ hr{
 .mt-40{margin-top:40px}
 /* COLORES DE FONDOS */
 .bg-primary{
-  background-color: #af182c;}
+  background-color: #4b820c;}
 .bg-secondary{
   background-color:#888888;}
 .bg-success{
@@ -7135,7 +7135,7 @@ hr{
 /* GRUPO DE BOTONES */
 .btn-primary {
   color: #fff;
-  background-color: #af182c;
+  background-color: #4b820c;
   border-color: rgb(41, 57, 73); }
   .btn-primary:hover {
     color: #fff;
@@ -7147,12 +7147,12 @@ hr{
   .btn-primary.disabled, .btn-primary:disabled {
     color: #fff;
     background-color: rgb(65, 87, 107);
-    border-color: #af182c; }
+    border-color: #4b820c; }
   .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
   .show > .btn-primary.dropdown-toggle {
     color: #fff;
     background-color: rgb(70, 95, 119);
-    border-color: #af182c; }
+    border-color: #4b820c; }
     .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
     .show > .btn-primary.dropdown-toggle:focus {
       -webkit-box-shadow: 0 0 0 0.2rem rgba(60, 83, 105, 0.5);

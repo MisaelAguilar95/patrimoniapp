@@ -73,7 +73,7 @@ class Inicio extends CI_Controller {
 
 	private function principal(){		
 		$data = $this->basicas();
-		$data['consulta'] = "SELECT * FROM public.real_estate where active=true order by name ";
+		$data['consulta'] = "SELECT * FROM public.real_estate_prueba where active=true order by name ";
 		$data['datos'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
 		//var_dump($data['datos']);
 		$this->load->view('inicio/inicio',$data);
@@ -288,10 +288,8 @@ class Inicio extends CI_Controller {
 
 	public function turnar(){
 		if(isset($_POST)){
-			$_POST['remitente'] = $this->session->email;
-			$_POST['estatus_r'] = 3;
-			$_POST['fecha'] = date('Y-m-d');
-			$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'seguimiento'));
+			$_POST['instrumento'] = $this->session->email;
+			$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'public.real_estate_prueba'));
 			if(!$res['ban']){
 				$this->response(array('ban'=>false,'msg'=>'Error al enviar','error'=>$res['error']));
 			}
@@ -300,17 +298,12 @@ class Inicio extends CI_Controller {
 		//$this->principal();
 	}
 	
-	public function atendido(){
-		if(isset($_POST)){
-			$_POST['remitente'] = $this->session->email;
-			$_POST['estatus_r'] = 6;
-			$_POST['fecha'] = date('Y-m-d');
-			$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'seguimiento'));
-			if(!$res['ban']){
-				$this->response(array('ban'=>false,'msg'=>'Error al enviar','error'=>$res['error']));
-			}
-		}
-		header('Location: '.base_url().'inicio/');
+	public function agregar(){
+			$data['consulta'] = "SELECT instrumento, physical_condition FROM public.real_estate_prueba WHERE id_real_estate = 16";
+			$data['datos'] = json_decode($this->api->post('/ejecuta',$data)->response)->data;
+			var_dump($data['datos']);
+		
+		//header('Location: '.base_url().'inicio/');
 		//$this->principal();
 	}
 	

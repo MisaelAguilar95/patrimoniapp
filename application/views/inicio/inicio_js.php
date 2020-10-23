@@ -6,7 +6,7 @@ $(document).ready(function() {
     //crear tabla
     var icons = function(cell, formatterParams){
         return "<div class='btx_ver btn btn-light btn-sm'  href='inicio/ver' ide='"+cell.getRow().getData().id+"' id='ver' title='Ver'><i class='fa fa-eye'></i></div> \
-                <div class='btx_atendido btn btn-success btn-sm' ide='"+cell.getRow().getData().id+"' id='atendido' title='Atendido'><i class='fas fa-plus'></i></div>\
+                <div class='btx_agregar btn btn-success btn-sm' ide='"+cell.getRow().getData().id_real_estate+"' id='agregar' title='Agregar'><i class='fas fa-plus'></i></div>\
                 <div class='btx_turnar btn btn-dark btn-sm' ide='"+cell.getRow().getData().id+"' id='turnar' title='Turnar'><i class='fas fa-exchange'></i></div>";
                 //<div class='btx_contestar btn btn-secondary btn-sm' href='inicio/contestar' ide='"+cell.getRow().getData().id+"' id='contestar' title='Contestar'><i class='fas fa-share'></i></div> 
                 //<div class=' btx_editar btn btn-secondary btn-sm' href='inicio/editar' ide='"+cell.getRow().getData().id+"' id='editar' title='Editar'><i class='fas fa-edit'></i></div> 
@@ -52,32 +52,46 @@ $(document).ready(function() {
     ///BOTONES DE LA TABLA////
     //mostrar modal de turnado
     $('body').on('click','.btx_turnar',function(){
-        let id = $(this).attr('ide');
+        let id_real_estate = $(this).attr('ide');
         let title=$(this).attr('ide');
        
        let html = '<?=trim(form_open_multipart('Inicio/turnar'))?>' +
-         '<input style="display:none" name="id_seguimiento" value="'+id+'"><div class="text-left"><div class="row m-t-10"><div class="col-md-12"><label class="form-label" for="destinatario">Destinatario</label>' +
-        '<input class="form-control" type="email" name="destinatario"></div></div><div class="row m-t-10"><div class="col-md-12">' +
+         '<input style="display:none" name="id_seguimiento" value="'+id_real_estate+'"><div class="text-left"><div class="row m-t-10"><div class="col-md-12"><label class="form-label" for="destinatario">Destinatario</label>' +
+        '<input class="form-control"  name="destinatario"></div></div><div class="row m-t-10"><div class="col-md-12">' +
         '<label class="form-label" for="nota">Notas :</label><textarea class="form-control" placeholder="Escriba una nota" name="notas" rows="3" maxlength="200"></textarea>' +
         '</div></div><div class="row m-t-10"><div class="col-md-12 text-right"><button type="submit" id="btn_turnar" type="button" class="btn btn-success"> Enviar</button>' +
         '<button type="button" class="btn btn-danger btx_regresar m-l-10">Cancelar</button></div></div></div></form>';
        modal_html('Turnar Documento',html);      
     })
 
-    $('body').on('click','.btx_atendido',function(){
-        let id = $(this).attr('ide');
+    $('body').on('click','.btx_agregar',function(){
+        let id_real_estate = $(this).attr('ide');
         let title=$(this).attr('ide');
+        console.log(id_real_estate);
        
-       let html = '<?=trim(form_open_multipart('Inicio/atendido'))?>' +
-         '<input style="display:none" name="id_seguimiento" value="'+id+'"><div class="text-left">' +
+       let html = '<?=trim(form_open_multipart('Inicio/agregar'))?>' +
+        '<input style="display:none" name="id_real_estate" value="'+id_real_estate+'"><div class="text-left">' +
         '<div class="row m-t-10"><div class="col-md-12">' +
-        '<label class="form-label" for="destinatario">Informar de atendido a :</label>' +
-        '<input class="form-control" placeholder = "Ingrese el correo .."type="email" name="destinatario"></div></div>'+
+        '<label class="form-label" for="instrumento">Instrumento bajo el cual se otorga la posesión a un tercero:</label>' +
+        '<input class="form-control" name="instrumento"></div></div>'+
         '<div class="row m-t-10"><div class="col-md-12">' +
-        '<label class="form-label" for="nota">Notas :</label><textarea class="form-control" placeholder="Escriba una nota" name="notas" rows="3" maxlength="200"></textarea>' +
-        '</div></div><div class="row m-t-10"><div class="col-md-12 text-right"><button type="submit" id="btn_atendido" type="button" class="btn btn-success"> Aceptar</button>' +
+        '<label class="form-label" for="beneficiario">Beneficiario del espacio:</label>' +
+        '<input class="form-control" name="beneficiario"></div></div>'+
+        '<div class="row m-t-10"><div class="col-md-6">' +
+        '<label class="form-label" for="fecha_ini">Fecha inicio:</label>' +
+        '<input class="form-control" type="date" name="fecha_inicio"value="<?php echo date("Y-m-d");?>"></div></div>'+
+        '<div class="row m-t-10"><div class="col-md-6">' +
+        '<label class="form-label" for="fecha_fin">Fecha fin:</label>' +
+        '<input class="form-control" type="date" name="fecha_fin"value="<?php echo date("Y-m-d");?>"></div></div>'+
+        '<div class="row m-t-10"><div class="col-md-12">' +
+        '<label class="form-label" for="uso">Uso del espacio:</label>' +
+        '<input class="form-control" name="uso_espacio"></div></div>'+
+        '<div class="row m-t-10"><div class="col-md-12">' +
+        '<label class="form-label" for="superficie">Superficie del espacio:</label>' +
+        '<input class="form-control" name="superficie_espacio"></div></div>'+
+        '<div class="row m-t-10"><div class="col-md-12 text-right"><button type="submit" id="btn_agregar" type="button" class="btn btn-success"> Aceptar</button>' +
         '<button type="button" class="btn btn-danger btx_regresar m-l-10">Cancelar</button></div></div></div></form>';
-       modal_html('Marcar como atendido ?',html);      
+       modal_html('Agregar información',html);      
     })
 
     //botonazo de modal para regresar

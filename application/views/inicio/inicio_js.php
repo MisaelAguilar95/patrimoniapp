@@ -5,9 +5,9 @@ $(document).ready(function() {
 
     //crear tabla
     var icons = function(cell, formatterParams){
-        return "<div class='btx_ver btn btn-light btn-sm'  href='inicio/ver' ide='"+cell.getRow().getData().id+"' id='ver' title='Ver'><i class='fa fa-eye'></i></div> \
-                <div class='btx_agregar btn btn-success btn-sm' ide='"+cell.getRow().getData().id_real_estate+"' id='agregar' title='Agregar'><i class='fas fa-plus'></i></div>\
-                <div class='btx_turnar btn btn-dark btn-sm' ide='"+cell.getRow().getData().id+"' id='turnar' title='Turnar'><i class='fas fa-exchange'></i></div>";
+        return "<div class='btx_ver btn btn-light btn-sm'  href='inicio/ver' ide='"+cell.getRow().getData().id_real_estate+"' id='ver' title='Ver'><i class='fa fa-eye'></i></div> \
+                <div class='btx_agregar btn btn-success btn-sm' ide='"+cell.getRow().getData().id_real_estate+"' id='agregar' title='Agregar Beneficiario'><i class='fas fa-plus'></i></div>";
+                //<div class='btx_turnar btn btn-dark btn-sm' ide='"+cell.getRow().getData().id+"' id='turnar' title='Turnar'><i class='fas fa-exchange'></i></div>
                 //<div class='btx_contestar btn btn-secondary btn-sm' href='inicio/contestar' ide='"+cell.getRow().getData().id+"' id='contestar' title='Contestar'><i class='fas fa-share'></i></div> 
                 //<div class=' btx_editar btn btn-secondary btn-sm' href='inicio/editar' ide='"+cell.getRow().getData().id+"' id='editar' title='Editar'><i class='fas fa-edit'></i></div> 
                 // <div class='btx_eliminar btn btn-danger btn-sm text-white' ide='"+cell.getRow().getData().id+"' id='eliminar' title='Eliminar'><i class='fas fa-trash'></i></div>";
@@ -21,10 +21,11 @@ $(document).ready(function() {
         paginationSizeSelector:[5,10,15,20,25,30,40,50],
         columnMinWidth:80,
         columns:[
+            {title:"Acciones", formatter:icons, align:"center",width:100},
             {title:"Nombre", field:"name", width:290,align:"center",headerFilter:"input"},
-            {title:"Contrato inicio", field:"contract_start_date", width:180,align:"center",headerFilter:"input"},
-            {title:"Contrato fin", field:"contract_end_date", width:180,align:"center",headerFilter:"input"},
-            {title:"Acciones", formatter:icons, align:"center",width:200}
+            {title:"Contrato inicio", field:"inicio_contrato", width:180,align:"center",headerFilter:"input"},
+            {title:"Contrato fin", field:"fin_contrato", width:180,align:"center",headerFilter:"input"}
+            
         ],
         
     });
@@ -51,7 +52,7 @@ $(document).ready(function() {
     
     ///BOTONES DE LA TABLA////
     //mostrar modal de turnado
-    $('body').on('click','.btx_turnar',function(){
+    /* $('body').on('click','.btx_turnar',function(){
         let id_real_estate = $(this).attr('ide');
         let title=$(this).attr('ide');
        
@@ -62,8 +63,22 @@ $(document).ready(function() {
         '</div></div><div class="row m-t-10"><div class="col-md-12 text-right"><button type="submit" id="btn_turnar" type="button" class="btn btn-success"> Enviar</button>' +
         '<button type="button" class="btn btn-danger btx_regresar m-l-10">Cancelar</button></div></div></div></form>';
        modal_html('Turnar Documento',html);      
-    })
+    }) */
 
+    //DESCARGAR XLSX
+    document.getElementById("download-xlsx").addEventListener("click", function(){
+        table.download("xlsx", "inmuebles.xlsx", {sheetName:"Reporte de inmuebles"});
+        });
+    //DESCARGAR PDF
+    document.getElementById("download-pdf").addEventListener("click", function(){
+        table.download("pdf", "inmuebles.pdf", {
+        orientation:"landscape", //set page orientation to portrait
+        title:"Reporte de inmuebles", //add title to report
+        
+        });
+    
+
+});
     $('body').on('click','.btx_agregar',function(){
         let id_real_estate = $(this).attr('ide');
         let title=$(this).attr('ide');
@@ -101,10 +116,13 @@ $(document).ready(function() {
     
     $('body').on('click','.btx_ver',function(){
         let ide = $(this).attr('ide');
+        console.log(ide);
         location.href = '<?=base_url()?>inicio/ver/'+ide;
     })
 
 });
+
+
 
 // $('body').on('click','#btn_turnar',function(){
     //     let id_t = $('input[name=id_t]').val();

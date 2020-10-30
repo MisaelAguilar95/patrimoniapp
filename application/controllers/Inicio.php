@@ -73,7 +73,7 @@ class Inicio extends CI_Controller {
 
 	private function principal(){		
 		$data = $this->basicas();
-		$data['consulta'] = "SELECT * FROM public.real_estate_prueba where active=true order by name ";
+		$data['consulta'] = "SELECT * FROM public.vw_inmueble order by name ";
 		$data['datos'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
 		//var_dump($data['datos']);
 		$this->load->view('inicio/inicio',$data);
@@ -94,10 +94,10 @@ class Inicio extends CI_Controller {
 		//var_dump($data['oficio']);
 		//$data['tipos_documento'] = $this->crea_select($resultado);
 		$data = $this->basicas();
-		$data['tabla'] = 'dbo.vw_documentos';
-		$data['condicion'] = array('id'=>$id);
+		$data['tabla'] = 'public.vw_inmueble';
+		$data['condicion'] = array('id_real_estate'=>$id);
 		$data['oficio'] = json_encode(json_decode($this->api->post('consulta_unica', $data)->response)->data);
-		//var_dump($data['oficio']);
+		var_dump($data['oficio']);
 		$this->load->view('inicio/ver',$data);
 		$this->load->view('footer');
 		$this->load->view('inicio/ver_js',$data);

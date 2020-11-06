@@ -5,8 +5,11 @@ $(document).ready(function() {
 
     //crear tabla
     var icons = function(cell, formatterParams){
-        return "<div class='btx_ver btn btn-light btn-sm'  href='inicio/ver' ide='"+cell.getRow().getData().id_real_estate+"' id='ver' title='Ver'><i class='fa fa-eye'></i></div> \
-                <div class='btx_agregar btn btn-success btn-sm' ide='"+cell.getRow().getData().id_real_estate+"' id='agregar' title='Agregar Beneficiario'><i class='fas fa-plus'></i></div>";
+        return "<div class='btx_ver btn btn-light btn-sm'  href='inicio/ver' ide='"+cell.getRow().getData().id_real_estate+"' id='ver' title='Ver'><i class='fa fa-eye'></i></div>\
+                <div class='btn btn-sm btn-secondary editar_actividad' superficie_espacio= '"+cell.getRow().getData().superficie_espacio+"' \
+                 uso_espacio= '"+cell.getRow().getData().uso_espacio+"' fecha_f= '"+cell.getRow().getData().fecha_f+"' fecha_i= '"+cell.getRow().getData().fecha_i+"' \
+                 tipo_contrato= '"+cell.getRow().getData().tipo_contrato+"' nombre= '"+cell.getRow().getData().name+"'ocupante= '"+cell.getRow().getData().ocupante+"' \
+                 ocupante2='"+cell.getRow().getData().ocupante2+"'ide='"+cell.getRow().getData().id_real_estate+"' id='agregar' title='Agregar uso a un Tercero' ><i class='fas fa-pencil'></i></div>";
                 //<div class='btx_turnar btn btn-dark btn-sm' ide='"+cell.getRow().getData().id+"' id='turnar' title='Turnar'><i class='fas fa-exchange'></i></div>
                 //<div class='btx_contestar btn btn-secondary btn-sm' href='inicio/contestar' ide='"+cell.getRow().getData().id+"' id='contestar' title='Contestar'><i class='fas fa-share'></i></div> 
                 //<div class=' btx_editar btn btn-secondary btn-sm' href='inicio/editar' ide='"+cell.getRow().getData().id+"' id='editar' title='Editar'><i class='fas fa-edit'></i></div> 
@@ -21,11 +24,53 @@ $(document).ready(function() {
         paginationSizeSelector:[5,10,15,20,25,30,40,50],
         columnMinWidth:80,
         columns:[
-            {title:"Acciones", formatter:icons, align:"center",width:100},
+            {title:"Acciones", formatter:icons, align:"center",width:180},
             {title:"Nombre", field:"name", width:290,align:"center",headerFilter:"input"},
             {title:"Contrato inicio", field:"inicio_contrato", width:180,align:"center",headerFilter:"input"},
-            {title:"Contrato fin", field:"fin_contrato", width:180,align:"center",headerFilter:"input"}
-            
+            {title:"Contrato fin", field:"fin_contrato", width:180,align:"center",headerFilter:"input"},
+           /*  {title:"tipo_contrato", field:"tipo_contrato",width:"50",align:"center", headerFilter:"input"},
+            {title:"ocupante", field:"ocupante",width:"50",align:"center", headerFilter:"input"},
+            {title:"fecha_i", field:"fecha_i",width:"50",align:"center", headerFilter:"input"},
+            {title:"fecha_f", field:"fecha_f",width:"50",align:"center", headerFilter:"input"},
+            {title:"uso_espacio", field:"uso_espacio",width:"50",align:"center", headerFilter:"input"},
+            {title:"superficie_espacio", field:"superficie_espacio",width:"50",align:"center", headerFilter:"input"},
+            {title:"federal_registration_code", field:"federal_registration_code",width:"50",align:"center", headerFilter:"input"},
+            {title:"shared_property_name", field:"shared_property_name",width:"50",align:"center", headerFilter:"input"},
+            {title:"limitations", field:"limitations",width:"50",align:"center", headerFilter:"input"},
+            {title:"conafor", field:"conafor",width:"50",align:"center", headerFilter:"input"},
+            {title:"new_real_estate_conafor_transaction", field:"new_real_estate_conafor_transaction",width:"50",align:"center", headerFilter:"input"},
+            {title:"lease_payment", field:"lease_payment",width:"50",align:"center", headerFilter:"input"},
+            {title:"owner_name", field:"owner_name",width:"50",align:"center", headerFilter:"input"},
+            {title:"registered_date", field:"registered_date",width:"50",align:"center", headerFilter:"input"},
+            {title:"active", field:"active",width:"50",align:"center", headerFilter:"input"},
+            {title:"physical_condition", field:"physical_condition",width:"50",align:"center", headerFilter:"input"},
+            {title:"description", field:"description",width:"50",align:"center", headerFilter:"input"},
+            {title:"id_financial", field:"id_financial",width:"50",align:"center", headerFilter:"input"},
+            {title:"construction_catastral_value", field:"construction_catastral_value",width:"50",align:"center", headerFilter:"input"},
+            {title:"construction_parametric_value", field:"construction_parametric_value",width:"50",align:"center", headerFilter:"input"},
+            {title:"construction_commercial_value", field:"construction_commercial_value",width:"50",align:"center", headerFilter:"input"},
+            {title:"land_catastral_value", field:"land_catastral_value",width:"50",align:"center", headerFilter:"input"},
+            {title:"land_parametric_value", field:"land_parametric_value",width:"50",align:"center", headerFilter:"input"},
+            {title:"land_commercial_value", field:"land_commercial_value",width:"50",align:"center", headerFilter:"input"},
+            {title:"total_catastral_value", field:"total_catastral_value",width:"50",align:"center", headerFilter:"input"},
+            {title:"total_parametric_value", field:"total_parametric_value",width:"50",align:"center", headerFilter:"input"},
+            {title:"total_commercial_value", field:"total_commercial_value",width:"50",align:"center", headerFilter:"input"},
+            {title:"depreciation_percentage_yearly", field:"depreciation_percentage_yearly",width:"50",align:"center", headerFilter:"input"},
+            {title:"useful_life_years", field:"useful_life_years",width:"50",align:"center", headerFilter:"input"},
+            {title:"last_catastral_update_date", field:"last_catastral_update_date",width:"50",align:"center", headerFilter:"input"},
+            {title:"last_parametric_update_date", field:"last_parametric_update_date",width:"50",align:"center", headerFilter:"input"},
+            {title:"last_commercial_update_date", field:"last_commercial_update_date",width:"50",align:"center", headerFilter:"input"},
+            {title:"id_measure", field:"id_measure",width:"50",align:"center", headerFilter:"input"},
+            {title:"latitude", field:"latitude",width:"50",align:"center", headerFilter:"input"},
+            {title:"longitude", field:"longitude",width:"50",align:"center", headerFilter:"input"},
+            {title:"land_area", field:"land_area",width:"50",align:"center", headerFilter:"input"},
+            {title:"built_area", field:"built_area",width:"50",align:"center", headerFilter:"input"},
+            {title:"space_occupied_percentage", field:"space_occupied_percentage",width:"50",align:"center", headerFilter:"input"},
+            {title:"gps_notes", field:"gps_notes",width:"50",align:"center", headerFilter:"input"},
+            {title:"administrative_units_detail", field:"administrative_units_detail",width:"50",align:"center", headerFilter:"input"},
+            {title:"id_address", field:"id_address",width:"50",align:"center", headerFilter:"input"}, */
+            {title:"Domicilio", field:"full_address",align:"center", headerFilter:"input"}
+                    
         ],
         
     });
@@ -79,36 +124,54 @@ $(document).ready(function() {
     
 
 });
-    $('body').on('click','.btx_agregar',function(){
-        let id_real_estate = $(this).attr('ide');
-        let title=$(this).attr('ide');
-        console.log(id_real_estate);
-       
-       let html = '<?=trim(form_open_multipart('Inicio/agregar'))?>' +
-        '<input style="display:none" name="id_real_estate" value="'+id_real_estate+'"><div class="text-left">' +
-        '<div class="row m-t-10"><div class="col-md-12">' +
-        '<label class="form-label" for="instrumento">Instrumento bajo el cual se otorga la posesión a un tercero:</label>' +
-        '<input class="form-control" name="instrumento"></div></div>'+
-        '<div class="row m-t-10"><div class="col-md-12">' +
-        '<label class="form-label" for="beneficiario">Beneficiario del espacio:</label>' +
-        '<input class="form-control" name="beneficiario"></div></div>'+
-        '<div class="row m-t-10"><div class="col-md-6">' +
-        '<label class="form-label" for="fecha_ini">Fecha inicio:</label>' +
-        '<input class="form-control" type="date" name="fecha_inicio"value="<?php echo date("Y-m-d");?>"></div></div>'+
-        '<div class="row m-t-10"><div class="col-md-6">' +
-        '<label class="form-label" for="fecha_fin">Fecha fin:</label>' +
-        '<input class="form-control" type="date" name="fecha_fin"value="<?php echo date("Y-m-d");?>"></div></div>'+
-        '<div class="row m-t-10"><div class="col-md-12">' +
-        '<label class="form-label" for="uso">Uso del espacio:</label>' +
-        '<input class="form-control" name="uso_espacio"></div></div>'+
-        '<div class="row m-t-10"><div class="col-md-12">' +
-        '<label class="form-label" for="superficie">Superficie del espacio:</label>' +
-        '<input class="form-control" name="superficie_espacio"></div></div>'+
-        '<div class="row m-t-10"><div class="col-md-12 text-right"><button type="submit" id="btn_agregar" type="button" class="btn btn-success"> Aceptar</button>' +
-        '<button type="button" class="btn btn-danger btx_regresar m-l-10">Cancelar</button></div></div></div></form>';
-       modal_html('Agregar información',html);      
-    })
+    //Boton editar
+    $('body').on('click','.editar_actividad',function(){
+            let id = $(this).attr('ide');
+            let nombre = $(this).attr('nombre');
+            let ocupante = $(this).attr('ocupante');
+            let tipo_contrato = $(this).attr('tipo_contrato');
+            let fecha_i = $(this).attr('fecha_i');
+            let fecha_f = $(this).attr('fecha_f');
+            let uso_espacio = $(this).attr('uso_espacio');
+            let superficie_espacio = $(this).attr('superficie_espacio');
+            let ocupante2 = $(this).attr('ocupante2');
+            
+            modal(id,nombre,ocupante,tipo_contrato,fecha_i,fecha_f,uso_espacio,superficie_espacio,ocupante2);
+        })
+        $('body').on('click','.btx-cancel',function(){
+            swal.close();
+        })
 
+        $('body').on('click','.btx-modificar',function(e){
+            e.preventDefault();
+            $(this).attr('disabled',true)
+            let id = $(this).attr('ide');
+            let ocupante = $("#ocupante_modificado").val();
+            let tipo_contrato = $("#contrato_modificado").val();
+            let fecha_i = $("#fechai_modificada").val();
+            let fecha_f = $("#fechaf_modificada").val();
+            let uso_espacio = $("#uso_modificado").val();
+            let superficie_espacio = $("#superficie_modificada").val();
+            let ocupante2 = $("#ocupante2_modificado").val();
+            $.ajax({
+                type: "POST",
+                url: '<?=base_url()?>inicio/actualizar',
+                data: {'id':id,'ocupante':ocupante, 'tipo_contrato':tipo_contrato,'fecha_i':fecha_i,
+                        'fecha_f':fecha_f,'uso_espacio':uso_espacio,'superficie_espacio':superficie_espacio, 
+                        'ocupante2':ocupante2},
+                success: function (data) {
+                    console.log(data);
+                    if(JSON.parse(data).msg){
+                        alert('','La actividad ha sido modificada','success','<?=base_url()?>inicio/');
+                    }
+                    else{
+                        alert('','La actividad no pudo modificarse','error','<?=base_url()?>inicio/');
+                    }
+                }
+            });
+        })
+
+       
     //botonazo de modal para regresar
     $('body').on('click','.btx_regresar',function(){
         swal.close();
@@ -170,6 +233,6 @@ $(document).ready(function() {
         })
     })   
     */
-
+    
 </script>
 

@@ -73,7 +73,7 @@ class Inicio extends CI_Controller {
 
 	private function principal(){		
 		$data = $this->basicas();
-		$data['consulta'] = "SELECT * FROM public.vw_inmueble order by name ";
+		$data['consulta'] = "SELECT * FROM public.vw_inmuebles order by name ";
 		$data['datos'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
 		//var_dump($data['datos']);
 		$this->load->view('inicio/inicio',$data);
@@ -94,7 +94,7 @@ class Inicio extends CI_Controller {
 		//var_dump($data['oficio']);
 		//$data['tipos_documento'] = $this->crea_select($resultado);
 		$data = $this->basicas();
-		$data['tabla'] = 'public.vw_inmueble';
+		$data['tabla'] = 'public.vw_inmuebles';
 		$data['condicion'] = array('id_real_estate'=>$id);
 		$data['oficio'] = json_encode(json_decode($this->api->post('consulta_unica', $data)->response)->data);
 		var_dump($data['oficio']);
@@ -174,35 +174,26 @@ class Inicio extends CI_Controller {
 		$this->load->view('documentacion');
 		
 	}
+	public function actualizar(){
+		if($_POST['ocupante'] != ''){
+			//$_POST['email'] = $this->session->email;
+			$condicion = array('id_real_estate'=>$_POST['id']);
+			$data = array('ocupante' => $_POST['ocupante'],'tipo_contrato'=>$_POST['tipo_contrato'], 
+					'fecha_i'=>$_POST['fecha_i'],'fecha_f'=>$_POST['fecha_f'],'uso_espacio'=>$_POST['uso_espacio'],'superficie_espacio'=>$_POST['superficie_espacio'],'ocupante2'=>$_POST['ocupante2']);
+			$res = $this->api->post('/actualizar', array('tabla'=>'public.real_estate_prueba', 'condicion'=>$condicion, 'datos'=>$data));
+			if($res['ban'])
+				$this->response(array('msg'=>true));
+			else
+				$this->response(array('msg'=>false,'error'=>$res['error']));
+		}
+		else
+			$this->response(array('msg'=>false,'error'=>'Faltan parametros para la actualización'));
+	}
 	public function reportes(){
 		$data = $this->basicas();
-		$data['consulta'] = "SELECT 
-		estatus_r
-		FROM
-		seguimiento
-		WHERE estatus_r = 1 AND remitente in ('".$this->session->email."')";
-		$data['datos'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
-		$data['consulta'] = "SELECT 
-		estatus_d
-		FROM
-		seguimiento
-		WHERE estatus_d = 2 AND destinatario in ('".$this->session->email."')";
-		$data['datos2'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
-		$data['consulta'] = "SELECT 
-		estatus_r
-		FROM
-		seguimiento
-		WHERE estatus_r = 6 AND remitente in ('".$this->session->email."')";
-		$data['datos3'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
-		$data['consulta'] = "SELECT 
-		estatus_r
-		FROM
-		seguimiento
-		WHERE estatus_r = 3 AND remitente in ('".$this->session->email."')";
-		$data['datos4'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
 		$this->load->view('reportes/reportes',$data);
 		$this->load->view('footer');
-		$this->load->view('reportes/reportes_js',$data);
+		$this->load->view('reportes/reportes_js');
 	}
 
 	public function perfiles(){
@@ -210,10 +201,6 @@ class Inicio extends CI_Controller {
 		$this->load->view('perfiles/perfiles');
 		$this->load->view('footer');
 		$this->load->view('perfiles/perfiles_js',$data);
-	}
-
-	private function login(){
-		$this->load->view('login/login');
 	}
 
 	private function carga_archivo($nombre,$tam,$tipo,$path,$acro){
@@ -286,27 +273,6 @@ class Inicio extends CI_Controller {
 		}
 	}
 
-	public function turnar(){
-		if(isset($_POST)){
-			$_POST['instrumento'] = $this->session->email;
-			$res = $this->api->post('/insertar',array('datos'=>$_POST,'tabla'=>'public.real_estate_prueba'));
-			if(!$res['ban']){
-				$this->response(array('ban'=>false,'msg'=>'Error al enviar','error'=>$res['error']));
-			}
-		}
-		//header('Location: '.base_url().'inicio/');
-		//$this->principal();
-	}
-	
-	public function agregar(){
-			$data['consulta'] = "SELECT instrumento, physical_condition FROM public.real_estate_prueba WHERE id_real_estate = 16";
-			$data['datos'] = json_decode($this->api->post('/ejecuta',$data)->response)->data;
-			var_dump($data['datos']);
-		
-		//header('Location: '.base_url().'inicio/');
-		//$this->principal();
-	}
-	
 	public function contestar(){
 		$data = $this->basicas();
 		$data['consulta'] = "SELECT id ,nombre as nombre FROM catalogos.c_tipos_documento order by nombre ";

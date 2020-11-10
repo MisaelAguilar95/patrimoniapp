@@ -173,6 +173,40 @@
                         <input type="text" class="form-control" readonly name="depreciation_percentage_yearly">
                     </div>
                 </div>
+                <br><hr>
+                <div class="row m-t-20">
+                    <div class="col-md-4">
+                        <h2><i class="fas fa-user width-2"></i>Uso de Terceros</h2>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div class="col-md-6">
+                        <label class="form-label">Nombre de ocupante</label>
+                        <input type="text" class="form-control" readonly name="ocupante">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Fecha de inicio</label>
+                        <input type="text" class="form-control" readonly name="fecha_i">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Fecha de fin</label>
+                        <input type="text" class="form-control" readonly name="fecha_f">
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div class="col-md-4">
+                        <label class="form-label">Tipo de contrato</label>
+                        <input type="text" class="form-control" readonly name="tipo_contrato">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Uso</label>
+                        <input type="text" class="form-control" readonly name="uso_espacio">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Superficie otorgada</label>
+                        <input type="text" class="form-control" readonly name="superficie_espacio">
+                    </div>
+                </div>
                 <div class="row m-t-10">
                     <div class="col-md-12 text-right">
                         <button type="button" class="btn btn-danger btx_regresar"><i class="fa fa-reply"></i> Regresar</button>

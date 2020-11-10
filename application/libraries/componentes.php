@@ -201,7 +201,7 @@ class Componentes {
 
 	public function notificaciones(){
 		return '<div>
-					<a href="#" class="header-icon" data-toggle="dropdown" title="You got 0 notifications">
+					<a href="#" class="header-icon" data-toggle="dropdown" title="Notificaciones">
 						<i class="fal fa-bell"></i>
 						<span class="badge bg-info badge-icon">0</span>
 					</a>

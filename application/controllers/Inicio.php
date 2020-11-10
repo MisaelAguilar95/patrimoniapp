@@ -97,7 +97,6 @@ class Inicio extends CI_Controller {
 		$data['tabla'] = 'public.vw_inmuebles';
 		$data['condicion'] = array('id_real_estate'=>$id);
 		$data['oficio'] = json_encode(json_decode($this->api->post('consulta_unica', $data)->response)->data);
-		var_dump($data['oficio']);
 		$this->load->view('inicio/ver',$data);
 		$this->load->view('footer');
 		$this->load->view('inicio/ver_js',$data);

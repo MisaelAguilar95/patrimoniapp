@@ -6,10 +6,10 @@ $(document).ready(function() {
     //crear tabla
     var icons = function(cell, formatterParams){
         return "<div class='btx_ver btn btn-light btn-sm'  href='inicio/ver' ide='"+cell.getRow().getData().id_real_estate+"' id='ver' title='Ver'><i class='fa fa-eye'></i></div>\
-                <div class='btn btn-sm btn-secondary editar_actividad' superficie_espacio= '"+cell.getRow().getData().superficie_espacio+"' \
+                <div class='btn btn-sm btn-success editar_actividad' superficie_espacio= '"+cell.getRow().getData().superficie_espacio+"' \
                  uso_espacio= '"+cell.getRow().getData().uso_espacio+"' fecha_f= '"+cell.getRow().getData().fecha_f+"' fecha_i= '"+cell.getRow().getData().fecha_i+"' \
                  tipo_contrato= '"+cell.getRow().getData().tipo_contrato+"' nombre= '"+cell.getRow().getData().name+"'ocupante= '"+cell.getRow().getData().ocupante+"' \
-                 ocupante2='"+cell.getRow().getData().ocupante2+"'ide='"+cell.getRow().getData().id_real_estate+"' id='agregar' title='Agregar uso a un Tercero' ><i class='fas fa-pencil'></i></div>";
+                 ocupante2='"+cell.getRow().getData().ocupante2+"'ide='"+cell.getRow().getData().id_real_estate+"' id='agregar' title='Agregar uso a un Tercero' ><i class='fas fa-plus'></i></div>";
                 //<div class='btx_turnar btn btn-dark btn-sm' ide='"+cell.getRow().getData().id+"' id='turnar' title='Turnar'><i class='fas fa-exchange'></i></div>
                 //<div class='btx_contestar btn btn-secondary btn-sm' href='inicio/contestar' ide='"+cell.getRow().getData().id+"' id='contestar' title='Contestar'><i class='fas fa-share'></i></div> 
                 //<div class=' btx_editar btn btn-secondary btn-sm' href='inicio/editar' ide='"+cell.getRow().getData().id+"' id='editar' title='Editar'><i class='fas fa-edit'></i></div> 
@@ -24,10 +24,16 @@ $(document).ready(function() {
         paginationSizeSelector:[5,10,15,20,25,30,40,50],
         columnMinWidth:80,
         columns:[
-            {title:"Acciones", formatter:icons, align:"center",width:180},
-            {title:"Nombre", field:"name", width:290,align:"center",headerFilter:"input"},
-            {title:"Contrato inicio", field:"inicio_contrato", width:180,align:"center",headerFilter:"input"},
-            {title:"Contrato fin", field:"fin_contrato", width:180,align:"center",headerFilter:"input"},
+            {title:"Acciones", formatter:icons, align:"center",width:120},
+            {title:"Nombre", field:"name", width:240,align:"center",headerFilter:"input"},
+            {title:"Contrato inicio", field:"inicio_contrato", width:150,align:"center",headerFilter:"input"},
+            {title:"Contrato fin", field:"fin_contrato", width:150,align:"center",headerFilter:"input"},
+            {title:"Tipo de Contrato", field:"tipo_contrato",width:"100",align:"center", headerFilter:"input"},
+            {title:"Ocupante", field:"ocupante",width:"100",align:"center", headerFilter:"input"},
+            //{title:"fecha_i", field:"fecha_i",width:"50",align:"center", headerFilter:"input"},
+            //{title:"fecha_f", field:"fecha_f",width:"50",align:"center", headerFilter:"input"},
+            {title:"Uso", field:"uso_espacio",width:"100",align:"center", headerFilter:"input"},
+            {title:"Superficie Otorgada", field:"superficie_espacio",width:"100",align:"center", headerFilter:"input"},
            /*  {title:"tipo_contrato", field:"tipo_contrato",width:"50",align:"center", headerFilter:"input"},
             {title:"ocupante", field:"ocupante",width:"50",align:"center", headerFilter:"input"},
             {title:"fecha_i", field:"fecha_i",width:"50",align:"center", headerFilter:"input"},
@@ -69,7 +75,7 @@ $(document).ready(function() {
             {title:"gps_notes", field:"gps_notes",width:"50",align:"center", headerFilter:"input"},
             {title:"administrative_units_detail", field:"administrative_units_detail",width:"50",align:"center", headerFilter:"input"},
             {title:"id_address", field:"id_address",width:"50",align:"center", headerFilter:"input"}, */
-            {title:"Domicilio", field:"full_address",align:"center", headerFilter:"input"}
+            {title:"Domicilio", field:"full_address",align:"center",width:290, headerFilter:"input"}
                     
         ],
         
@@ -90,8 +96,8 @@ $(document).ready(function() {
         table.setFilter("estatus", "=", "Turnado");
     })
 
-    $('body').on('click','.btx_fatendido',function(){
-        table.setFilter("estatus", "=", "Atendido");
+    $('body').on('click','.btx_filtro',function(){
+        table.setFilter("fin_contrato", "=", "2016-05-09 00:00:00-05");
     })
 
     
@@ -165,7 +171,7 @@ $(document).ready(function() {
                         alert('','La actividad ha sido modificada','success','<?=base_url()?>inicio/');
                     }
                     else{
-                        alert('','La actividad no pudo modificarse','error','<?=base_url()?>inicio/');
+                        alert('','La actividad no pudo modificarse, debe llenar todos los campos','error','<?=base_url()?>inicio/');
                     }
                 }
             });

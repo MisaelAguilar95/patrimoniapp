@@ -998,7 +998,7 @@ html body {
   .notification.notification-layout-2:hover {
     cursor: pointer; }
   .notification:not(.notification-loading):before {
-    content: "No new messages";
+    content: "No new message";
     position: absolute;
     top: 0;
     left: 0;

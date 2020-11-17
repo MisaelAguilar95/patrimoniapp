@@ -97,7 +97,7 @@ $(document).ready(function() {
     })
 
     $('body').on('click','.btx_filtro',function(){
-        table.setFilter("fin_contrato", "=", "2016-05-09 00:00:00-05");
+        table.setFilter("fin_contrato", ">=", "2020-00-00 00:00:00-05");
     })
 
     

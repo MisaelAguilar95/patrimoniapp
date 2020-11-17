@@ -15,6 +15,7 @@ class Componentes {
 		$documentos_m_recibido = '';
 		$bitacora_m = '';
 		$reportes_m = '';
+		$reportes_m3 = '';
 		$perfiles_m = '';
 
 
@@ -41,7 +42,8 @@ class Componentes {
 			break; */
 			case strpos($url, 'reportes') !== false:
 				$reportes_m = 'active';
-				$reportes_m2='active';
+				$reportes_m2='';
+				$reportes_m3='';
 				$fa_icon = 'fa-table';
 				$titulo_m = 'Reportes';
 				$descripcion = 'Módulo para descargar los reportes de los movimientos ';
@@ -75,8 +77,13 @@ class Componentes {
 			</a>
 			<ul>
 					<li class="'.$reportes_m2.'">
-                        <a href="'.base_url().'inicio/reportes" title="Reportes">
-							<span class="nav-link-text">Reporte 1</span>
+                        <a href="'.base_url().'reportes" title="Reportes">
+							<span class="nav-link-text">Instrumental Activos</span>
+						</a>
+					</li>
+					<li class="'.$reportes_m3.'">
+                        <a href="'.base_url().'reportes/bienes_consumibles" title="Reportes">
+							<span class="nav-link-text">Estadisticas de bienes consumibles</span>
 						</a>
 					</li>
 				</ul>

@@ -1,27 +1,21 @@
-<div class="col-md-2">
-                        <div class="form-group">
-                            <label class="form-label" for="area">Mes : </label>
-                            <select id="mes" class="form-control"  name="SEL" required>
-                                <option value="">Enero</option>
-                                <option value="">Febrero</option>
-                                <option value="">Marzo</option>
-                                <option value="">Abril</option>
-                                <option value="">Mayo</option>
-                                <option value="">Junio</option>
-                                <option value="">Julio</option>
-                                <option value="">Agosto</option>
-                                <option value="">Septiembre</option>
-                                <option value="">Octubre</option>
-                                <option value="">Noviembre</option>
-                                <option value="">Diciembre</option>
-                                
-                            </select>
-                        </div>
-</div>
-<canvas id="myChart" width="300" height="80"></canvas>
-<script> 
-var sel = document.getElementById('mes');
+<br>
+<div class="row m-t-10">
+<div class="col-md-6 offset-md-6 text-right m-t-10">
+<div class="col-md-6 offset-md-6 text-right m-t-10">
+        <div class="btn-group">
+            <!-- <button id="filtro" class="btx_filtro btn btn-secondary"><i class="fal fa-filter m-r-5"></i>Contratos vigentes</button> -->
+            <button id="download-pdf" class="btn btn-secondary"><i class="fal fa-download m-r-5"></i> Descargar PDF</button>
+            <button id="download-xlsx" class="btn btn-secondary"><i class="fal fa-download m-r-5"></i> Descargar EXCEL</button>
+        </div>
+    </div>
+    </div>
+    <div class="col-md-12 m-t-10">
+        <div class="bg-light text-white" id="reporte_baja" style="font-size:12px !important"></div>
+    </div>
+</div>        
+    
 
-// display value property of select list (from selected option)
-console.log( sel );
-</script>
+
+
+
+

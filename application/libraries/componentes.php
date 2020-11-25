@@ -46,7 +46,7 @@ class Componentes {
 				$reportes_m3='';
 				$fa_icon = 'fa-table';
 				$titulo_m = 'Reportes';
-				$descripcion = 'Módulo para descargar los reportes de los movimientos ';
+				$descripcion = 'Módulo para descargar los reportes ';
 			break;
 			/* case strpos($url, 'perfiles') !== false:
 				$perfiles_m = 'active';
@@ -78,7 +78,7 @@ class Componentes {
 			<ul>
 					<li class="'.$reportes_m2.'">
                         <a href="'.base_url().'reportes" title="Reportes">
-							<span class="nav-link-text">Instrumental Activos</span>
+							<span class="nav-link-text">Instrumental Activos (BAJAS)</span>
 						</a>
 					</li>
 					<li class="'.$reportes_m3.'">

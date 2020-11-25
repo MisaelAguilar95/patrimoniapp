@@ -66,9 +66,28 @@ class Reportes extends CI_Controller {
 
 	private function principal(){		
         $data = $this->basicas();
-        $data['consulta'] = "SELECT * FROM public.inventory_detail where id_inventory_detail = 14 ";
+        $data['consulta'] = "SELECT inventory.source,
+		folio,
+		inventory.registered_date,
+		supplier,
+		inventory.status,
+		username,
+		full_name,
+		management_code,
+		inventory_code,
+		cucop_description,
+		brand,
+		model,
+		inventory_detail.serial,
+		unit_cost_total,
+		cucop_departure
+		FROM inventory 
+		LEFT JOIN inventory_invoice ON inventory.id_inventory_financial = inventory_invoice.id_inventory_financial
+		LEFT join inventory_assigned  on inventory.id_assigned = inventory_assigned.id_inventory_assigned
+		left join inventory_detail on inventory.id_inventory_detail = inventory_detail.id_inventory_detail
+		where inventory.status= 'baja'";
 		$data['datos'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
-		var_dump($data['datos']);
+		//var_dump($data['datos']);
 		$this->load->view('reportes/reportes',$data);
 		$this->load->view('footer');
 		$this->load->view('reportes/reportes_js');

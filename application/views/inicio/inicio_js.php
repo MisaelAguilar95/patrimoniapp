@@ -9,7 +9,8 @@ $(document).ready(function() {
                 <div class='btn btn-sm btn-success editar_actividad' superficie_espacio= '"+cell.getRow().getData().superficie_espacio+"' \
                  uso_espacio= '"+cell.getRow().getData().uso_espacio+"' fecha_f= '"+cell.getRow().getData().fecha_f+"' fecha_i= '"+cell.getRow().getData().fecha_i+"' \
                  tipo_contrato= '"+cell.getRow().getData().tipo_contrato+"' nombre= '"+cell.getRow().getData().name+"'ocupante= '"+cell.getRow().getData().ocupante+"' \
-                 ocupante2='"+cell.getRow().getData().ocupante2+"'ide='"+cell.getRow().getData().id_real_estate+"' id='agregar' title='Agregar uso a un Tercero' ><i class='fas fa-plus'></i></div>";
+                 fecha_i2='"+cell.getRow().getData().fecha_i2+"'fecha_f2='"+cell.getRow().getData().fecha_f2+"'tipo_contrato2='"+cell.getRow().getData().tipo_contrato2+"'\
+                 superficie_espacio2= '"+cell.getRow().getData().superficie_espacio2+"'uso_espacio2= '"+cell.getRow().getData().uso_espacio2+"'ocupante2='"+cell.getRow().getData().ocupante2+"'ide='"+cell.getRow().getData().id_real_estate+"' id='agregar' title='Agregar uso a un Tercero' ><i class='fas fa-plus'></i></div>";
                 //<div class='btx_turnar btn btn-dark btn-sm' ide='"+cell.getRow().getData().id+"' id='turnar' title='Turnar'><i class='fas fa-exchange'></i></div>
                 //<div class='btx_contestar btn btn-secondary btn-sm' href='inicio/contestar' ide='"+cell.getRow().getData().id+"' id='contestar' title='Contestar'><i class='fas fa-share'></i></div> 
                 //<div class=' btx_editar btn btn-secondary btn-sm' href='inicio/editar' ide='"+cell.getRow().getData().id+"' id='editar' title='Editar'><i class='fas fa-edit'></i></div> 
@@ -84,17 +85,6 @@ $(document).ready(function() {
     table.setData(<?=$datos?>);
     //table.setFilter("estatus", "=", "Recibido");
     ///BOTONES DE FILTROS///
-    $('body').on('click','.btx_frecibido',function(){
-        table.setFilter("estatus", "=", "Recibido");
-    })
-
-    $('body').on('click','.btx_fenviado',function(){
-        table.setFilter("estatus", "=", "Enviado");
-    })
-
-    $('body').on('click','.btx_fturnado',function(){
-        table.setFilter("estatus", "=", "Turnado");
-    })
 
     $('body').on('click','.btx_filtro',function(){
         table.setFilter("fin_contrato", ">=", "2020-00-00 00:00:00-05");
@@ -141,8 +131,13 @@ $(document).ready(function() {
             let uso_espacio = $(this).attr('uso_espacio');
             let superficie_espacio = $(this).attr('superficie_espacio');
             let ocupante2 = $(this).attr('ocupante2');
+            let tipo_contrato2 = $(this).attr('tipo_contrato2');
+            let fecha_i2 = $(this).attr('fecha_i2');
+            let fecha_f2 = $(this).attr('fecha_f2');
+            let uso_espacio2 = $(this).attr('uso_espacio2');
+            let superficie_espacio2 = $(this).attr('superficie_espacio2');
             
-            modal(id,nombre,ocupante,tipo_contrato,fecha_i,fecha_f,uso_espacio,superficie_espacio,ocupante2);
+            modal(id,nombre,ocupante,tipo_contrato,fecha_i,fecha_f,uso_espacio,superficie_espacio,ocupante2,tipo_contrato2,fecha_i2,fecha_f2,uso_espacio2,superficie_espacio2);
         })
         $('body').on('click','.btx-cancel',function(){
             swal.close();
@@ -159,12 +154,18 @@ $(document).ready(function() {
             let uso_espacio = $("#uso_modificado").val();
             let superficie_espacio = $("#superficie_modificada").val();
             let ocupante2 = $("#ocupante2_modificado").val();
+            let tipo_contrato2 = $("#contrato_modificado2").val();
+            let fecha_i2 = $("#fechai_modificada2").val();
+            let fecha_f2 = $("#fechaf_modificada2").val();
+            let uso_espacio2 = $("#uso_modificado2").val();
+            let superficie_espacio2 = $("#superficie_modificada2").val();
             $.ajax({
                 type: "POST",
                 url: '<?=base_url()?>inicio/actualizar',
                 data: {'id':id,'ocupante':ocupante, 'tipo_contrato':tipo_contrato,'fecha_i':fecha_i,
                         'fecha_f':fecha_f,'uso_espacio':uso_espacio,'superficie_espacio':superficie_espacio, 
-                        'ocupante2':ocupante2},
+                        'ocupante2':ocupante2, 'tipo_contrato2':tipo_contrato2, 'fecha_i2':fecha_i2, 'fecha_f2':fecha_f2,
+                        'uso_espacio2':uso_espacio2,'superficie_espacio2':superficie_espacio2,},
                 success: function (data) {
                     console.log(data);
                     if(JSON.parse(data).msg){

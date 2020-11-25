@@ -39,7 +39,7 @@
         x.style.display = "none";
     }
 }
-  function modal(id,name,ocupante,tipo_contrato,fecha_i,fecha_f,uso_espacio,superficie_espacio,ocupante2){
+  function modal(id,name,ocupante,tipo_contrato,fecha_i,fecha_f,uso_espacio,superficie_espacio,ocupante2,tipo_contrato2,fecha_i2,fecha_f2,uso_espacio2,superficie_espacio2){
       Swal.fire({
         title: '<strong>Agregar Uso a Un Tercero</strong>',
         icon: '',
@@ -66,12 +66,30 @@
           '<label class="form-label" for="uso">Uso :</label>' +
           '<input class="form-control" id="uso_modificado" name="uso_espacio" value="'+uso_espacio+'"></div></div>'+
           '<div class="row m-t-10"><div class="col-md-12">' +
-          '<label class="form-label" for="superficie">Superficie otorgada:</label>' +
+          '<label class="form-label" for="superficie">Superficie otorgada (mts²):</label>' +
           '<input class="form-control" onkeypress="return validaNumericos(event)" id="superficie_modificada" name="superficie_espacio" value="'+superficie_espacio+'"></div></div><hr>'+
           '<button class="btn btn-sm btn-success"onclick="myFunction()">Agregar Ocupante</button>'+
-          '<div class="row m-t-10"><div id="ocultar" style ="display:none"class="col-md-12">' +
-          '<label class="form-label" for="ocupante2">Agregar ocupante:</label>' +
-          '<input class="form-control"  id="ocupante2_modificado" name="ocupante2" value="'+ocupante2+'"></div></div>'+
+          '<div id="ocultar" style ="display:none" class="row m-t-10"><div class="col-md-12">' +
+          '<label class="form-label" for="ocupante2">Ocupante:</label>' +
+          '<input class="form-control"  id="ocupante2_modificado" name="ocupante2" value="'+ocupante2+'"></div>'+
+          '<div class="row m-t-10"><div class="col-md-12">' +
+          '<label class="form-label" for="instrumento">Tipo de Contrato:</label>' +
+          '<select class="form-control" name="tipo_contrato2" id="contrato_modificado2" >'+
+          '<option >'+tipo_contrato2+'</option><option value="arrendatario">Arrendatario</option><option value="comodato">Comodato</option>'+
+          '<option value="concesion">Concesión</option><option value="convenio">Convenio</option>'+
+          '<option value="otro">Otro</option></select></div></div>'+
+          '<div class="row m-t-10"><div class="col-md-6">' +
+          '<label class="form-label" for="fecha_ini">Fecha inicio:</label>' +
+          '<input class="form-control" type="date" id="fechai_modificada2" name="fecha_i2"value="'+fecha_i2+'"></div>'+
+          '<div class="col-md-6">'+
+          '<label class="form-label" for="fecha_fin2">Fecha fin:</label>' +
+          '<input class="form-control" type="date" id="fechaf_modificada2" name="fecha_f2"value="'+fecha_f2+'"></div></div>'+
+          '<div class="row m-t-10"><div class="col-md-12">' +
+          '<label class="form-label" for="uso">Uso :</label>' +
+          '<input class="form-control" id="uso_modificado2" name="uso_espacio2" value="'+uso_espacio2+'"></div></div>'+
+          '<div class="row m-t-10"><div class="col-md-12">' +
+          '<label class="form-label" for="superficie">Superficie otorgada (mts²):</label>' +
+          '<input class="form-control" onkeypress="return validaNumericos(event)" id="superficie_modificada2" name="superficie_espacio2" value="'+superficie_espacio2+'"></div></div></div>'+
           '<div class="row m-t-10 text-right"><div class="col-md-12">' +
           '<button class="btn btn-sm btn-danger btx-cancel">Cancelar</button><button ide="'+id+'" style="margin-left:10px" class="btn btn-sm btn-primary btx-modificar">Modificar</button>' +
           '</div></div>',

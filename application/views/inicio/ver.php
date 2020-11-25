@@ -67,17 +67,17 @@
                         <input type="text" class="form-control" readonly name="longitude">
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label">Superficie de terreno</label>
+                        <label class="form-label">Superficie de terreno (mts²)</label>
                         <input type="text" class="form-control" readonly name="land_area">
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label">Superficie construida</label>
+                        <label class="form-label">Superficie construida (mts²)</label>
                         <input type="text" class="form-control" readonly name="built_area">
                     </div>
                 </div>
                 <div class="row m-t-10">
                     <div class="col-md-4">
-                        <label class="form-label">Espacio real ocuapdo %</label>
+                        <label class="form-label">Espacio real ocupado %</label>
                         <input type="text" class="form-control" readonly name="space_occupied_percentage">
                     </div>
                     <div class="col-md-4">
@@ -181,9 +181,10 @@
                 </div>
                 <div class="row m-t-10">
                     <div class="col-md-6">
-                        <label class="form-label">Nombre de ocupante</label>
-                        <input type="text" class="form-control" readonly name="ocupante">
+                        <label class="form-label">Tipo de contrato</label>
+                        <input type="text" class="form-control" readonly name="tipo_contrato">
                     </div>
+                    
                     <div class="col-md-3">
                         <label class="form-label">Fecha de inicio</label>
                         <input type="text" class="form-control" readonly name="fecha_i">
@@ -194,16 +195,16 @@
                     </div>
                 </div>
                 <div class="row m-t-10">
-                    <div class="col-md-4">
-                        <label class="form-label">Tipo de contrato</label>
-                        <input type="text" class="form-control" readonly name="tipo_contrato">
+                    <div class="col-md-6">
+                        <label class="form-label">Nombre de ocupante</label>
+                        <input type="text" class="form-control" readonly name="ocupante">
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label">Uso</label>
                         <input type="text" class="form-control" readonly name="uso_espacio">
                     </div>
-                    <div class="col-md-4">
-                        <label class="form-label">Superficie otorgada</label>
+                    <div class="col-md-3">
+                        <label class="form-label">Superficie otorgada (mts²)</label>
                         <input type="text" class="form-control" readonly name="superficie_espacio">
                     </div>
                 </div>

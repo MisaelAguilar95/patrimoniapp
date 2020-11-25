@@ -178,7 +178,10 @@ class Inicio extends CI_Controller {
 			//$_POST['email'] = $this->session->email;
 			$condicion = array('id_real_estate'=>$_POST['id']);
 			$data = array('ocupante' => $_POST['ocupante'],'tipo_contrato'=>$_POST['tipo_contrato'], 
-					'fecha_i'=>$_POST['fecha_i'],'fecha_f'=>$_POST['fecha_f'],'uso_espacio'=>$_POST['uso_espacio'],'superficie_espacio'=>$_POST['superficie_espacio'],'ocupante2'=>$_POST['ocupante2']);
+					'fecha_i'=>$_POST['fecha_i'],'fecha_f'=>$_POST['fecha_f'],'uso_espacio'=>$_POST['uso_espacio'],
+					'superficie_espacio'=>$_POST['superficie_espacio'],'ocupante2'=>$_POST['ocupante2'],'tipo_contrato2'=>$_POST['tipo_contrato2'],
+					'fecha_i2'=>$_POST['fecha_i2'],'fecha_f2'=>$_POST['fecha_f2'],'uso_espacio2'=>$_POST['uso_espacio2'],
+					'superficie_espacio2'=>$_POST['superficie_espacio2']);
 			$res = $this->api->post('/actualizar', array('tabla'=>'public.real_estate_prueba', 'condicion'=>$condicion, 'datos'=>$data));
 			if($res['ban'])
 				$this->response(array('msg'=>true));

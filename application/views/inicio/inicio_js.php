@@ -85,9 +85,9 @@ $(document).ready(function() {
     table.setData(<?=$datos?>);
     //table.setFilter("estatus", "=", "Recibido");
     ///BOTONES DE FILTROS///
-
+    table.setFilter("fin_contrato", ">=", "2020-00-00 00:00:00-05");
     $('body').on('click','.btx_filtro',function(){
-        table.setFilter("fin_contrato", ">=", "2020-00-00 00:00:00-05");
+        table.setFilter("ocupate", "!=", "null");
     })
 
     

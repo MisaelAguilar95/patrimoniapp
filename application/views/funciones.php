@@ -80,10 +80,10 @@
           '<option value="otro">Otro</option></select></div></div>'+
           '<div class="row m-t-10"><div class="col-md-6">' +
           '<label class="form-label" for="fecha_ini">Fecha inicio:</label>' +
-          '<input class="form-control" type="date" id="fechai_modificada2" name="fecha_i2"value="'+fecha_i2+'"></div>'+
+          '<input class="form-control" type="date" id="fechai_modificada2" name="fecha_i2"value="<?php echo date("Y-m-d");?>"></div>'+
           '<div class="col-md-6">'+
           '<label class="form-label" for="fecha_fin2">Fecha fin:</label>' +
-          '<input class="form-control" type="date" id="fechaf_modificada2" name="fecha_f2"value="'+fecha_f2+'"></div></div>'+
+          '<input class="form-control" type="date" id="fechaf_modificada2" name="fecha_f2"value="<?php echo date("Y-m-d");?>"></div></div>'+
           '<div class="row m-t-10"><div class="col-md-12">' +
           '<label class="form-label" for="uso">Uso :</label>' +
           '<input class="form-control" id="uso_modificado2" name="uso_espacio2" value="'+uso_espacio2+'"></div></div>'+

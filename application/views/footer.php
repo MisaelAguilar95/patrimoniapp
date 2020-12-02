@@ -41,6 +41,7 @@
 <!-- TABULATOR -->
 <script type="text/javascript" src="<?=base_url()?>frontend/js/tabulator.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<link href="<?=base_url()?>frontend/css/tabulator.css" rel="stylesheet">
 <!-- GRAFICAS -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <!-- DESCARGAS -->

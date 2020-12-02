@@ -94,12 +94,19 @@ class Reportes extends CI_Controller {
 	}
 	public function bienes_consumibles(){
 		$data = $this->basicas();
-        $data['consulta'] = "SELECT * FROM public.inventory_detail where id_inventory_detail = 14 ";
+        $data['consulta'] = "select * from transaction_countable_policy  
+		inner join transaction_detail
+		on transaction_countable_policy.id_transaction_detail= transaction_detail.id_transaction_detail
+		inner join public.transaction
+		on transaction_detail.id_transaction= public.transaction.id_transaction
+		inner join transaction_receiver
+		on public.transaction.id_receiver= transaction_receiver.id_transaction_receiver
+		where ejercicio_fiscal = 2020 and transaction_countable_policy.type= 'salida_consumible'";
 		$data['datos'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
-		var_dump($data['datos']);
-		$this->load->view('reportes/reportes',$data);
+		//var_dump($data['datos']);
+		$this->load->view('reportes/consumibles',$data);
 		$this->load->view('footer');
-		$this->load->view('reportes/reportes_js');
+		$this->load->view('reportes/consumibles_js');
 	}
 	
 	public function salir(){

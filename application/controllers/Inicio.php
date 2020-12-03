@@ -73,7 +73,8 @@ class Inicio extends CI_Controller {
 
 	private function principal(){		
 		$data = $this->basicas();
-		$data['consulta'] = "SELECT * FROM public.vw_inmuebles order by name ";
+		$data['consulta'] = "select * from vw_inmuebles 
+		where fin_contrato >= to_date('00-01-2020 21:24:00', 'dd-mm-yyyy hh24:mi:ss') order by name ";
 		$data['datos'] = json_encode(json_decode($this->api->post('/ejecuta',$data)->response)->data);
 		//var_dump($data['datos']);
 		$this->load->view('inicio/inicio',$data);

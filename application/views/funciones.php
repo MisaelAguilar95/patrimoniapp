@@ -68,7 +68,7 @@
           '<div class="row m-t-10"><div class="col-md-12">' +
           '<label class="form-label" for="superficie">Superficie otorgada (mts²):</label>' +
           '<input class="form-control" onkeypress="return validaNumericos(event)" id="superficie_modificada" name="superficie_espacio" value="'+superficie_espacio+'"></div></div><hr>'+
-          '<button class="btn btn-sm btn-success"onclick="myFunction()">Agregar Ocupante</button>'+
+          '<button class="btn btn-sm btn-success"onclick="myFunction()">Agregar Otro Ocupante</button>'+
           '<div id="ocultar" style ="display:none" class="row m-t-10"><div class="col-md-12">' +
           '<label class="form-label" for="ocupante2">Ocupante:</label>' +
           '<input class="form-control"  id="ocupante2_modificado" name="ocupante2" value="'+ocupante2+'"></div>'+

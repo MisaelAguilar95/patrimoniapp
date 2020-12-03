@@ -27,10 +27,10 @@ $(document).ready(function() {
         columns:[
             {title:"Acciones", formatter:icons, align:"center",width:120},
             {title:"Nombre", field:"name", width:240,align:"center",headerFilter:"input"},
-            {title:"Contrato inicio", field:"inicio_contrato", width:150,align:"center",headerFilter:"input"},
-            {title:"Contrato fin", field:"fin_contrato", width:150,align:"center",headerFilter:"input"},
-            {title:"Tipo de Contrato", field:"tipo_contrato",width:"100",align:"center", headerFilter:"input"},
             {title:"Ocupante", field:"ocupante",width:"100",align:"center", headerFilter:"input"},
+            {title:"Tipo de Contrato", field:"tipo_contrato",width:"100",align:"center", headerFilter:"input"},
+            {title:"Contrato inicio", field:"fecha_i", width:150,align:"center",headerFilter:"input"},
+            {title:"Contrato fin", field:"fecha_f", width:150,align:"center",headerFilter:"input"},
             //{title:"fecha_i", field:"fecha_i",width:"50",align:"center", headerFilter:"input"},
             //{title:"fecha_f", field:"fecha_f",width:"50",align:"center", headerFilter:"input"},
             {title:"Uso", field:"uso_espacio",width:"100",align:"center", headerFilter:"input"},
@@ -85,9 +85,8 @@ $(document).ready(function() {
     table.setData(<?=$datos?>);
     //table.setFilter("estatus", "=", "Recibido");
     ///BOTONES DE FILTROS///
-    table.setFilter("fin_contrato", ">=", "2020-00-00 00:00:00-05");
     $('body').on('click','.btx_filtro',function(){
-        table.setFilter("ocupate", "!=", "null");
+        table.setFilter("ocupante", "!=",null);
     })
 
     

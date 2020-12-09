@@ -1,5 +1,8 @@
 <br>
 <div class="row m-t-10">
+    <div class="col-md-6 m-t-10">
+        <button class=" btx_noti btn btn-danger"><i class="fal fa-bell m-r-5"></i>Notificaciones</button>
+    </div>
 <div class="col-md-6 offset-md-6 text-right m-t-10">
 <div class="col-md-6 offset-md-6 text-right m-t-10">
         <div class="btn-group">

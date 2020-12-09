@@ -1,8 +1,8 @@
 <br>
 <div class="row m-t-10">
-<div class="col-md-6 m-t-10">
-            <button class=" btx_clear_filter btn btn-danger"><i class="fal fa-trash m-r-5"></i>Limpiar Filtros</button>
-            </div>
+    <div class="col-md-6 m-t-10">
+        <button class=" btx_clear_filter btn btn-danger"><i class="fal fa-trash m-r-5"></i>Limpiar Filtros</button>
+    </div>
     <div class="col-md-6 offset-md-6 text-right m-t-10">
         <div class="col-md-6 offset-md-6 text-right m-t-10">
             <div class="btn-group">

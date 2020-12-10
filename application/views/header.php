@@ -56,7 +56,7 @@
 <head>
 	<meta charset="utf-8" />
 	<title>PATRIMONIAPP</title>
-	<link rel="icon" type="image/png" href="<?=base_url()?>frontend/images/logoconafor.gif">
+	<link rel="icon" type="image/png" href="<?=base_url()?>frontend/images/conaforlogo.jpg">
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="Jose Manuel, Misael Aguilar,Mauricio Ramirez" name="author" />
 	<meta content="Control de oficios y atentas notas" name="description" />
@@ -113,8 +113,8 @@
             <aside class="page-sidebar ">
                 <div class="page-logo">
                     <a class="d-flex" >
-                        <img style="width:50px" src="<?=base_url()?>frontend/images/logoconafor.gif" alt="SmartAdmin WebApp" aria-roledescription="logo">
-                        <span class="page-logo-text mr-1">PATRIMONIAPP</span>
+                        <img style="width:85px" src="<?=base_url()?>frontend/images/conaforlogo.jpg" alt="SmartAdmin WebApp" aria-roledescription="logo">
+                        <span class="page-logo-text mr-2">PATRIMONIAPP</span>
                     </a>
                 </div>
                 <!-- BEGIN PRIMARY NAVIGATION -->
@@ -142,7 +142,7 @@
                     <!-- we need this logo when user switches to nav-function-top -->
                     <div class="page-logo">
                         <a href="#" class="page-logo-link press-scale-down d-flex align-items-center" data-toggle="modal" data-target="#modal-shortcut">
-                            <img src="<?=base_url()?>frontend/images/logoconafor.gif" alt="SmartAdmin WebApp" aria-roledescription="logo">
+                            <img src="<?=base_url()?>frontend/images/conaforlogo.jpg" alt="SmartAdmin WebApp" aria-roledescription="logo">
                             <span class="page-logo-text mr-1">SmartAdmin WebApp</span>
                             <i class="fal fa-angle-down d-inline-block ml-1 fs-lg color-primary-300"></i>
                         </a>

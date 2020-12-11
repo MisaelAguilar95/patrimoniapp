@@ -26,15 +26,14 @@ $(document).ready(function() {
         columnMinWidth:80,
         columns:[
             //{title:"Acciones", formatter:icons, align:"center",width:120},
-            {title:"Agrupador", field:"additional_description", width:240,align:"center",headerFilter:"input"},
-            {title:"CUCOP", field:"cucop_description", width:240,align:"center",headerFilter:"input"},
-            {title:"Cantidad", field:"quantity", width:40,align:"center",headerFilter:"input"},
-            {title:"Unidad", field:"unit_description", width:240,align:"center",headerFilter:"input"},
-            {title:"ID CUCOP", field:"cucop", width:240,align:"center",headerFilter:"input"},
-            {title:"Partida", field:"cucop_departure", width:240,align:"center",headerFilter:"input"},
-            {title:"Fecha de factura", field:"registered_date", width:240,align:"center",headerFilter:"input"},
-            {title:"Proveedor", field:"supplier", width:240,align:"center",headerFilter:"input"},
-            {title:"Estatus", field:"status", width:240,align:"center",headerFilter:"input"},
+            {title:"Partida", field:"departure", width:100,align:"center",headerFilter:"input"},
+            {title:"ID CUCOP", field:"cucop", width:100,align:"center",headerFilter:"input"},
+            {title:"Descripcion CUCOP", field:"cucop_description", width:230,align:"center",headerFilter:"input"},
+            {title:"Agrupador", field:"additional_description", width:340,align:"center",headerFilter:"input"},
+            {title:"Cantidad", field:"cant", width:100,align:"center",headerFilter:"input"},
+            
+            //{title:"Proveedor", field:"supplier", width:240,align:"center",headerFilter:"input"},
+            //{title:"Estatus", field:"status", width:240,align:"center",headerFilter:"input"},
                     
         ],
         
@@ -44,6 +43,7 @@ $(document).ready(function() {
     
     //table.setFilter("estatus", "=", "Recibido");
     ///BOTONES DE FILTROS///
+    
 
     $('body').on('click','.btx_filtro_gerencias',function(){
         table.setFilter("unit_description","in", ["GERENCIA ESTATAL JALISCO","GERENCIA DE FINANCIAMIENTO", "GERENCIA ESTATAL BAJA CALIFORNIA SUR","GERENCIA ESTATAL CAMPECHE","GERENCIA ESTATAL CHIHUAHUA",
